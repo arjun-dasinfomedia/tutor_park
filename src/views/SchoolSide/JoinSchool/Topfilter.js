@@ -1,4 +1,3 @@
-import react from "react"
 import React, { useState } from 'react'
 import {
     CCard,
@@ -21,9 +20,11 @@ import CustomAlertControl from '../../AlertMessage'
 import JoinSchool from "./JoinSchool"
 import { storeMySchool } from "./JoinSchoolAction"
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import {
+    getUserRole,
     getUserData,
-  } from "src/utility/utils";
+} from "src/utility/utils";
 
 
 const TopFilter = () => {
@@ -31,6 +32,32 @@ const TopFilter = () => {
     const dispatch = useDispatch();
     const [addVisible, setAddVisible] = useState(false);
     const [searchJoinSchool, setSearchJoinSchool] = useState("");
+
+
+    const JoinSchoolData = (e) => {
+        setSearchJoinSchool(e.target.value)
+    }
+
+    const AddSchool = (e) => {
+        e.preventDefault();
+        if (getUserData().linked_email === null) {
+            setAddVisible(true)
+        }
+        else {
+            if (getUserRole() === "tutor") {
+                setAddVisible(true)
+            }
+            else {
+                Swal.fire({
+                    title: "warning",
+                    text: "You have already Joined School!",
+                    icon: "warning",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText: "OK",
+                })
+            }
+        }
+    }
 
     // initial value for add new school
     const initialFValues = {
@@ -144,7 +171,7 @@ const TopFilter = () => {
             ...temp,
         });
 
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -169,11 +196,11 @@ const TopFilter = () => {
             data.append("principal", values.principal)
             data.append("vice_principal", values.vice_principal)
             data.append("incharge", values.incharge)
-            if (values.working_start_date == "") {
+            if (values.working_start_date === "") {
 
                 data.append("working_start_date", values.working_start_date)
             }
-            if (values.working_end_date == "") {
+            if (values.working_end_date === "") {
 
                 data.append("working_end_date", values.working_end_date)
             }
@@ -354,13 +381,12 @@ const TopFilter = () => {
                             <div className="text-center col-12">
                                 <div className="postsearchheader">
                                     Join School
-                                    {getUserData().linked_email == null ? 
-                                    <CButton   
-                                        className="d-inline textbook-add-button-css"
-                                        onClick={() => setAddVisible(!addVisible)}
+                                    <CButton
+                                        className="d-inline join-school-add-button-css"
+                                        onClick={(e) => AddSchool(e)}
                                     >
                                         Add
-                                    </CButton> : null}
+                                    </CButton>
                                 </div>
                             </div>
                         </div>
@@ -371,7 +397,7 @@ const TopFilter = () => {
                             >
                                 <CFormInput
                                     className="searchinput rounded-pill pr-5"
-                                    onChange={(event) => setSearchJoinSchool(event.target.value)}
+                                    onChange={(event) => JoinSchoolData(event)}
                                     placeholder="Search School"
                                 ></CFormInput>
                                 <CButton className="searchbutton position-absolute rounded-pill">

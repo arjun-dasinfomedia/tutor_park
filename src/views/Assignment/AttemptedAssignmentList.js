@@ -51,7 +51,7 @@ const AttemptedAssignment = (prop) => {
     }
     useEffect(async () => {
         showLoader();
-        if (prop.location.aboutProps != undefined) {
+        if (prop.location.aboutProps !== undefined) {
             dispatch(getStudentSubmittedAssignment({ assignment_id: prop.location.aboutProps.id }));
         }
 
@@ -61,46 +61,46 @@ const AttemptedAssignment = (prop) => {
     }, []);
 
     {
-        prop.location.aboutProps != undefined ?
+        prop.location.aboutProps !== undefined ?
             attemptedAssignmentData = assignmentState.studentSubmittedAssignment && assignmentState.studentSubmittedAssignment.filter((item) => {
-                if (searchAssignment == "") {
+                if (searchAssignment === "") {
                     return item;
                 } else if (
-                    item.assignment.title == null ? "" : item.assignment.title.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.assignment.title === null ? "" : item.assignment.title.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 } else if (
-                    item.assignment.description == null ? "": item.assignment.description.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.assignment.description === null ? "": item.assignment.description.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 } else if (
-                    item.assignment.syllabus == null ? "" : item.assignment.syllabus.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.assignment.syllabus === null ? "" : item.assignment.syllabus.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
                 else if (
-                    item.assignment.class == null ? "": item.assignment.class.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.assignment.class === null ? "": item.assignment.class.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
                 else if (
-                    item.assignment.subject == null ? "": item.assignment.subject.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.assignment.subject === null ? "": item.assignment.subject.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
 
                 else if (
-                    item.student.tp_id == null ? "": item.student.tp_id.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.student.tp_id === null ? "": item.student.tp_id.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
                 else if (
-                    item.student.name == null ? "": item.student.name.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.student.name === null ? "": item.student.name.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
                 else if (
-                    item.student.email == null ? "" :item.student.email.toLowerCase().includes(searchAssignment.toLowerCase())
+                    item.student.email === null ? "" :item.student.email.toLowerCase().includes(searchAssignment.toLowerCase())
                 ) {
                     return item;
                 }
@@ -119,7 +119,7 @@ const AttemptedAssignment = (prop) => {
                                     <div className="row">
                                         <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                             <CCardImage
-                                                src={item.image == null ? profile2 : item.image}
+                                                src={item.image === null ? profile2 : item.image}
                                                 className="img-fluid rounded mx-auto d-flex serchcourse-image"
                                             />
                                         </div>
@@ -139,10 +139,10 @@ const AttemptedAssignment = (prop) => {
                                                                 (Obtained Marks:-{item.obtained_mark})
                                                             </h5> : null
                                                         }
-                                                        {item.tutor_status == undefined ?
+                                                        {item.tutor_status === undefined ?
                                                             <CBadge color="danger" className="h6">Not Evaluated</CBadge>
                                                             :
-                                                            item.tutor_status == "pending" ?
+                                                            item.tutor_status === "pending" ?
                                                                 <CBadge color="danger" className="h6">Not Evaluated</CBadge>
                                                                 :
                                                                 <CBadge color="success" className="h6">Evaluated</CBadge>
@@ -335,13 +335,13 @@ const AttemptedAssignment = (prop) => {
                                 :
                                 <NoDataContainer module="Student Attempted Assignment" />
                             }
-                            {prop.location.aboutProps == undefined ?
+                            {prop.location.aboutProps === undefined ?
                                 ""
                                 :
-                                prop.location.aboutProps.total_attempted == 0 ?
+                                prop.location.aboutProps.total_attempted === 0 ?
                                 ""
                                 :
-                                assignmentState.studentSubmittedAssignment.length == 0 ?
+                                assignmentState.studentSubmittedAssignment.length === 0 ?
                                     <div className="loader"></div>
                                     :
                                     assignmentState.studentSubmittedAssignment && assignmentState.studentSubmittedAssignment > 10 ? (

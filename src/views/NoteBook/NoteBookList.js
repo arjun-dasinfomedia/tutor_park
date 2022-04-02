@@ -79,7 +79,7 @@ const NoteBook = (Data) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
 
     if (value !== "" && value !== "<p><br></p>") {
       setEditorState(true);
@@ -200,26 +200,26 @@ const NoteBook = (Data) => {
 
   const loadNotenookDynamic = noteBookState.data
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject == null ? "": item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject === null ? "": item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.syllabus == null ? "": item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.syllabus === null ? "": item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.class == null ? "" : item.class.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.class === null ? "" : item.class.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.tutor == null ? "": item.tutor.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.tutor === null ? "": item.tutor.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "": item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "": item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -375,7 +375,7 @@ const NoteBook = (Data) => {
                           value={value}
                           onChange={setValue}
                         />
-                        {(value == "" || value == "<p><br></p>") &&
+                        {(value === "" || value === "<p><br></p>") &&
                           !editorState ? (
                           <>
                             <span className="text-danger ml-3">

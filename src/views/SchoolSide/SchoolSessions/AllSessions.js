@@ -47,14 +47,14 @@ const CompleteSession = (props) => {
     const offset = currentPage * PER_PAGE;
 
     const loadSessionsDynamic = sessions.allsessiondata.filter((item) => {
-        if (props.SearchData == "") {
+        if (props.SearchData === "") {
             return item;
         } else if (
-            item.tuition_title == null ? "" : item.tuition_title.toLowerCase().includes(props.SearchData.toLowerCase())
+            item.tuition_title === null ? "" : item.tuition_title.toLowerCase().includes(props.SearchData.toLowerCase())
         ) {
             return item;
         } else if (
-            item.tutor_name == null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
+            item.tutor_name === null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
         ) {
             return item;
         }

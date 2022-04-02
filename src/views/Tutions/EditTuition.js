@@ -82,7 +82,7 @@ const EditTuition = (data) => {
         dispatch(syllabusListData());
         dispatch(libraryListData());
     }, []);
-    
+
     let initialFValues = ""
     if (data.data.library !== null) {
         initialFValues = {
@@ -102,6 +102,9 @@ const EditTuition = (data) => {
             demo_video_name: "",
             description: data.data.description,
             library_id: data.data.library.id,
+            syallbus_other: "",
+            class_other: "",
+            subject_other: "",
         };
     }
     else {
@@ -122,6 +125,9 @@ const EditTuition = (data) => {
             demo_video_name: "",
             description: data.data.description,
             library_id: "",
+            syallbus_other: "",
+            class_other: "",
+            subject_other: "",
         };
     }
 
@@ -137,6 +143,21 @@ const EditTuition = (data) => {
             temp.syllabus_id = fieldValues.syllabus_id
                 ? ""
                 : "Please select syllabus.";
+
+        if (values.syllabus_id == "other") {
+            if ("syallbus_other" in fieldValues)
+                temp.syallbus_other = fieldValues.syallbus_other ? "" : "Please Enter Other Syallbus.";
+        }
+
+        if (values.class_id == "other") {
+            if ("class_other" in fieldValues)
+                temp.class_other = fieldValues.class_other ? "" : "Please Enter Other Class.";
+        }
+
+        if (values.subject_id == "other") {
+            if ("subject_other" in fieldValues)
+                temp.subject_other = fieldValues.subject_other ? "" : "Please Enter Other Subject.";
+        }
 
         if ("class_id" in fieldValues)
             temp.class_id = fieldValues.class_id ? "" : "Please select class.";
@@ -204,7 +225,7 @@ const EditTuition = (data) => {
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -223,18 +244,29 @@ const EditTuition = (data) => {
 
             let formData = new FormData();
             formData.append("title", values.title);
+
             formData.append("syllabus_id", values.syllabus_id);
+            if (values.syllabus_id === "other") {
+                formData.append("syallbus_other" , values.syallbus_other)
+            }
 
             formData.append("class_id", values.class_id);
+            if (values.class_id === "other") {
+                formData.append("class_other", values.class_other)
+            }
 
             formData.append("subject_id", values.subject_id);
+            if (values.subject_id === "other") {
+                formData.append("subject_other", values.subject_other)
+            }
+
             formData.append("mode_of_teaching", values.mode_of_teaching);
             formData.append(
-                "start_date",
-                moment(values.start_date).format("YYYY-MM-DD")
+                "start_date", values.start_date
+                // moment(values.start_date).format("YYYY-MM-DD")
             );
             formData.append("id", data.data.id)
-            formData.append("end_date", moment(values.end_date).format("YYYY-MM-DD"));
+            formData.append("end_date", values.end_date);
             formData.append("cost", values.cost);
             formData.append("type", values.type);
 
@@ -248,7 +280,7 @@ const EditTuition = (data) => {
             }
             formData.append("description", values.description);
             {
-                values.library_id == ""
+                values.library_id === ""
                     ? ""
                     : formData.append("library_id", values.library_id);
             }
@@ -293,7 +325,6 @@ const EditTuition = (data) => {
                                         <div className="checkbox checkbox-circle checkbox-color-scheme">
                                             <Checkbox
                                                 name="schedulesToSave[]"
-
                                                 value={items.id}
                                                 onChange={onAddingItem}
                                                 defaultChecked={schedulesToSave.includes(items.id) ? true : false}
@@ -356,10 +387,22 @@ const EditTuition = (data) => {
                                         onChange={handleInputChange}
                                         options={DropDown.syllabusList}
                                         error={errors.syllabus_id}
-
+                                        other="other"
                                     />
-
                                 </CCol>
+                                {values.syllabus_id === "other" ?
+                                    <CCol sm={6} md={6} lg={6} xl={6}>
+                                        <Controls.Input
+                                            name="syallbus_other"
+                                            label="Other Syllabus *"
+                                            value={values.syallbus_other}
+                                            onChange={handleInputChange}
+                                            error={errors.syallbus_other}
+                                        />
+                                    </CCol>
+                                    :
+                                    errors.syallbus_other = ""
+                                }
                                 <CCol sm={6} md={6} lg={6} xl={6}>
                                     <Controls.Select
                                         name="class_id"
@@ -368,10 +411,22 @@ const EditTuition = (data) => {
                                         onChange={handleInputChange}
                                         options={DropDown.classList}
                                         error={errors.class_id}
-
+                                        other="other"
                                     />
-
                                 </CCol>
+                                {values.class_id === "other" ?
+                                    <CCol sm={6} md={6} lg={6} xl={6}>
+                                        <Controls.Input
+                                            name="class_other"
+                                            label="Other Class *"
+                                            value={values.class_other}
+                                            onChange={handleInputChange}
+                                            error={errors.class_other}
+                                        />
+                                    </CCol>
+                                    :
+                                    errors.class_other = ""
+                                }
                             </CRow>
                             <CRow>
                                 <CCol sm={6} md={6} lg={6} xl={6}>
@@ -382,10 +437,22 @@ const EditTuition = (data) => {
                                         onChange={handleInputChange}
                                         options={DropDown.subjectList}
                                         error={errors.subject_id}
-
+                                        other="other"
                                     />
-
                                 </CCol>
+                                {values.subject_id === "other" ?
+                                    <CCol sm={6} md={6} lg={6} xl={6}>
+                                        <Controls.Input
+                                            name="subject_other"
+                                            label="Other subject *"
+                                            value={values.subject_other}
+                                            onChange={handleInputChange}
+                                            error={errors.subject_other}
+                                        />
+                                    </CCol>
+                                    :
+                                    errors.subject_other = ""
+                                }
                                 <CCol sm={6} md={6} lg={6} xl={6}>
                                     <Controls.Select
                                         name="mode_of_teaching"

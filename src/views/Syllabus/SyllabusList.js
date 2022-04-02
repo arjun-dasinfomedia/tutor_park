@@ -68,7 +68,7 @@ const Syllabus = () => {
 		{
 			title: "Status",
 			field: "active",
-			render: rowData => rowData.active == "no" ? <CBadge color="danger">Deactive</CBadge> : <CBadge color="primary">Active</CBadge>,
+			render: rowData => rowData.active === "no" ? <CBadge color="danger">Deactive</CBadge> : <CBadge color="primary">Active</CBadge>,
 			lookup: { yes: 'Active', no: 'Deactive' },
 		},
 	];
@@ -88,7 +88,7 @@ const Syllabus = () => {
 		setErrors({
 			...temp,
 		});
-		if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+		if (fieldValues === values) return Object.values(temp).every((x) => x === "");
 	};
 
 	const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -301,11 +301,11 @@ const Syllabus = () => {
 										</div>
 										<div className="row">
 											<div className="col-4 font-weight-bold">Description</div>
-											<div className="col-8">{viewSyllabusData && viewSyllabusData.description != null ? viewSyllabusData.description : "Not Added"}</div>
+											<div className="col-8">{viewSyllabusData && viewSyllabusData.description !== null ? viewSyllabusData.description : "Not Added"}</div>
 										</div>
 										<div className="row">
 											<div className="col-4 font-weight-bold">Status</div>
-											<div className="col-8">{viewSyllabusData && viewSyllabusData.active != "yes" ?
+											<div className="col-8">{viewSyllabusData && viewSyllabusData.active !== "yes" ?
 												<CBadge color="danger">Deactive</CBadge>
 												:
 												<CBadge color="primary">Active</CBadge>

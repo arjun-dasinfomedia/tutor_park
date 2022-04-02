@@ -56,6 +56,9 @@ const TextBook = () => {
     attachment: "",
     attachment_name: "",
     description: "",
+    syllabus_other: "",
+    class_other: "",
+    subject_other: "",
   };
 
   // validation code start
@@ -66,6 +69,28 @@ const TextBook = () => {
       temp.syllabus_id = fieldValues.syllabus_id
         ? ""
         : "Please select syllabus.";
+
+    if (values.syllabus_id == "other") {
+
+      if ("syllabus_other" in fieldValues)
+        temp.syllabus_other = fieldValues.syllabus_other ? "" : "Please Enter Other Syllabus.";
+    }
+
+    if (values.syllabus_id == "other") {
+
+      if ("syllabus_other" in fieldValues)
+        temp.syllabus_other = fieldValues.syllabus_other ? "" : "Please Enter Other Syllabus.";
+    }
+    if (values.class_id == "other") {
+
+      if ("class_other" in fieldValues)
+        temp.class_other = fieldValues.class_other ? "" : "Please Enter Other Class.";
+    }
+    if (values.subject_id == "other") {
+
+      if ("subject_other" in fieldValues)
+        temp.subject_other = fieldValues.subject_other ? "" : "Please Enter Other Subject.";
+    }
 
     if ("class_id" in fieldValues)
       temp.class_id = fieldValues.class_id ? "" : "Please select class.";
@@ -95,7 +120,7 @@ const TextBook = () => {
     }
 
     if ("resource_type" in fieldValues) {
-      if (fieldValues.resource_type == "external_link") {
+      if (fieldValues.resource_type === "external_link") {
         if ("external_link" in fieldValues)
           temp.external_link = fieldValues.external_link
             ? ""
@@ -132,7 +157,7 @@ const TextBook = () => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -141,37 +166,53 @@ const TextBook = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (validate()) {
       let formData = new FormData();
       formData.append("syllabus_id", values.syllabus_id);
       formData.append("class_id", values.class_id);
       formData.append("subject_id", values.subject_id);
+      if (values.subject_id === "other") {
+        formData.append("subject_other", values.subject_other)
+      }
+      if (values.class_id === "other") {
+        formData.append("class_other", values.class_other)
+      }
+      if (values.syllabus_id === "other") {
+        formData.append("syllabus_other", values.syllabus_other)
+      }
       formData.append("book_name", values.book_name);
       formData.append("image", values.image);
       formData.append("resource_type", values.resource_type);
-      {
-        values.external_link !== null
-          ? formData.append("external_link", values.external_link)
-          : "";
+
+      if (values.resource_type === "external_link") {
+
+        formData.append("external_link", values.external_link)
+
       }
-      {
-        values.attachment !== null
-          ? formData.append("attachment", values.attachment)
-          : "";
+      if (values.resource_type === "attachment") {
+
+        formData.append("attachment", values.attachment)
+
       }
+
       formData.append("description", values.description);
+      // for (var pair of formData.entries()) {
+      //   console.log(pair[0] + ', ' + pair[1]);
+      // }
+
       dispatch(storeTextBooks(formData));
-      
+
       resetForm();
       setVisibleLg(false);
     }
   };
 
   const onDropDownValueChange = (event) => {
-    if (event.target.name == "syllabus_id") {
+    if (event.target.name === "syllabus_id") {
       setSyllabusId(event.target.value);
       dispatch(classListData({ syllabus_id: event.target.value }));
-    } else if (event.target.name == "class_id") {
+    } else if (event.target.name === "class_id") {
       setClasssId(event.target.value);
       dispatch(subjectListData({ class_id: event.target.value }));
     } else {
@@ -239,7 +280,7 @@ const TextBook = () => {
                       error={errors.syllabus_id}
                       other="other"
                     />
-                    {values.syllabus_id == "other" ? (
+                    {values.syllabus_id === "other" ? (
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus *"
@@ -248,7 +289,7 @@ const TextBook = () => {
                         error={errors.syllabus_other}
                       />
                     ) : (
-                      ""
+                      errors.syllabus_other = ""
                     )}
                   </CCol>
                   <CCol sm={6} md={6} lg={6} xl={6}>
@@ -261,7 +302,7 @@ const TextBook = () => {
                       error={errors.class_id}
                       other="other"
                     />
-                    {values.class_id == "other" ? (
+                    {values.class_id === "other" ? (
                       <Controls.Input
                         name="class_other"
                         label="Other Class *"
@@ -270,7 +311,7 @@ const TextBook = () => {
                         error={errors.class_other}
                       />
                     ) : (
-                      ""
+                      errors.class_other = ""
                     )}
                   </CCol>
                 </CRow>
@@ -285,7 +326,7 @@ const TextBook = () => {
                       error={errors.subject_id}
                       other="other"
                     />
-                    {values.subject_id == "other" ? (
+                    {values.subject_id === "other" ? (
                       <Controls.Input
                         name="subject_other"
                         label="Other Subject *"
@@ -294,7 +335,7 @@ const TextBook = () => {
                         error={errors.subject_other}
                       />
                     ) : (
-                      ""
+                      errors.subject_other = ""
                     )}
                   </CCol>
                   <CCol sm={6} md={6} lg={6} xl={6}>
@@ -330,7 +371,7 @@ const TextBook = () => {
                     />
                   </CCol>
 
-                  {values.resource_type == "external_link" ? (
+                  {values.resource_type === "external_link" ? (
                     <CCol sm={6} md={6} lg={6} xl={6}>
                       <Controls.Input
                         label="External Link *"

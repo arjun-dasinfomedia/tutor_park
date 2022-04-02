@@ -10,7 +10,7 @@ export const getChildrenList = (data) => async (dispatch) => {
       CHILD_LIST,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: CHILD_LIST,
           ChildrenList: responseJson.data.data,

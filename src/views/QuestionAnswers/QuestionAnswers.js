@@ -160,7 +160,7 @@ const QuestionAnswers = (Data) => {
       data.append("question_id", questionId);
       data.append("answer", values.answer);
       {
-        selectedLibrary == "" ? "" : data.append("library_id", selectedLibrary);
+        selectedLibrary === "" ? "" : data.append("library_id", selectedLibrary);
       }
 
       dispatch(addAnswers(data));
@@ -219,10 +219,10 @@ const QuestionAnswers = (Data) => {
   const offset = currentPage * PER_PAGE;
 
   const questionDynamic = List.List.filter((item) => {
-    if (Data.searchData == "") {
+    if (Data.searchData === "") {
       return item;
     } else if (
-      item.question == null ? "" : item.question.toLowerCase().includes(Data.searchData.toLowerCase())
+      item.question === null ? "" : item.question.toLowerCase().includes(Data.searchData.toLowerCase())
     ) {
       return item;
     }
@@ -237,7 +237,7 @@ const QuestionAnswers = (Data) => {
               className="accordion-header-css"
               style={{ backgroundColor: "#F2F4F8" }}
             >
-              {item.my_student_question == true ? (
+              {item.my_student_question === true ? (
                 <AccordionSummary
                   style={{
                     borderLeft: "5px solid",
@@ -339,7 +339,7 @@ const QuestionAnswers = (Data) => {
                               "question_and_answers_delete"
                             ) ? (
                               <>
-                                {item.created_by_email ==
+                                {item.created_by_email ===
                                   getUserData().email ? (
                                   <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-end justify-content-xl-end">
                                     <button
@@ -364,7 +364,7 @@ const QuestionAnswers = (Data) => {
                       </div>
 
                       <div className="">
-                        {item.best_answer == "No" ? (
+                        {item.best_answer === "No" ? (
                           <CCardFooter
                             className="border-0 p-0"
                             style={{ backgroundColor: "#F2F4F8" }}
@@ -450,7 +450,7 @@ const QuestionAnswers = (Data) => {
                                   </div>{" "}
                                 </div>
                                 <div className="d-inline d-flex justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
-                                  {getUserRole() == "parent" ? "" :
+                                  {getUserRole() === "parent" ? "" :
                                     <small>Class 9th Students</small>}
                                 </div>
                               </div>
@@ -544,7 +544,7 @@ const QuestionAnswers = (Data) => {
                                                     className="pt-0 question-ans-dropdown-menu course-action-dropdown-menu-css"
                                                     placement="bottom-end"
                                                   >
-                                                    {item.best_answer ==
+                                                    {item.best_answer ===
                                                       "Yes" ? (
                                                       <div>
                                                         <CDropdownItem

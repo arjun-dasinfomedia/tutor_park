@@ -44,7 +44,7 @@ const EditGroupMember = (prop) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {name == "" ? (
+            {name === "" ? (
               <span className="text-danger">Please enter group name</span>
             ) : (
               ""

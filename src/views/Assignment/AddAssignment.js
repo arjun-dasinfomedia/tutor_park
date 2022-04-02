@@ -89,7 +89,7 @@ const AddAssignment = () => {
 
   let validationSchema = ""
   // validation Scheme For Create new Assignment
-  if (addQuestion.length == 0) {
+  if (addQuestion.length === 0) {
     validationSchema = yup.object({
       syllabus_id: yup
         .string()
@@ -114,6 +114,14 @@ const AddAssignment = () => {
             section_description: yup.string().required("required"),
           })
         ),
+
+      addQuestion: yup
+        .array().of(
+          yup.object().shape({
+            Marks: yup.string().required("required"),
+          })
+        ),
+
     });
   }
   else {
@@ -142,12 +150,12 @@ const AddAssignment = () => {
           })
         ),
 
-      // addQuestion: yup
-      //   .array().of(
-      //     yup.object().shape({
-      //       Marks: yup.string().required("required"),
-      //     })
-      //   ),
+      addQuestion: yup
+        .array().of(
+          yup.object().shape({
+            Marks: yup.string().required("required"),
+          })
+        ),
     });
   }
 
@@ -163,15 +171,15 @@ const AddAssignment = () => {
 
   // onchange selection class syllabus and subject dropdown
   const onChangeSelectInputs = (e) => {
-    if (e.target.name == "syllabus_id") {
+    if (e.target.name === "syllabus_id") {
       initialValues.syllabus_id = e.target.value;
       setSyllabusID(e.target.value);
       dispatch(classListData({ syllabus_id: e.target.value }));
-    } else if (e.target.name == "class_id") {
+    } else if (e.target.name === "class_id") {
       initialValues.class_id = e.target.value;
       setClassID(e.target.value);
       dispatch(subjectListData({ class_id: e.target.value }));
-    } else if (e.target.name == "type_id") {
+    } else if (e.target.name === "type_id") {
       initialValues.type_id = e.target.value;
       setTypeID(e.target.value);
       dispatch(filterQuestionList({ syllabus_id: syllabusID, class_id: classID, subject_id: subjectID, type_id: e.target.value }));
@@ -194,7 +202,7 @@ const AddAssignment = () => {
 
   // Add Section in create assignment
   const addSection = () => {
-    if (addQuestion.length == 0) {
+    if (addQuestion.length === 0) {
       setviewVisible(true);
     } else {
       setviewVisible(false);
@@ -262,7 +270,7 @@ const AddAssignment = () => {
 
                 dispatch(addAssignment(values))
 
-                assignmentState.assignmentStatus == "sucess" ?
+                assignmentState.assignmentStatus === "sucess" ?
                   <>
                     {clearValues()}
                     {values.title = ""}
@@ -478,7 +486,7 @@ const AddAssignment = () => {
                                         <div>
                                           {addQuestion.map((item, key) => (
                                             <div className="row">
-                                              {item.type.tag == "q_a" ? (
+                                              {item.type.tag === "q_a" ? (
                                                 <div className="row">
                                                   <div className="col-10">
                                                     <div className="p-3 mb-3 mt-3 assignment-card-accordion">
@@ -497,7 +505,7 @@ const AddAssignment = () => {
                                                     </div>
                                                   </div>
                                                 </div>
-                                              ) : item.type.tag == "blanks" ? (
+                                              ) : item.type.tag === "blanks" ? (
                                                 <div className="row">
                                                   <div className="col-10">
                                                     <div className="p-3 mb-2 mt-2 assignment-card-accordion">
@@ -516,7 +524,7 @@ const AddAssignment = () => {
                                                     </div>
                                                   </div>
                                                 </div>
-                                              ) : item.type.tag == "mcq" ? (
+                                              ) : item.type.tag === "mcq" ? (
                                                 <div className="row">
                                                   <div className="col-10">
                                                     <div className="p-3 mb-2 mt-2 assignment-card-accordion">
@@ -582,7 +590,7 @@ const AddAssignment = () => {
                         </FieldArray>
                       </div>
                     </div>
-                    {addQuestion.length == 0 ? (
+                    {addQuestion.length === 0 ? (
                       <div>
                         <p className="text-danger ml-3">please select at least one question From Question Bank.</p>
                       </div>
@@ -599,7 +607,7 @@ const AddAssignment = () => {
                         </div>
                       </div>
                     </div>
-                    {/* <pre>{JSON.stringify({ values, errors }, null, 4)}</pre> */}
+                    <pre>{JSON.stringify({ values, errors }, null, 4)}</pre>
                   </Form>
                 </div >
               )}
@@ -652,7 +660,7 @@ const AddAssignment = () => {
 
                         {/* selected type wise question select and add in Assignment section*/}
 
-                        {typeID == "" ? (
+                        {typeID === "" ? (
                           <div className="m-5">
                             <CCardText className="text-center">Please Select Question Type...</CCardText>
                           </div>
@@ -668,7 +676,7 @@ const AddAssignment = () => {
                               <div>
                                 {Assignment.filterQuestionData.map((item, key) => (
                                   <div>
-                                    {item.type.tag == "q_a" ? (
+                                    {item.type.tag === "q_a" ? (
                                       <div className="friendcard p-3 mb-3 mt-3 assignment-card-accordion">
                                         <div className="row">
                                           <div className="col-10 assignment-link">{key + 1}) {item.question}</div>
@@ -683,7 +691,7 @@ const AddAssignment = () => {
                                           </div>
                                         </div>
                                       </div>
-                                    ) : item.type.tag == "blanks" ? (
+                                    ) : item.type.tag === "blanks" ? (
                                       <div className="friendcard p-3 mb-3 mt-3 assignment-card-accordion">
                                         <div className="row">
                                           <div className="col-10 assignment-link">{key + 1}) {item.question}</div>
@@ -698,7 +706,7 @@ const AddAssignment = () => {
                                           </div>
                                         </div>
                                       </div>
-                                    ) : item.type.tag == "mcq" ? (
+                                    ) : item.type.tag === "mcq" ? (
                                       <div className="friendcard p-3 mb-3 mt-3 assignment-card-accordion">
                                         <div className="row">
                                           <div className="col-10 assignment-link">{key + 1}) {item.question}</div>
@@ -728,7 +736,7 @@ const AddAssignment = () => {
                         <>
                           {typeID !== "" && Assignment.filterQuestionData.length !== 0 ? (
                             <div className="row mb-2 mt-2">
-                              {addQuestion.length == 0 ? (
+                              {addQuestion.length === 0 ? (
                                 <div>
                                   <p className="text-danger ml-3">please select at least one question</p>
                                 </div>

@@ -207,22 +207,22 @@ const CompletedCourseList = (Data) => {
   var isCompleted = false;
   const loadAllMyCourseListData = store.mySubscribedList
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject_name === null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.instructor == null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.instructor === null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -705,7 +705,7 @@ const CompletedCourseList = (Data) => {
               <CCardText style={{ fontSize: 20 }}>Tutor Number </CCardText>
             </div>
             <div className="text-start col-6">
-              {mobileNumber != null ? (
+              {mobileNumber !== null ? (
                 <a
                   style={{ fontSize: 20, textDecoration: "none" }}
                   href={"tel:+91" + mobileNumber}

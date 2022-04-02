@@ -65,7 +65,7 @@ const CompleteSession = (props) => {
       // http method should be used in order to make calls
       http(meetingCreateUrl).then((result) => {
 
-        if (getUserRole() == "tutor") {
+        if (getUserRole() === "tutor") {
           let moderatorUrl = api.administration.join(
             getUserData().first_name + " " + getUserData().last_name,
             item.meeting_id,
@@ -127,16 +127,16 @@ const CompleteSession = (props) => {
 
   const loadSessionsDynamic = sessions.data
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.tuition_title == null ? "" : item.tuition_title
+        item.tuition_title === null ? "" : item.tuition_title
           .toLowerCase()
           .includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.tutor_name == null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.tutor_name === null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -237,7 +237,7 @@ const CompleteSession = (props) => {
                       JOIN CLASS
                     </CButton>
                   )}
-                  {sessionMeetingStartButtonStatus == true &&
+                  {sessionMeetingStartButtonStatus === true &&
                     getUserRole() === "tutor" &&
                     meetingId === item.meeting_id ? (
                     <CButton

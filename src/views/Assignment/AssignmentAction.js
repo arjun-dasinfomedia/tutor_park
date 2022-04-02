@@ -21,7 +21,7 @@ export const getAssignmetList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(LIST_ASSIGNMENT).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: LIST_ASSIGNMENT,
             assignmentList: responseJson.data.data,
@@ -201,7 +201,7 @@ export const filterQuestionList = (data) => async (dispatch) => {
       FILTER_QUESTION_LIST,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: FILTER_QUESTION_LIST,
           filterQuestionData: responseJson.data.data,

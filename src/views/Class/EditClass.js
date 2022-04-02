@@ -39,7 +39,7 @@ const EditClass = (data) => {
     level_id: data.data.level_name.id,
     status: data.data.status,
     description: data.data.description,
-    other_syllabus_dropdown: data.data.syllabus_name.name,
+    other_syllabus: data.data.syllabus_name.name,
   };
 
   /* Validation */
@@ -49,9 +49,9 @@ const EditClass = (data) => {
     if ("syllabus_dropdown" in fieldValues)
       temp.syllabus_dropdown = fieldValues.syllabus_dropdown ? "" : "Please select syllabus.";
 
-    if (values.syllabus_dropdown == "other") {
-      if ("other_syllabus_dropdown" in fieldValues)
-        temp.other_syllabus_dropdown = fieldValues.other_syllabus_dropdown ? "" : "Please Enter Other Syllabus.";
+    if (values.syllabus_dropdown === "other") {
+      if ("other_syllabus" in fieldValues)
+        temp.other_syllabus = fieldValues.other_syllabus ? "" : "Please Enter Other Syllabus.";
     }
     if ("name" in fieldValues)
       temp.name = fieldValues.name ? "" : "Please Enter Class Name.";
@@ -65,7 +65,7 @@ const EditClass = (data) => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
 
@@ -78,7 +78,13 @@ const EditClass = (data) => {
     if (validate()) {
       let formData = new FormData();
       formData.append('id', values.id);
-      formData.append("syllabus_id", values.syllabus_dropdown);
+      alert(values.syllabus_dropdown)
+      if (values.syllabus_dropdown == "other") {
+        formData.append("other_syllabus", values.other_syllabus)
+      }
+      else {
+        formData.append("syllabus_id", values.syllabus_dropdown);
+      }
       formData.append("level_id", values.level_id);
       formData.append("name", values.name);
       formData.append("status", values.status);
@@ -105,10 +111,10 @@ const EditClass = (data) => {
           {values.syllabus_dropdown == "other" ?
             <CCol xl={6} sm={6} className="mb-3">
               <Controls.Input
-                name="other_syllabus_dropdown"
-                value={values.other_syllabus_dropdown}
+                name="other_syllabus"
+                value={values.other_syllabus}
                 label="Other Syllabus *"
-                error={errors.other_syllabus_dropdown}
+                error={errors.other_syllabus}
                 onChange={handleInputChange}
               />
             </CCol>

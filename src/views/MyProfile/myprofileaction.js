@@ -16,7 +16,7 @@ export const updateOtherUser = (data) => async (dispatch) => {
       UPDATE_OTHER_USER,
       data
     );
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -44,7 +44,7 @@ export const userdetails = (data) => async (dispatch) => {
       USER_DATA,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: USER_DATA,
           userdetailsData: responseJson.data.data,
@@ -66,7 +66,7 @@ export const updateUserProfile = (data) => async (dispatch) => {
       UPDATE_PROFILE,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -97,7 +97,7 @@ export const storeGeotagDetailsUpdate = (data) => async (dispatch) => {
       GEOTAG_UPDATE,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -128,7 +128,7 @@ export const hideArea = (data) => async (dispatch) => {
       UPDATE_HIDE_AREA,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({

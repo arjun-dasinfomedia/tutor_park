@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 export const getAllQuestionList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(GET_ALL_QA);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: GET_ALL_QA,
         List: response.data.data,
@@ -33,7 +33,7 @@ export const getAllQuestionList = () => async (dispatch) => {
 export const addAnswers = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ADD_ANSWER, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -56,7 +56,7 @@ export const getAllFilteredQuestionsList = (data) => async (dispatch) => {
       GET_FILTERED_QUESTIONS,
       data
     );
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: GET_FILTERED_QUESTIONS,
         List: response.data.data,
@@ -74,7 +74,7 @@ export const getAllFilteredQuestionsList = (data) => async (dispatch) => {
 export const addQuestion = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ADD_QUESTION, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -94,7 +94,7 @@ export const addQuestion = (data) => async (dispatch) => {
 export const bestAnswer = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(BEST_ANSWER, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -114,7 +114,7 @@ export const bestAnswer = (data) => async (dispatch) => {
 export const feedBackAdd = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ADD_FEEDBACK, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -136,7 +136,7 @@ export const deleteQuestion = (data) => async (dispatch) => {
       DELETE_QUESTION,
       data
     );
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({

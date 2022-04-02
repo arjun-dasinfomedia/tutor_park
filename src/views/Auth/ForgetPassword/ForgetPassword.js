@@ -47,7 +47,7 @@ const ForgetPassword = (props) => {
       else temp.email = "";
 
     if ("password" in fieldValues)
-      if (fieldValues.password == "") {
+      if (fieldValues.password === "") {
         temp.password = "Please enter password.";
       } else if (fieldValues.password.length < 8) {
         temp.password = "Password should be 8 character long.";
@@ -64,7 +64,7 @@ const ForgetPassword = (props) => {
       }
 
     if ("password_confirm" in fieldValues)
-      if (fieldValues.password_confirm == "") {
+      if (fieldValues.password_confirm === "") {
         temp.password_confirm = "Please enter confirm password.";
       } else if (fieldValues.password_confirm !== password) {
         temp.password_confirm = "Password and confirm password should be same.";
@@ -78,13 +78,13 @@ const ForgetPassword = (props) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x == "");
   };
   function handlePasswordViewClick() {
     if (!visible) setVisiblity(true);
     else setVisiblity(false);
 
-    if (passwordType == "password") setPasswordType("text");
+    if (passwordType === "password") setPasswordType("text");
     else setPasswordType("password");
   }
 
@@ -92,7 +92,7 @@ const ForgetPassword = (props) => {
     if (!confirmVisible) setConfirmVisiblity(true);
     else setConfirmVisiblity(false);
 
-    if (confirmPasswordType == "password") setConfirmPasswordType("text");
+    if (confirmPasswordType === "password") setConfirmPasswordType("text");
     else setConfirmPasswordType("password");
   }
 
@@ -167,9 +167,9 @@ const ForgetPassword = (props) => {
                             <FontAwesomeIcon
                               onClick={() => handlePasswordViewClick()}
                               className={
-                                values.password == ""
+                                values.password === ""
                                   ? "reset-password-show-button position-absolute fa-1x"
-                                  : errors.password == "" ?
+                                  : errors.password === "" ?
                                     "reset-enter-password-sucess-button position-absolute fa-1x" :
                                     "reset-enter-password-show-button position-absolute fa-1x"
                               }
@@ -193,10 +193,10 @@ const ForgetPassword = (props) => {
                           <FontAwesomeIcon
                             onClick={() => handlePasswordConfirmViewClick()}
                             className={
-                              values.password_confirm == ""
+                              values.password_confirm === ""
                                 ? "reset-password-confirm-show-button position-absolute fa-1x"
                                 :
-                                errors.password_confirm == "" ?
+                                errors.password_confirm === "" ?
                                   "reset-enter-password-confirm-sucess-button position-absolute fa-1x" :
                                   "reset-enter-password-confirm-show-button position-absolute fa-1x"
 

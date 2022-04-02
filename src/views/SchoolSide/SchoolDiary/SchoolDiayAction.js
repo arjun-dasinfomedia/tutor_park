@@ -18,7 +18,7 @@ export const shareWithFriendDiary = (data) => async (dispatch) => {
 	try {
 		// console.log(data)
 		const response = await RestClientServices.postWithData(SHARED_DIARY_TO_MESSAGE, data).then((responseJson) => {
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch(alertActions.success(responseJson.data.message.toString()));
 				toast.success(responseJson.data.message.toString())
 				dispatch({
@@ -59,7 +59,7 @@ export const diaryPostToTimeline = (data) => async (dispatch) => {
 	try {
 		const response = await RestClientServices.postWithData(POST_TO_TIMELINE, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({
@@ -80,7 +80,7 @@ export const viewSchoolDiary = (data) => async (dispatch) => {
 	try {
 		const response = await RestClientServices.postWithData(VIEW_SCHOOL_DIARY, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 
 			dispatch({
 				type: VIEW_SCHOOL_DIARY,
@@ -101,7 +101,7 @@ export const updateSchoolDiary = (data) => async (dispatch) => {
 	try {
 
 		const response = await RestClientServices.postWithData(UPDATE_SCHOOL_DIARY, data)
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 
 			dispatch({
 				type: UPDATE_SCHOOL_DIARY,
@@ -131,7 +131,7 @@ export const viewSchoolDiaryByDate = (data) => async (dispatch) => {
 	try {
 		const response = await RestClientServices.postWithData(VIEW_DIARY_BY_DATE, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 
 			dispatch({
 				type: VIEW_DIARY_BY_DATE,
@@ -191,7 +191,7 @@ export const getSchoolDiryList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(SCHOOL_DIARY_LIST,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: SCHOOL_DIARY_LIST,
 					schoolDiaryList: responseJson.data.data,

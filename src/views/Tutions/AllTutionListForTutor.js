@@ -104,7 +104,7 @@ const AllTutionListForTutor = (Data) => {
             }
         });
     };
-    if (store.tuitionEditStatus == "sucess") {
+    if (store.tuitionEditStatus === "sucess") {
         setEditTuitionModal(false)
         store.tuitionEditStatus = ""
     }
@@ -192,26 +192,26 @@ const AllTutionListForTutor = (Data) => {
 
     const loadAllMyTutionTutorListData = store.allListTutor
         .filter((item) => {
-            if (Data.SearchData == "") {
+            if (Data.SearchData === "") {
                 return item;
             } else if (
-                item.subject == null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
+                item.subject === null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+                item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+                item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.syllabus == null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
+                item.syllabus === null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.class == null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
+                item.class === null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
             ) {
                 return item;
             }
@@ -242,7 +242,7 @@ const AllTutionListForTutor = (Data) => {
                                                 : "N/A"}
                                             )
                                         </div>
-                                        {item.student_count == 0 || item.library !== null ?
+                                        {item.student_count === 0 || item.library !== null ?
                                             <div className="d-inline r-dot-menu position-absolute">
                                                 <div className="d-md-inline marker-remove-textbook-css m-2">
                                                     <CDropdown variant="nav-item" className="d-md-inline marker-remove-textbook-css mr-3">
@@ -258,7 +258,7 @@ const AllTutionListForTutor = (Data) => {
                                                         </CDropdownToggle>
                                                         <CDropdownMenu className="pt-0 timeline-action-dropdown-menu-css m-2" placement="bottom-end">
                                                             {
-                                                                item.student_count == 0 ? <CDropdownItem
+                                                                item.student_count === 0 ? <CDropdownItem
                                                                     onClick={() => EditTuition(item)}
                                                                 >
                                                                     Edit

@@ -71,7 +71,7 @@ const TopHeader = () => {
   };
 
   useEffect(() => {
-    if (getUserRole() == "tutor") {
+    if (getUserRole() === "tutor") {
       setMyTutionContainerID("All_Tutor");
     }
 
@@ -83,9 +83,9 @@ const TopHeader = () => {
   const initialFValues = {
     title: "",
     syllabus_id: "",
-    // syllabus_other: "",
+    syllabus_other: "",
     class_id: "",
-    // class_other: "",
+    class_other: "",
     subject_id: "",
     mode_of_teaching: "",
     start_date: moment(),
@@ -98,6 +98,7 @@ const TopHeader = () => {
     demo_video_name: "",
     description: "",
     library_id: "",
+    subject_other: "",
   };
   const schedulesToSave = [];
   // validation code start
@@ -112,11 +113,26 @@ const TopHeader = () => {
         ? ""
         : "Please select syllabus.";
 
+    if (values.class_id === "other") {
+      if ("class_other" in fieldValues)
+        temp.class_other = fieldValues.class_other ? "" : "Please Enter Other class.";
+    }
+
     if ("class_id" in fieldValues)
       temp.class_id = fieldValues.class_id ? "" : "Please select class.";
 
+    if (values.syllabus_id === "other") {
+      if ("syllabus_other" in fieldValues)
+        temp.syllabus_other = fieldValues.syllabus_other ? "" : "Please Enter Other Syllabus.";
+    }
+
     if ("subject_id" in fieldValues)
       temp.subject_id = fieldValues.subject_id ? "" : "Please select subject.";
+
+    if (values.subject_id === "other") {
+      if ("subject_other" in fieldValues)
+        temp.subject_other = fieldValues.subject_other ? "" : "Please Enter Other Subject.";
+    }
 
     if ("mode_of_teaching" in fieldValues)
       temp.mode_of_teaching = fieldValues.mode_of_teaching
@@ -151,7 +167,7 @@ const TopHeader = () => {
         temp.demo_video_name = "";
       }
     }
-    
+
     if ("image_name" in fieldValues) {
       var imagePath = fieldValues.image_name;
       var logo = ['jpeg', 'png', 'jpg']
@@ -178,7 +194,7 @@ const TopHeader = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -188,7 +204,8 @@ const TopHeader = () => {
     e.preventDefault();
 
     if (validate()) {
-      // setLoading(true);
+      setLoading(true);
+      
 
       delete values.demo_video_name;
       delete values.image_name;
@@ -196,29 +213,39 @@ const TopHeader = () => {
       let formData = new FormData();
       formData.append("title", values.title);
       formData.append("syllabus_id", values.syllabus_id);
-      // formData.append("syllabus_other", values.syllabus_other);
+
+      if (values.syllabus_id === "other") {
+        formData.append("syllabus_other", values.syllabus_other);
+      }
+
       formData.append("class_id", values.class_id);
-      // formData.append("class_other", values.class_other);
+
+      if (values.class_id === "other") {
+        formData.append("class_other", values.class_other);
+      }
+
       formData.append("subject_id", values.subject_id);
+
+      if (values.subject_id === "other") {
+        formData.append("subject_other", values.subject_other);
+      }
+
       formData.append("mode_of_teaching", values.mode_of_teaching);
       formData.append(
         "start_date",
         moment(values.start_date).format("YYYY-MM-DD")
       );
-      // formData.append("start_date",values.start_date)
-      // formData.append("end_date",values.end_date)
+
       formData.append("end_date", moment(values.end_date).format("YYYY-MM-DD"));
       formData.append("cost", values.cost);
       formData.append("type", values.type);
       formData.append("image", values.image);
       formData.append("demo_video", values.demo_video);
       formData.append("description", values.description);
-      {
-        values.library_id == ""
-          ? ""
-          : formData.append("library_id", values.library_id);
+      if (values.library_id !== "") {
+        formData.append("library_id", values.library_id);
       }
-
+       
       schedulesToSave.forEach((item) => {
         formData.append("schedule_id[]", item);
       });
@@ -232,13 +259,14 @@ const TopHeader = () => {
         setLoading(false);
         return false;
       }
-      // setLoading(true);
-      // showLoader();
+      // console.log(schedulesToSave)
+      setLoading(true);
+      showLoader();
       await dispatch(storeMyTuition(formData))
-      // resetForm();
-      // setVisibleLg(false);
-      // setLoading(false);
-      // hideLoader();
+      resetForm();
+      setVisibleLg(false);
+      setLoading(false);
+      hideLoader();
     }
   };
 
@@ -446,9 +474,9 @@ const TopHeader = () => {
                       onChange={handleInputChange}
                       options={DropDown.syllabusList}
                       error={errors.syllabus_id}
-                    // other="other"
+                      other="other"
                     />
-                    {/* {values.syllabus_id == "other" ? (
+                    {values.syllabus_id === "other" ? (
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus *"
@@ -457,8 +485,8 @@ const TopHeader = () => {
                         error={errors.syllabus_other}
                       />
                     ) : (
-                      ""
-                    )} */}
+                      errors.syllabus_other = ""
+                    )}
                   </CCol>
                   <CCol sm={6} md={6} lg={6} xl={6}>
                     <Controls.Select
@@ -468,9 +496,9 @@ const TopHeader = () => {
                       onChange={handleInputChange}
                       options={DropDown.classList}
                       error={errors.class_id}
-                    // other="other"
+                      other="other"
                     />
-                    {/* {values.class_id == "other" ? (
+                    {values.class_id === "other" ? (
                       <Controls.Input
                         name="class_other"
                         label="Other Class *"
@@ -479,8 +507,8 @@ const TopHeader = () => {
                         error={errors.class_other}
                       />
                     ) : (
-                      ""
-                    )} */}
+                      errors.class_other = ""
+                    )}
                   </CCol>
                 </CRow>
                 <CRow>
@@ -492,9 +520,9 @@ const TopHeader = () => {
                       onChange={handleInputChange}
                       options={DropDown.subjectList}
                       error={errors.subject_id}
-                    // other="other"
+                      other="other"
                     />
-                    {/* {values.subject_id == "other" ? (
+                    {values.subject_id === "other" ? (
                       <Controls.Input
                         name="subject_other"
                         label="Other Subject *"
@@ -503,8 +531,8 @@ const TopHeader = () => {
                         error={errors.subject_other}
                       />
                     ) : (
-                      ""
-                    )} */}
+                      errors.subject_other = ""
+                    )}
                   </CCol>
                   <CCol sm={6} md={6} lg={6} xl={6}>
                     <Controls.Select

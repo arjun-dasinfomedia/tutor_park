@@ -124,7 +124,7 @@ const TopFilterTimeLine = () => {
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -141,7 +141,7 @@ const TopFilterTimeLine = () => {
             delete values.image_name;
 
             let data = new FormData();
-            if (values.audiance == "Others") {
+            if (values.audiance === "Others") {
                 data.append("audiance", values.other_audiance);
             } else {
                 data.append("audiance", values.audiance)
@@ -185,7 +185,7 @@ const TopFilterTimeLine = () => {
                                 />
                             </CCol>
                             {
-                                values.audiance == "Others" ?
+                                values.audiance === "Others" ?
                                     <CCol sm={6} md={6} lg={6} xl={6}>
                                         <Controls.Input
                                             name="other_audiance"

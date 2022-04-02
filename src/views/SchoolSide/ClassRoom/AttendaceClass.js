@@ -49,11 +49,11 @@ const AttendanceClass = (data) => {
 
     if (data.data.attendance.length !== 0) {
         data.data.attendance.map((student) =>
-            student.attendance_status == "present" ? user_ids.push(student.id) : "",
+            student.attendance_status === "present" ? user_ids.push(student.id) : "",
         );
     }
 
-    if (data.data.attendance.length == 0) {
+    if (data.data.attendance.length === 0) {
         AttendanceColumn = [
             {
                 title: "",
@@ -96,7 +96,7 @@ const AttendanceClass = (data) => {
                         value={rowData.id}
                         onChange={handlechnagecheck}
                         defaultChecked={
-                            rowData.attendance_status == "absent" ? false :
+                            rowData.attendance_status === "absent" ? false :
                                 user_ids.includes(rowData.id) ? true : false}
                     />
                 ),
@@ -112,11 +112,11 @@ const AttendanceClass = (data) => {
             {
                 title: "status",
                 field: "attendance_status",
-                render: rowData => rowData.attendance_status == "absent" ? <CBadge color="danger">Absent</CBadge> : <CBadge color="primary">Present</CBadge>,
+                render: rowData => rowData.attendance_status === "absent" ? <CBadge color="danger">Absent</CBadge> : <CBadge color="primary">Present</CBadge>,
             },
         ]
     }
-    if (schoolClass.attendancelist.attendance == undefined) {
+    if (schoolClass.attendancelist.attendance === undefined) {
 
         AttendanceColumnPreviousforTaken = [
             {
@@ -159,7 +159,7 @@ const AttendanceClass = (data) => {
                         value={rowData.id}
                         onChange={handlechnagecheck}
                         defaultChecked={
-                            rowData.attendance_status == "absent" ? false : true}
+                            rowData.attendance_status === "absent" ? false : true}
 
                     />
                 ),
@@ -175,7 +175,7 @@ const AttendanceClass = (data) => {
             {
                 title: "Status",
                 field: "attendance_status",
-                render: rowData => rowData.attendance_status == "absent" ? <CBadge color="danger">Absent</CBadge> : <CBadge color="primary">Present</CBadge>,
+                render: rowData => rowData.attendance_status === "absent" ? <CBadge color="danger">Absent</CBadge> : <CBadge color="primary">Present</CBadge>,
             },
         ]
 
@@ -213,7 +213,7 @@ const AttendanceClass = (data) => {
             {
                 title: "Status",
                 field: "attendance_status",
-                render: rowData => rowData.attendance_status == "present" ? <CBadge color="primary">Present</CBadge> : <CBadge color="danger">Absent</CBadge>
+                render: rowData => rowData.attendance_status === "present" ? <CBadge color="primary">Present</CBadge> : <CBadge color="danger">Absent</CBadge>
             }
         ]
     }
@@ -265,7 +265,7 @@ const AttendanceClass = (data) => {
                     </CCol>
                 </CRow>
 
-                {getUserRole() == "school-student" ?
+                {getUserRole() === "school-student" ?
                     <>
                         <MaterialTable
                             title=""
@@ -299,9 +299,9 @@ const AttendanceClass = (data) => {
                     </>
                     :
                     <>
-                        {moment(attendaceDate).format("YYYY-MM-DD") == moment(new Date()).format("YYYY-MM-DD") ?
+                        {moment(attendaceDate).format("YYYY-MM-DD") === moment(new Date()).format("YYYY-MM-DD") ?
                             <>
-                                {data.data.attendance.length == 0 ?
+                                {data.data.attendance.length === 0 ?
                                     <MaterialTable
                                         title=""
 
@@ -400,7 +400,7 @@ const AttendanceClass = (data) => {
                         {moment(attendaceDate).format("YYYY-MM-DD") < moment(new Date()).format("YYYY-MM-DD") ?
 
                             <>
-                                {schoolClass.attendancelist.attendance == undefined ?
+                                {schoolClass.attendancelist.attendance === undefined ?
                                     <>
 
                                         <MaterialTable

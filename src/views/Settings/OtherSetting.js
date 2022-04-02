@@ -42,35 +42,35 @@ const OtherSetting = () => {
 
         let temp = { ...errors };
 
-        if (values.mode == "test") {
+        if (values.mode === "test") {
 
             if ("testRazorPayKeyId" in fieldValues)
 
-                if (fieldValues.testRazorPayKeyId == "")
+                if (fieldValues.testRazorPayKeyId === "")
                     temp.testRazorPayKeyId = "Test Razor pay Key ID is Required.";
 
                 else temp.testRazorPayKeyId = "";
 
             if ("testRazorPaySecret" in fieldValues)
 
-                if (fieldValues.testRazorPaySecret == "")
+                if (fieldValues.testRazorPaySecret === "")
                     temp.testRazorPaySecret = "Test Razor Pay Secret is Required.";
 
                 else temp.testRazorPaySecret = "";
         }
 
-        if (values.mode == "live") {
+        if (values.mode === "live") {
 
             if ("liveRazorPayKeyId" in fieldValues)
 
-                if (fieldValues.liveRazorPayKeyId == "")
+                if (fieldValues.liveRazorPayKeyId === "")
                     temp.liveRazorPayKeyId = "Live Razor Pay Key ID is Required";
 
                 else temp.liveRazorPayKeyId = "";
 
             if ("liveRazorPaySecret" in fieldValues)
 
-                if (fieldValues.liveRazorPaySecret == "")
+                if (fieldValues.liveRazorPaySecret === "")
                     temp.liveRazorPaySecret = "Live Razor Pay Secret is Required.";
 
                 else temp.liveRazorPaySecret = "";
@@ -79,7 +79,7 @@ const OtherSetting = () => {
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     }
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =

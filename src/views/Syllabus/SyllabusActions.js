@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 export const getSyllabusList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(GET_ALL_SYLLABUS_LIST_ADMIN).then((responseJson) => {
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: GET_ALL_SYLLABUS_LIST_ADMIN,
 					syllabusList: responseJson.data.data,
@@ -34,7 +34,7 @@ export const deleteSyallbus = (data) => async (dispatch) => {
 
 		const response = await RestClientServices.postWithData(DELETE_SYLLABUS, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({
@@ -79,7 +79,7 @@ export const updateSyllabus = (data) => async (dispatch) => {
 	try {
 		
 		const response = await RestClientServices.postWithData(UPDATE_SYLLABUS, data)
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({

@@ -480,7 +480,7 @@ body::-webkit-scrollbar-thumb {
 //   margin-top: 30px;
 // }
 
-.textbook-add-button-css{
+.textbook-add-button-css , .join-school-add-button-css{
     color: white;
     // margin-top: 3px;
     font-weight: 500;
@@ -1970,6 +1970,10 @@ html:not([dir=rtl]) legend {
 
 // added by prit css start 
 
+.join-school-add-button-css
+{
+  width: 70px;
+}
 .assigncardFindTutor:last-child {
   margin-bottom: 1rem;
 }

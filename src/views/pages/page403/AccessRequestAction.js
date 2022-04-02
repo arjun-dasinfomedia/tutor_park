@@ -9,7 +9,7 @@ export const requestForAccessRights = (data) => async (dispatch) => {
       REQUEST_ACCESSRIGHT,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: REQUEST_ACCESSRIGHT,
         });

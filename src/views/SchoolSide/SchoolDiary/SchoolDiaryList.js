@@ -59,7 +59,7 @@ const SchoolDiaryList = () => {
 
 	return (
 		<>
-			{SchoolDiary.schoolDiaryList.length == 0 ? <NoDataContainer module="Schoo Diary " /> :
+			{SchoolDiary.schoolDiaryList.length === 0 ? <NoDataContainer module="Schoo Diary " /> :
 				SchoolDiary.schoolDiaryList
 					.map(function (item, key) {
 						return (
@@ -75,7 +75,7 @@ const SchoolDiaryList = () => {
 					})
 			}
 
-			{divisionID == "" ? "" :
+			{divisionID === "" ? "" :
 				<>
 					<CCol className='mt-3 ' sm={6} xl={6}>
 						<MuiPickersUtilsProvider utils={DateFnsUtils} libInstance={moment}>
@@ -95,7 +95,7 @@ const SchoolDiaryList = () => {
 						</MuiPickersUtilsProvider>
 					</CCol>
 
-					{SchoolDiary.viewDiary.length == 0 ?
+					{SchoolDiary.viewDiary.length === 0 ?
 						<>
 							<NoDataContainer module="Diary" />
 						</>
@@ -103,7 +103,7 @@ const SchoolDiaryList = () => {
 						SchoolDiary.viewDiary.map((item, key) => {
 
 							return (
-								item.details.length == 0 ?
+								item.details.length === 0 ?
 									<div key={key}>
 										<NoDataContainer module="Diary" />
 									</div>

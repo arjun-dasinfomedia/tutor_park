@@ -42,7 +42,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
 
   useEffect(async () => {
     showLoader();
-    if (prop.location.aboutProps != undefined) {
+    if (prop.location.aboutProps !== undefined) {
       await dispatch(
         getViewSubmittedAssignment({
           student_assignment_id: prop.location.aboutProps.student_assignment_id,
@@ -127,7 +127,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
             </div>
           </CCard>
 
-          {prop.location.aboutProps == undefined ? (
+          {prop.location.aboutProps === undefined ? (
             <NoDataContainer module="Assignment" />
           ) : (
             <div className="row p-2 ">
@@ -192,14 +192,14 @@ const AttemptedViewAssignmentTutor = (prop) => {
                       {assignmentState.viewSubmittedAssignment.assignment.class}
                     </div>
                   </div>
-                  {assignmentState.viewSubmittedAssignment.tutor_status ==
+                  {assignmentState.viewSubmittedAssignment.tutor_status ===
                     undefined &&
-                    assignmentState.viewSubmittedAssignment.tutor_status ==
+                    assignmentState.viewSubmittedAssignment.tutor_status ===
                     "pending" ? (
                     <CBadge color="danger" className="h6">
                       Not Evaluated
                     </CBadge>
-                  ) : assignmentState.viewSubmittedAssignment.tutor_status ==
+                  ) : assignmentState.viewSubmittedAssignment.tutor_status ===
                     "pending" ? (
                     <CBadge color="danger" className="h6">
                       Not Evaluated
@@ -212,7 +212,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                 </div>
 
                 <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                  {assignmentState.viewSubmittedAssignment.tutor_status ==
+                  {assignmentState.viewSubmittedAssignment.tutor_status ===
                     "checked" ? (
                     <div className="rounded assignment-Viewpage-section-marksh row d-flex justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
                       <div className="text-center p-2 assignment-normal-font marks-border-css">
@@ -358,7 +358,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                           function (item, sectionkey) {
                             {
                               // Question and Anser Part
-                              return item.section_detail.type.tag == "q_a" ? (
+                              return item.section_detail.type.tag === "q_a" ? (
                                 <>
                                   <div className="mt-2 mb-2 " key={sectionkey}>
                                     <Accordion
@@ -470,10 +470,10 @@ const AttemptedViewAssignmentTutor = (prop) => {
                                                               </div>
                                                               {
                                                                 data
-                                                                  .obtained_mark != "" ? <><div className="assignment-question-font col-12 col-sm-2 col-md-4 col-lg-2 col-xl-2 mb-1">
+                                                                  .obtained_mark !== "" ? <><div className="assignment-question-font col-12 col-sm-2 col-md-4 col-lg-2 col-xl-2 mb-1">
                                                                     {assignmentState
                                                                       .viewSubmittedAssignment
-                                                                      .tutor_status == "pending" ? (
+                                                                      .tutor_status === "pending" ? (
                                                                       ""
                                                                     ) : (
                                                                       <h6>
@@ -519,7 +519,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                               ) :
 
                                 // MCQ Part
-                                item.section_detail.type.tag == "mcq" ? (
+                                item.section_detail.type.tag === "mcq" ? (
                                   <>
                                     <div className="mt-2 mb-2" key={sectionkey}>
                                       <Accordion
@@ -625,7 +625,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                                 ) :
 
                                   // Fill In The Blank Part
-                                  item.section_detail.type.tag == "blanks" ? (
+                                  item.section_detail.type.tag === "blanks" ? (
                                     <>
                                       <div className="mt-2 mb-2" key={sectionkey}>
                                         <Accordion
@@ -723,10 +723,10 @@ const AttemptedViewAssignmentTutor = (prop) => {
 
                                                                   {
                                                                     data
-                                                                      .obtained_mark != "" ? <><div className="assignment-question-font col-12 col-sm-2 col-md-4 col-lg-2 col-xl-2 mb-1">
+                                                                      .obtained_mark !== "" ? <><div className="assignment-question-font col-12 col-sm-2 col-md-4 col-lg-2 col-xl-2 mb-1">
                                                                         {assignmentState
                                                                           .viewSubmittedAssignment
-                                                                          .tutor_status == "pending" ? (
+                                                                          .tutor_status === "pending" ? (
                                                                           ""
                                                                         ) : (
                                                                           <h6>
@@ -775,7 +775,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                                   ) :
 
                                     // Comprehension Part
-                                    item.section_detail.type.tag ==
+                                    item.section_detail.type.tag ===
                                       "comprehension" ? (
                                       <>
                                         <div className="mt-2 ">
@@ -870,7 +870,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                                                                           }
                                                                           <hr className="assignment-line-accordion"></hr>
                                                                           <div>
-                                                                            {data.student_answer == null ?
+                                                                            {data.student_answer === null ?
                                                                               "N/A"
                                                                               :
                                                                               data.student_answer.map(
@@ -915,7 +915,7 @@ const AttemptedViewAssignmentTutor = (prop) => {
                                     ) :
 
                                       // Match The Following Part
-                                      item.section_detail.type.tag ==
+                                      item.section_detail.type.tag ===
                                         "match_following" ? (
                                         <div className="mt-2 mb-2 ">
                                           <Accordion

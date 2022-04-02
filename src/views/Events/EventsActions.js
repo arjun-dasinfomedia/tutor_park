@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 export const getAllMyEventsList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(GET_ALL_EVENTS, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         
         dispatch({
           type: GET_ALL_EVENTS,
@@ -37,7 +37,7 @@ export const getAllMyEventsList = (data) => async (dispatch) => {
 export const getUpcommingEventsList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(GET_ALL_EVENTS, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         
         dispatch({
           type: GET_ALL_EVENTS,
@@ -58,7 +58,7 @@ export const getUpcommingEventsList = (data) => async (dispatch) => {
 export const attendEventAction = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ATTEND_EVENT, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -79,7 +79,7 @@ export const attendEventAction = (data) => async (dispatch) => {
 export const saveEventOnCalendarAction = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(SAVE_CALENDAR_EVENT, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -123,7 +123,7 @@ export const storeMyEvents = (data) => async (dispatch) => {
 export const deleteMyEvent = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(DELETE_MY_EVENT, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -185,7 +185,7 @@ export const postLibraryItemOnTimeline = (data) => async (dispatch) => {
 	try {
 		// console.log(data)
 		const response = await RestClientServices.postWithData(LIBRARY_POST_ON_TIMELINE, data).then((responseJson) => {
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch(alertActions.success(responseJson.data.message.toString()));
 				toast.success(responseJson.data.message.toString())
 				dispatch({

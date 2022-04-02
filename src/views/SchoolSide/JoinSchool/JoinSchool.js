@@ -17,23 +17,24 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import NoDataContainer from 'src/views/NoDataContainer/noDataContainer';
 import ReactPaginate from "react-paginate";
+import {
+    getUserData,
+    getUserRole,
+} from "src/utility/utils";
 
 let PER_PAGE = 10
 
 const JoinSchool = (props) => {
 
-    // console.log(props)
     const dispatch = new useDispatch()
-    const [viewvisible, setViewVisible] = useState(false);
     const joinSchool = useSelector((state) => state.joinSchool);
-    const [addVisible, setAddVisible] = useState(false);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const [isLoading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
 
     function handlePageClick({ selected: selectedPage }) {
         setCurrentPage(selectedPage);
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     }
 
     const JoinSchoolWithUser = (data) => {
@@ -69,44 +70,44 @@ const JoinSchool = (props) => {
     const loadAllJoinSchoolClassListData = joinSchool.schoolList
         .filter((item) => {
 
-            if (props.search == "") {
+            if (props.search === "") {
                 return item;
             } else if (
-                item.school_name == null ? "" : item.school_name.toLowerCase().includes(props.search.toLowerCase())
+                item.school_name === null ? "" : item.school_name.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.registration_no == null ? "" : item.registration_no.toLowerCase().includes(props.search.toLowerCase())
+                item.registration_no === null ? "" : item.registration_no.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.city == null ? "" : item.city.toLowerCase().includes(props.search.toLowerCase())
+                item.city === null ? "" : item.city.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.pincode == null ? "" : item.pincode.toLowerCase().includes(props.search.toLowerCase())
+                item.pincode === null ? "" : item.pincode.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.mobile == null ? "" : item.mobile.toLowerCase().includes(props.search.toLowerCase())
+                item.mobile === null ? "" : item.mobile.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.email == null ? "" : item.email.toLowerCase().includes(props.search.toLowerCase())
+                item.email === null ? "" : item.email.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             }
             else if (
-                item.principal == null ? "" : item.principal.toLowerCase().includes(props.search.toLowerCase())
+                item.principal === null ? "" : item.principal.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             }
             else if (
-                item.vice_principal == null ? "" : item.vice_principal.toLowerCase().includes(props.search.toLowerCase())
+                item.vice_principal === null ? "" : item.vice_principal.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.incharge == null ? "" : item.incharge.toLowerCase().includes(props.search.toLowerCase())
+                item.incharge === null ? "" : item.incharge.toLowerCase().includes(props.search.toLowerCase())
             ) {
                 return item;
             }
@@ -122,7 +123,7 @@ const JoinSchool = (props) => {
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2">
                                         <CCardImage
-                                            src={item.image == null ? profile2 : item.image}
+                                            src={item.image === null ? profile2 : item.image}
                                             className="img-fluid rounded mx-auto d-flex serchcourse-image"
                                         />
                                     </div>
@@ -179,7 +180,7 @@ const JoinSchool = (props) => {
                                                     <h6 className="font-weight-bold">School Principal</h6>
                                                 </div>
                                                 <div className="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-                                                    <h6>{item.principal == null ? "N/A" : item.principal}</h6>
+                                                    <h6>{item.principal === null ? "N/A" : item.principal}</h6>
                                                 </div>
                                             </div>
                                             <div className="row">
@@ -187,7 +188,7 @@ const JoinSchool = (props) => {
                                                     <h6 className="font-weight-bold">School Vice-Principal</h6>
                                                 </div>
                                                 <div className="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-                                                    <h6>{item.vice_principal == null ? "N/A" : item.vice_principal}</h6>
+                                                    <h6>{item.vice_principal === null ? "N/A" : item.vice_principal}</h6>
                                                 </div>
                                             </div>
                                             <div className="row">
@@ -195,7 +196,7 @@ const JoinSchool = (props) => {
                                                     <h6 className="font-weight-bold">Shool Incharge</h6>
                                                 </div>
                                                 <div className="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-                                                    <h6>{item.incharge == null ? "N/A" : item.incharge}</h6>
+                                                    <h6>{item.incharge === null ? "N/A" : item.incharge}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,14 +205,38 @@ const JoinSchool = (props) => {
                                         <CRow className="text-end text-col-center text-sm-center text-md-start text-lg-start text-xl-start">
 
                                             <CCol className="text-center text-col-center text-sm-center text-md-center text-lg-center text-xl-center" sm={12} md={12} lg={12} xl={12}>
-                                                <CTooltip content="Join" placement="bottom">
-                                                    <CButton className="btn rounded-pill m-1 roundshap-button mathimagebox"
-                                                        onClick={() => JoinSchoolWithUser(item)}
+                                                {getUserData().linked_email === null ?
+                                                    <CTooltip content="Join" placement="bottom">
+                                                        <CButton className="btn rounded-pill m-1 roundshap-button mathimagebox"
+                                                            onClick={() => JoinSchoolWithUser(item)}
 
-                                                    >
-                                                        Join School
-                                                    </CButton>
-                                                </CTooltip>
+                                                        >
+                                                            Join School
+                                                        </CButton>
+                                                    </CTooltip>
+                                                    :
+                                                    getUserRole() === "tutor" ?
+                                                        <CTooltip content="Join" placement="bottom">
+                                                            <CButton className="btn rounded-pill m-1 roundshap-button mathimagebox"
+                                                                onClick={() => JoinSchoolWithUser(item)}
+                                                            >
+                                                                Join School
+                                                            </CButton>
+                                                        </CTooltip>
+                                                        :
+                                                        <>
+                                                            <CTooltip content="Join" placement="bottom">
+                                                                <CButton className="btn rounded-pill m-1 roundshap-button mathimagebox"
+                                                                    onClick={() => JoinSchoolWithUser(item)}
+                                                                    disabled="true"
+
+                                                                >
+                                                                    Join School
+                                                                </CButton>
+                                                            </CTooltip>
+                                                        </>
+
+                                                }
                                             </CCol>
                                         </CRow>
                                     </div>
@@ -232,7 +257,7 @@ const JoinSchool = (props) => {
                 loadAllJoinSchoolClassListData.length !== 0 ? (
 
                     <div>
-                       
+
                         {loadAllJoinSchoolClassListData}
 
                         {/* pagination code start */}

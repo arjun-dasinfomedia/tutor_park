@@ -75,7 +75,7 @@ const AddQuestionBank = () => {
 
   let validationSchemaForQuestion = null;
 
-  if (typeID == "mcq") {
+  if (typeID === "mcq") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -99,7 +99,7 @@ const AddQuestionBank = () => {
         })
       ),
     });
-  } else if (typeID == "mcq_checkbox") {
+  } else if (typeID === "mcq_checkbox") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -123,7 +123,7 @@ const AddQuestionBank = () => {
         })
       ),
     });
-  } else if (typeID == "comprehension") {
+  } else if (typeID === "comprehension") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -148,7 +148,7 @@ const AddQuestionBank = () => {
         })
       ),
     });
-  } else if (typeID == "match_following") {
+  } else if (typeID === "match_following") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -173,7 +173,7 @@ const AddQuestionBank = () => {
         })
       ),
     });
-  } else if (typeID == "q_a") {
+  } else if (typeID === "q_a") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -196,7 +196,7 @@ const AddQuestionBank = () => {
         })
       ),
     });
-  } else if (typeID == "blanks") {
+  } else if (typeID === "blanks") {
     validationSchemaForQuestion = yup.object({
 
       syllabus_id: yup
@@ -245,15 +245,15 @@ const AddQuestionBank = () => {
   }, []);
 
   const onChangeSelectInputs = (e) => {
-    if (e.target.name == "syllabus_id") {
+    if (e.target.name === "syllabus_id") {
       initialValues.syllabus_id = e.target.value;
       setSyllabusID(e.target.value);
       dispatch(classListData({ syllabus_id: e.target.value }));
-    } else if (e.target.name == "class_id") {
+    } else if (e.target.name === "class_id") {
       initialValues.class_id = e.target.value;
       setClassID(e.target.value);
       dispatch(subjectListData({ class_id: e.target.value }));
-    } else if (e.target.name == "type_id") {
+    } else if (e.target.name === "type_id") {
       initialValues.type_id = e.target.value;
       setTypeID(e.target.value);
     } else {
@@ -386,7 +386,7 @@ const AddQuestionBank = () => {
                     <div className="row">
                       <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <FormControl variant="outlined">
-                          <InputLabel>Syllabus</InputLabel>
+                          {/* <InputLabel>Syllabus</InputLabel> */}
                           <Field
                             component={Select}
                             name="syllabus_id"
@@ -406,7 +406,7 @@ const AddQuestionBank = () => {
                       </div>
                       <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <FormControl variant="outlined">
-                          <InputLabel>Class</InputLabel>
+                          {/* <InputLabel>Class</InputLabel> */}
                           <Field
                             component={Select}
                             name="class_id"
@@ -427,7 +427,7 @@ const AddQuestionBank = () => {
                     <div className="row">
                       <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <FormControl variant="outlined">
-                          <InputLabel>Subject</InputLabel>
+                          {/* <InputLabel>Subject</InputLabel> */}
                           <Field
                             component={Select}
                             name="subject_id"
@@ -446,7 +446,7 @@ const AddQuestionBank = () => {
                       </div>
                       <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <FormControl variant="outlined">
-                          <InputLabel>Type</InputLabel>
+                          {/* <InputLabel>Type</InputLabel> */}
                           <Field
                             component={Select}
                             name="type_id"
@@ -465,7 +465,7 @@ const AddQuestionBank = () => {
                       </div>
                     </div>
                     <hr className="dashed" />
-                    {typeID == "comprehension" ? (
+                    {typeID === "comprehension" ? (
                       <div>
                         <h6 className="fw-bold ">Comprehension Question</h6>
                         <div className="row">
@@ -572,7 +572,7 @@ const AddQuestionBank = () => {
                           </div>
                         </div>
                       </div>
-                    ) : typeID == "q_a" ? (
+                    ) : typeID === "q_a" ? (
                       <div>
                         <h6 className="fw-bold ">Question Answer</h6>
 
@@ -661,7 +661,7 @@ const AddQuestionBank = () => {
                           </div>
                         </div>
                       </div>
-                    ) : typeID == "mcq" ? (
+                    ) : typeID === "mcq" ? (
                       <div>
                         <h6 className="fw-bold ">MCQ</h6>
                         <div className="row">
@@ -764,7 +764,7 @@ const AddQuestionBank = () => {
                           </div>
                         </div>
                       </div>
-                    ) : typeID == "blanks" ? (
+                    ) : typeID === "blanks" ? (
                       <div>
                         <h6 className="fw-bold ">Fill the blanks</h6>
 
@@ -859,7 +859,7 @@ const AddQuestionBank = () => {
                           </p>
                         </div>
                       </div>
-                    ) : typeID == "match_following" ? (
+                    ) : typeID === "match_following" ? (
                       <div>
                         <h6 className="fw-bold ">Match the Following</h6>
                         <div className="row">
@@ -960,7 +960,7 @@ const AddQuestionBank = () => {
                           </div>
                         </div>
                       </div>
-                    ) : typeID == "mcq_checkbox" ? (
+                    ) : typeID === "mcq_checkbox" ? (
                       <div>
                         <h6 className="fw-bold ">Multiple Choice</h6>
                         <div className="row">
@@ -1090,6 +1090,7 @@ const AddQuestionBank = () => {
                         </div>
                       </div>
                     </div>
+                    <pre>{JSON.stringify({ values, errors }, null, 4)}</pre>
                   </Form>
                 </div>
               )}

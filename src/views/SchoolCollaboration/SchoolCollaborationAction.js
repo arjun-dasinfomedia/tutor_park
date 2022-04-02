@@ -11,7 +11,7 @@ export const getSchoolList = () => async (dispatch) => {
     try {
         const response = await RestClientServices.getAll(SCHOOL_COLLABORATION,).then((responseJson) => {
 
-            if (responseJson.data.error == false) {
+            if (responseJson.data.error === false) {
                 dispatch({
                     type: SCHOOL_COLLABORATION,
                     schoolList: responseJson.data.data,

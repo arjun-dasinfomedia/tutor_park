@@ -61,18 +61,18 @@ const NetworkMyStudent = (props) => {
 
   const loadfriendlistDynamic = friend.myStudent
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.first_name == null ? "" : item.first_name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.first_name === null ? "" : item.first_name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.last_name == null ? "" : item.last_name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.last_name === null ? "" : item.last_name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.user_details.city == null ? "" : item.user_details.city
+        item.user_details.city === null ? "" : item.user_details.city
           .toLowerCase()
           .includes(props.SearchData.toLowerCase())
       ) {

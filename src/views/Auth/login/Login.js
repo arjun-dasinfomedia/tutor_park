@@ -64,7 +64,7 @@ const Login = props => {
     else
       setVisiblity(false)
 
-    if (passwordType == "password")
+    if (passwordType === "password")
       setPasswordType("text")
     else
       setPasswordType("password")

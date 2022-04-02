@@ -201,38 +201,38 @@ const AllEvent = (props) => {
 
     const loadAllMyEventsListData = store.allEventsList && store.allEventsList
         .filter((item) => {
-            if (props.SearchData == "") {
+            if (props.SearchData === "") {
                 return item;
             } else if (
-                item.title == null? "": item.title 
+                item.title === null? "": item.title 
                     .toLowerCase()
                     .includes(props.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.description == null? "" : item.description
+                item.description === null? "" : item.description
                     .toLowerCase()
                     .includes(props.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.topic == null ? "": item.topic
+                item.topic === null ? "": item.topic
                     .toLowerCase()
                     .includes(props.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.speaker_name == null ? "": item.speaker_name.toLowerCase().includes(props.SearchData.toLowerCase())
+                item.speaker_name === null ? "": item.speaker_name.toLowerCase().includes(props.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.mode == null ? "" : item.mode
+                item.mode === null ? "" : item.mode
                     .toLowerCase()
                     .includes(props.SearchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.target_audience == null ? "" : item.target_audience
+                item.target_audience === null ? "" : item.target_audience
                     .toLowerCase()
                     .includes(props.SearchData.toLowerCase())
             ) {

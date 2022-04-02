@@ -152,8 +152,8 @@ const Axis = () => {
         .then((data) => {
           var xml = new XMLParser().parseFromString(data);
           if (
-            xml.children[0].value == "SUCCESS" &&
-            xml.children[1].value == "true"
+            xml.children[0].value === "SUCCESS" &&
+            xml.children[1].value === "true"
           ) {
             let moderatorUrl = api.administration.join(
               getUserData().first_name + " " + getUserData().last_name,
@@ -179,7 +179,7 @@ const Axis = () => {
   };
 
   const handleChange = (event) => {
-    if (event.target.name == "join_or_create") {
+    if (event.target.name === "join_or_create") {
       setMeetingType(event.target.value);
     }
   };

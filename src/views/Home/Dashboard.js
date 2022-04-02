@@ -185,8 +185,8 @@ const Dashboard = () => {
                     </div>{" "}
                     &nbsp;
                     <div className="medium-text d-inline ">
-                      {getUserRole() == "student" ? <>({item.class})</> : ""}
-                      {getUserRole() == "school-student" ? (
+                      {getUserRole() === "student" ? <>({item.class})</> : ""}
+                      {getUserRole() === "school-student" ? (
                         <>
                           {item.linked_item !== null ? (
                             <>({item.linked_item.division_name})</>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                   <span className="normal-font">{item.datetime}</span>
                 </div>
                 <div className="ml-2 ">
-                  {item.total_abuse == 0 ? (
+                  {item.total_abuse === 0 ? (
                     ""
                   ) : (
                     <div className="text-danger">
@@ -241,7 +241,7 @@ const Dashboard = () => {
               <CDropdownDivider className="mb-2 divider" />
               <div className="mt-1 normal-font">{item.description}</div>
               <span>
-                {item.video != null ? (
+                {item.video !== null ? (
                   <>
                     <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                       <video controls className="timelinevideo">
@@ -258,7 +258,7 @@ const Dashboard = () => {
                 )}
               </span>
               <span>
-                {item.image != null ? (
+                {item.image !== null ? (
                   <>
                     <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                       <img src={item.image} className="img-fluid" />
@@ -269,7 +269,7 @@ const Dashboard = () => {
                 )}
               </span>
               <span className="mt-2">
-                {item.link_type == "SchoolDiary" ? (
+                {item.link_type === "SchoolDiary" ? (
                   <>
                     <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                       1)ClassWork :- {item.linked_item.details.class_work}
@@ -310,7 +310,7 @@ const Dashboard = () => {
                 <CButton className="timeline-icon-button questionicon pt-0">
                   <div
                     className={
-                      item.total_like == 0
+                      item.total_like === 0
                         ? "timelineicon m-1 material-icons"
                         : "timelineicon-active  m-1 material-icons"
                     }
@@ -325,7 +325,7 @@ const Dashboard = () => {
                 <CButton className="timeline-icon-button questionicon mb-4 pt-0">
                   <div
                     className={
-                      item.favouriteBy.length != 0
+                      item.favouriteBy.length !== 0
                         ? "text-danger m-1 material-icons"
                         : "m-1 material-icons"
                     }
@@ -339,7 +339,7 @@ const Dashboard = () => {
                 <CButton className="timeline-icon-button questionicon pt-0">
                   <div
                     className={
-                      item.total_dislike == 0
+                      item.total_dislike === 0
                         ? "timelineicon m-1 material-icons"
                         : "timelineicon-active  m-1 material-icons"
                     }
@@ -355,7 +355,7 @@ const Dashboard = () => {
                 <CButton className="timeline-icon-button questionicon pt-0">
                   <div
                     className={
-                      item.total_comments == 0
+                      item.total_comments === 0
                         ? "timelineicon m-1 material-icons"
                         : "timelineicon-active  m-1 material-icons"
                     }

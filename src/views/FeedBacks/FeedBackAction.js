@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export const getAllFeedbackList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(FEEDBACK_LIST);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: FEEDBACK_LIST,
         List: response.data.data,

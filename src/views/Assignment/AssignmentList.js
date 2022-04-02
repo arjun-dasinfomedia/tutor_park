@@ -92,7 +92,7 @@ const draftAssignment = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFValues, true, validate);
@@ -106,7 +106,7 @@ const draftAssignment = () => {
 
   useLayoutEffect(() => {
 
-    if (assignmentState.assignmentList.draft_assignments == undefined) {
+    if (assignmentState.assignmentList.draft_assignments === undefined) {
     } else {
       setloadAssignmentData(assignmentState.assignmentList.draft_assignments);
       loadAssignment = loadAssignmentData;
@@ -167,7 +167,7 @@ const draftAssignment = () => {
               <div className="text-center col-12">
                 <div className="postsearchheader">
                   Assignment
-                  {/* {getUserData().role_name == "tutor" ? */}
+                  {/* {getUserData().role_name === "tutor" ? */}
                   {checkAccessPermission("assignment_add") ? (
                     <Link to="/add-assignment" className="text-decoration-none">
                       <CButton
@@ -238,7 +238,7 @@ const draftAssignment = () => {
           </div>
         </div>
       </CCard>
-      {loadAssignment == null ? (
+      {loadAssignment === null ? (
         <div>
           <NoDataContainer module="Assignment" />
         </div>
@@ -247,38 +247,38 @@ const draftAssignment = () => {
           assignmentState.assignmentList.draft_assignments &&
           assignmentState.assignmentList.draft_assignments
             .filter((item) => {
-              if (searchAssignment == "") {
+              if (searchAssignment === "") {
                 return item;
               } else if (
-                item.title == null ? "" :
+                item.title === null ? "" :
                 item.title
                   .toLowerCase()
                   .includes(searchAssignment.toLowerCase())
               ) {
                 return item;
               } else if (
-                item.syllabus == null ? "" :
+                item.syllabus === null ? "" :
                 item.syllabus
                   .toLowerCase()
                   .includes(searchAssignment.toLowerCase())
               ) {
                 return item;
               } else if (
-                item.description == null ? "" :
+                item.description === null ? "" :
                 item.description
                   .toLowerCase()
                   .includes(searchAssignment.toLowerCase())
               ) {
                 return item;
               } else if (
-                item.subject == null ? "" :
+                item.subject === null ? "" :
                 item.subject
                   .toLowerCase()
                   .includes(searchAssignment.toLowerCase())
               ) {
                 return item;
               } else if (
-                item.class == null ? "" :
+                item.class === null ? "" :
                 item.class
                   .toLowerCase()
                   .includes(searchAssignment.toLowerCase())
@@ -298,7 +298,7 @@ const draftAssignment = () => {
                       <div className="row">
                         <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2">
                           <CCardImage
-                            src={item.image == null ? profile2 : item.image}
+                            src={item.image === null ? profile2 : item.image}
                             className="img-fluid rounded mx-auto d-flex serchcourse-image"
                           />
                         </div>
@@ -456,7 +456,7 @@ const draftAssignment = () => {
               </CCol>
             </CRow>
             <CRow>
-              {values.from_date == null && values.to_date == null ? (
+              {values.from_date === null && values.to_date === null ? (
                 <div style={{ textAlign: 'center', paddingTop: '10%' }}>
                   <h4>Please Select Date</h4>
                 </div>

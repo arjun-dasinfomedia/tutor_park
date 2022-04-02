@@ -31,10 +31,10 @@ const TopFilterHeader = () => {
   }, []);
 
   const onDropDownValueChange = (event) => {
-    if (event.target.name == "syllabus_id") {
+    if (event.target.name === "syllabus_id") {
       setSyllabusId(event.target.value);
       dispatch(classListData({ syllabus_id: event.target.value }));
-    } else if (event.target.name == "class_id") {
+    } else if (event.target.name === "class_id") {
       setClasssId(event.target.value);
       dispatch(subjectListData({ class_id: event.target.value }));
     } else {

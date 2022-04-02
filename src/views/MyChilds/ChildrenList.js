@@ -55,16 +55,16 @@ const ChildrenList = () => {
   const loadMyChildrenList =
     childrenState.ChildrenList &&
     childrenState.ChildrenList.filter((item) => {
-      if (Childrens == "") {
+      if (Childrens === "") {
         return item;
-      } else if (item.email == null ? "" : item.email.toLowerCase().includes(Childrens.toLowerCase())) {
+      } else if (item.email === null ? "" : item.email.toLowerCase().includes(Childrens.toLowerCase())) {
         return item;
       } else if (
-        item.first_name == null ? "" : item.first_name.toLowerCase().includes(Childrens.toLowerCase())
+        item.first_name === null ? "" : item.first_name.toLowerCase().includes(Childrens.toLowerCase())
       ) {
         return item;
       } else if (
-        item.last_name == null ? "" : item.last_name.toLowerCase().includes(Childrens.toLowerCase())
+        item.last_name === null ? "" : item.last_name.toLowerCase().includes(Childrens.toLowerCase())
       ) {
         return item;
       }
@@ -88,7 +88,7 @@ const ChildrenList = () => {
                         <h5 className="d-inline font-weight-bold">
                           {item.first_name} {item.last_name}
                           &nbsp; (
-                          {item.user_details.class_name == null
+                          {item.user_details.class_name === null
                             ? "N/A"
                             : item.user_details.class_name}
                           )
@@ -103,7 +103,7 @@ const ChildrenList = () => {
                             icon={faIdCard}
                             className="phoneicon "
                           />
-                          &nbsp; {item.tp_id == null ? "Not Added" : item.tp_id}
+                          &nbsp; {item.tp_id === null ? "Not Added" : item.tp_id}
                         </div>
                       </div>
                     </div>

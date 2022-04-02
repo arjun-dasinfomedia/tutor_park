@@ -20,45 +20,45 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
       [name]: value,
     });
     // get dropdown values according to dependency for class and subject
-    if (name == "syllabus_id") {
+    if (name === "syllabus_id") {
       dispatch(classListData({ syllabus_id: value }));
     }
-    if (name == "class_id") {
+    if (name === "class_id") {
       dispatch(subjectListData({ class_id: value }));
     }
-    if (name == "subject_id") {
+    if (name === "subject_id") {
       dispatch(subjectTutorListData({ subject_id: value }));
     }
 
-    if (name == "image_name") {
+    if (name === "image_name") {
       setValues({
         ...values,
         ["image"]: files[0],
         ["image_name"]: value,
       });
     }
-    if (name == "class_image_name") {
+    if (name === "class_image_name") {
       setValues({
         ...values,
         ["class_image"]: files[0],
         ["class_image_name"]: value,
       });
     }
-    if (name == "video_name") {
+    if (name === "video_name") {
       setValues({
         ...values,
         ["video"]: files[0],
         ["video_name"]: value,
       });
     }
-    if (name == "images_name") {
+    if (name === "images_name") {
       setValues({
         ...values,
         ["images"]: files[0],
         ["images_name"]: value,
       });
     }
-    if (name == "logo_name") {
+    if (name === "logo_name") {
       setValues({
         ...values,
         ["logo"]: files[0],
@@ -66,28 +66,28 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
       });
     }
 
-    if (name == "demo_video_name") {
+    if (name === "demo_video_name") {
       setValues({
         ...values,
         ["demo_video"]: files[0],
         ["demo_video_name"]: value,
       });
     }
-    if (name == "course_video_name") {
+    if (name === "course_video_name") {
       setValues({
         ...values,
         ["course_video"]: files[0],
         ["course_video_name"]: value,
       });
     }
-    if (name == "attachment_name") {
+    if (name === "attachment_name") {
       setValues({
         ...values,
         ["attachment"]: files[0],
         ["attachment_name"]: value,
       });
     }
-    if (name == "sample_images_name") {
+    if (name === "sample_images_name") {
       setValues({
         ...values,
         ["sample_images"]: files[0],
@@ -126,28 +126,28 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
         ["start_time"]: value,
       });
     }
-    if (name == "school_class_work") {
+    if (name === "school_class_work") {
       setValues({
         ...values,
         ["class_work_image"]: files[0],
         ["school_class_work"]: value,
       });
     }
-    if (name == "school_home_work") {
+    if (name === "school_home_work") {
       setValues({
         ...values,
         ["home_work_image"]: files[0],
         ["school_home_work"]: value,
       });
     }
-    if (name == "school_image_file") {
+    if (name === "school_image_file") {
       setValues({
         ...values,
         ["school_image"]: files[0],
         ["school_image_file"]: value,
       });
     }
-    if (name == "school_udise_no") {
+    if (name === "school_udise_no") {
       setValues({
         ...values,
         ["school_udise"]: files[0],

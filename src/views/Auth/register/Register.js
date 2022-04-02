@@ -114,7 +114,7 @@ const Register = () => {
       else temp.email = "";
 
     if ("phone" in fieldValues)
-      if (fieldValues.phone == "") temp.phone = "Mobile number is required.";
+      if (fieldValues.phone === "") temp.phone = "Mobile number is required.";
       else if (fieldValues.phone.length > 10 || fieldValues.phone.length < 10)
         temp.phone = "Please enter only 10 numbers.";
       else if (!/^[0-9\b]+$/.test(fieldValues.phone))
@@ -122,7 +122,7 @@ const Register = () => {
       else temp.phone = "";
 
     if ("aadhar_id" in fieldValues)
-      if (fieldValues.aadhar_id == "")
+      if (fieldValues.aadhar_id === "")
         temp.aadhar_id = "Aadhar Card number is required.";
       else if (
         fieldValues.aadhar_id.length > 12 ||
@@ -137,7 +137,7 @@ const Register = () => {
 
 
     if ("password" in fieldValues)
-      if (fieldValues.password == "") {
+      if (fieldValues.password === "") {
         temp.password = "Please enter password.";
       }
       else if (fieldValues.password.length < 8) {
@@ -164,7 +164,7 @@ const Register = () => {
     //   }
 
     if ("password_confirmation" in fieldValues)
-      if (fieldValues.password_confirmation == "") {
+      if (fieldValues.password_confirmation === "") {
         temp.password_confirmation = "Please enter confirm password.";
       }
       else if (fieldValues.password_confirmation !== password) {
@@ -180,7 +180,7 @@ const Register = () => {
       }
 
     if ("pincode" in fieldValues)
-      if (fieldValues.pincode == "") temp.pincode = "Picode is required.";
+      if (fieldValues.pincode === "") temp.pincode = "Picode is required.";
       else if (fieldValues.pincode.length > 8)
         temp.pincode = "Pincode should not be more than 8 digits";
       else if (!/^[0-9\b]+$/.test(fieldValues.pincode))
@@ -194,7 +194,7 @@ const Register = () => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   // var cityList = City.getCitiesOfState('IN', 'GJ');
@@ -231,12 +231,12 @@ const Register = () => {
   };
 
   function handlePasswordViewClick() {
-    if (passwordType == "password") setPasswordType("text");
+    if (passwordType === "password") setPasswordType("text");
     else setPasswordType("password");
   }
 
   function handleConfirmPasswordViewClick() {
-    if (confirmpasswordType == "password") setConfirmPasswordType("text");
+    if (confirmpasswordType === "password") setConfirmPasswordType("text");
     else setConfirmPasswordType("password");
   }
 

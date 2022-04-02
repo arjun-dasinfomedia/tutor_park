@@ -25,7 +25,7 @@ export const updateTuition = (data) => async (dispatch) => {
   try {
 
     const response = await RestClientServices.postWithData(UPDATE_MY_TUITION, data)
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString())
       dispatch({
@@ -55,7 +55,7 @@ export const getStudentAllTutionList = () => async (dispatch) => {
     const response = await RestClientServices.getAll(
       GET_ALL_TUTIONS_STUDENT
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_ALL_TUTIONS_STUDENT,
           allListStudent: responseJson.data.data,
@@ -76,7 +76,7 @@ export const getTutorAllTutionList = () => async (dispatch) => {
     const response = await RestClientServices.postWithoutData(
       GET_ALL_TUTIONS_TUTOR
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_ALL_TUTIONS_TUTOR,
           allListTutor: responseJson.data.data,
@@ -96,7 +96,7 @@ export const getFindAllTutionList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(FIND_TUTIONS_STUDENT).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: FIND_TUTIONS_STUDENT,
             findListStudent: responseJson.data.data,
@@ -117,7 +117,7 @@ export const getRazorPaySettings = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(GET_RAZORPAY_SETTINGS).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: GET_RAZORPAY_SETTINGS,
             razorpaySettings: responseJson.data.data,
@@ -168,7 +168,7 @@ export const deleteMyTuition = (data) => async (dispatch) => {
       DELETE_MY_TUITION,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -192,7 +192,7 @@ export const getStudentListToAssignInTuition = (data) => async (dispatch) => {
       GET_STUDENT_LIST_TO_ASSIGN_IN_TUTITION,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_STUDENT_LIST_TO_ASSIGN_IN_TUTITION,
           studentListToAddInTution: responseJson.data.data,
@@ -214,7 +214,7 @@ export const getSubscribedStudentList = (data) => async (dispatch) => {
       SUBSCRIBED_STUDENT_LIST,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SUBSCRIBED_STUDENT_LIST,
           subscribedStudentList: responseJson.data.data,
@@ -305,7 +305,7 @@ export const addStudentsInTuition = (data) => async (dispatch) => {
       ADD_STUDENTS_IN_TUITION,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -326,7 +326,7 @@ export const addStudentsInTuition = (data) => async (dispatch) => {
 export const feedBackAdd = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ADD_FEEDBACK, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({

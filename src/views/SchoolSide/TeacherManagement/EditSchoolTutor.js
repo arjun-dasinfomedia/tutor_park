@@ -62,7 +62,7 @@ const SchoolTutorEdit = (data) => {
 
     useEffect(() => {
         stateList.forEach((state) => {
-            if (state.name == selectedState) {
+            if (state.name === selectedState) {
                 setCityList(City.getCitiesOfState("IN", state.isoCode));
             }
         });
@@ -74,10 +74,10 @@ const SchoolTutorEdit = (data) => {
         first_name: data.data.first_name,
         last_name: data.data.last_name,
         phone: data.data.user_details.phone,
-        aadhar_id: data.data.user_details.aadhar_id == "" ? "" : data.data.user_details.aadhar_id,
+        aadhar_id: data.data.user_details.aadhar_id === "" ? "" : data.data.user_details.aadhar_id,
 
         birth_date:
-            data.data.user_details.birth_date == null
+            data.data.user_details.birth_date === null
                 ? new Date()
                 : data.data.user_details.birth_date,
         gender: data.data.user_details.gender,

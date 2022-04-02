@@ -44,6 +44,12 @@ const SubjectList = () => {
     const [isLoading, setLoading] = useState(false);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
 
+    if(subjectState.subjectEditStatus == "sucess")
+    {
+        setEditSubjectModal(false)
+        subjectState.subjectEditStatus = ""
+    }
+    
     useEffect(async () => {
         showLoader();
         await dispatch(getSubjectList());
@@ -69,12 +75,12 @@ const SubjectList = () => {
         {
             title: "Description",
             field: "description",
-            render: rowData => rowData.description == null ? "Not Added" : rowData.description
+            render: rowData => rowData.description === null ? "Not Added" : rowData.description
         },
         {
             title: "Status",
             field: "active",
-            render: rowData => rowData.active == "no" ? <CBadge color="danger">Deactive</CBadge> : <CBadge color="primary">Active</CBadge>,
+            render: rowData => rowData.active === "no" ? <CBadge color="danger">Deactive</CBadge> : <CBadge color="primary">Active</CBadge>,
             lookup: { yes: 'Active', no: 'Deactive' },
         },
     ];
@@ -86,6 +92,7 @@ const SubjectList = () => {
         class_id: "",
         Active: 'yes',
         description: "",
+        class_other: "",
     };
 
     // Validation Codse Start
@@ -101,13 +108,20 @@ const SubjectList = () => {
             temp.class_id = fieldValues.class_id
                 ? ""
                 : "Please Select a Class";
+
+        if (values.class_id == "other") {
+            if ("class_other" in fieldValues)
+                temp.class_other = fieldValues.class_other ? ""
+                    :
+                    "Please Enter Other Class."
+        }
         if ("name" in fieldValues)
             temp.name = fieldValues.name ? "" : "Please Enter Subject Name.";
 
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -121,9 +135,19 @@ const SubjectList = () => {
 
             let formData = new FormData()
             formData.append('class_id', values.class_id)
+
+            if (values.class_id == 'other') {
+                formData.append("class_other", values.class_other)
+            }
+
             formData.append('name', values.name)
             formData.append('description', values.description)
             formData.append('active', values.Active);
+
+            // for (var pair of formData.entries()) {
+            //   console.log(pair[0] + ', ' + pair[1]);
+            // }
+
             dispatch(storeSubject(formData));
             resetForm();
             setAddSubjectModal(false)
@@ -134,7 +158,7 @@ const SubjectList = () => {
     const handleConfirmCancel = (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You Want to delete the Subject   !",
+            text: "You Want to delete the Subject!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -144,7 +168,6 @@ const SubjectList = () => {
             .then((result) => {
                 if (result.isConfirmed) {
                     dispatch(deleteSubject({ id: id }))
-                    Swal.fire("Success", "Subject Deleted Successfully", "success");
                 }
             });
     };
@@ -252,6 +275,19 @@ const SubjectList = () => {
                                             other="other"
                                         />
                                     </CCol>
+                                    {values.class_id == "other" ?
+                                        <CCol xl={6} sm={6} className="">
+                                            <Controls.Input
+                                                name="class_other"
+                                                label="Other Class *"
+                                                value={values.class_other}
+                                                onChange={handleInputChange}
+                                                error={errors.class_other}
+                                            />
+                                        </CCol>
+                                        :
+                                        errors.class_other = ""
+                                    }
                                     <CCol xl={6} sm={6} className="">
                                         <Controls.Input
                                             name="name"
@@ -348,7 +384,7 @@ const SubjectList = () => {
                                                 Description
                                             </div>
                                             <div className="col-8">
-                                                {viewSubjectData && viewSubjectData.description != null ? viewSubjectData.description : "Not Added"}
+                                                {viewSubjectData && viewSubjectData.description !== null ? viewSubjectData.description : "Not Added"}
                                             </div>
                                         </div>
                                         <div className="row">
@@ -356,7 +392,7 @@ const SubjectList = () => {
                                                 Status
                                             </div>
                                             <div className="col-8">
-                                                {viewSubjectData && viewSubjectData.active != "no" ?
+                                                {viewSubjectData && viewSubjectData.active !== "no" ?
                                                     <CBadge color="primary">Active</CBadge>
                                                     :
                                                     <CBadge color="danger">Deactive</CBadge>

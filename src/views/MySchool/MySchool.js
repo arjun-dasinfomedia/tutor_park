@@ -26,7 +26,7 @@ const MySchool = () => {
 	return (
 		<>
 			<CustomAlertControl />
-			{getUserData().linked_email == null ?
+			{getUserData().linked_email === null ?
 				<div className="myschoolData">
 					<h4>Please Join a School To View...</h4>
 				</div>

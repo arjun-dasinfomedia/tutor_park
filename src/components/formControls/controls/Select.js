@@ -26,26 +26,26 @@ export default function Select(props) {
         <MenuItem value="">None</MenuItem>
         {options.map((item) => (
           <MenuItem
-            key={dropDownType == "schoolDiary" ? item.subject_id : item.id}
+            key={dropDownType === "schoolDiary" ? item.subject_id : item.id}
             value={
-              dropDownType == "user"
+              dropDownType === "user"
                 ? item.email
-                : dropDownType == "user_id"
+                : dropDownType === "user_id"
                 ? item.id
-                : dropDownType == "schoolDiary"
+                : dropDownType === "schoolDiary"
                 ? item.subject_id
-                : dropDownType == "parent" ?
+                : dropDownType === "parent" ?
                   item.id
                 : item.id
             }
           >
-            {dropDownType == "user"
+            {dropDownType === "user"
               ? item.name + " - " + item.tp_id + " - " + item.email
-              : dropDownType == "user_id"
+              : dropDownType === "user_id"
               ? item.name + " - " + item.tp_id + " - " + item.email
-              : dropDownType == "schoolDiary"
+              : dropDownType === "schoolDiary"
               ? item.subject_name
-              : dropDownType == "parent" ?
+              : dropDownType === "parent" ?
                   item.first_name + " " + item.last_name
               : item.name}
           </MenuItem>

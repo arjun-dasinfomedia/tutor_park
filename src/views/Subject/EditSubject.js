@@ -17,12 +17,14 @@ const EditSyllabus = (data) => {
 
     const dispatch = useDispatch();
     const DropDown = useSelector((state) => state.dropdowns);
+    
     const initialFValues = {
         id: data.data.id,
         class_id: data.data.classes[0].id,
         name: data.data.name,
         active: data.data.active,
         description: data.data.description,
+        class_other: "",
     };
 
     // Validation Code Start
@@ -38,13 +40,21 @@ const EditSyllabus = (data) => {
             temp.class_id = fieldValues.class_id
                 ? ""
                 : "Please Select a Class";
+
+        if (values.class_id == "other") {
+            if ("class_other" in fieldValues)
+                temp.class_other == fieldValues.class_other ?
+                    ""
+                    : "Please Enter Other Class."
+        }
+
         if ("name" in fieldValues)
             temp.name = fieldValues.name ? "" : "Please Enter Subject Name.";
 
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -58,6 +68,11 @@ const EditSyllabus = (data) => {
             let formData = new FormData()
             formData.append('id', values.id)
             formData.append('class_id', values.class_id)
+
+            if(values.class_id == "other")
+            {
+                formData.append("class_other" , values.class_other)
+            }
             formData.append('name', values.name)
             formData.append('description', values.description)
             formData.append('active', values.active);
@@ -80,6 +95,19 @@ const EditSyllabus = (data) => {
                             other="other"
                         />
                     </CCol>
+                    {values.class_id == "other" ?
+                        <CCol xl={6} sm={6} className="">
+                            <Controls.Input
+                                name="class_other"
+                                label="Other Class *"
+                                value={values.class_other}
+                                onChange={handleInputChange}
+                                error={errors.class_other}
+                            />
+                        </CCol>
+                        :
+                        errors.class_other = ""
+                    }
                     <CCol xl={6} sm={6} className="">
                         <Controls.Input
                             name="name"

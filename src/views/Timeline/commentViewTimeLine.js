@@ -20,7 +20,7 @@ const CommentViewTimeLine = (data) => {
     ]
     let value = [];
 
-    if (data.data.comments == null) {
+    if (data.data.comments === null) {
         value = []
     }
     else {
@@ -29,7 +29,7 @@ const CommentViewTimeLine = (data) => {
 
             value.push({
 
-                TP_ID: item.commenter.tp_id == null ? "Not Addded" : item.commenter.tp_id,
+                TP_ID: item.commenter.tp_id === null ? "Not Addded" : item.commenter.tp_id,
                 Commentor: item.commenter.name,
                 Description: item.body,
             })

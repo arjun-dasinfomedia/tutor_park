@@ -12,11 +12,11 @@ const Assignment = () => {
     <>
       <CustomAlertControl />
       {/* For Tutor */}
-      { (getUserData().role_name == "tutor" && checkAccessPermission('assignment_view')) ? 
+      { (getUserData().role_name === "tutor" && checkAccessPermission('assignment_view')) ? 
       <AssignmentList />
       :
       // For Student
-      (getUserData().role_name == "student" && checkAccessPermission('assignment_view')) ? 
+      (getUserData().role_name === "student" && checkAccessPermission('assignment_view')) ? 
     <StudentAssignment />
     :
     (<><Page403 /></>)

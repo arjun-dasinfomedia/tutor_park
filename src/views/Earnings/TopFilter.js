@@ -69,13 +69,13 @@ const TopFliter = () => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
 
-    if (values.bill_type == "School") {
+    if (values.bill_type === "School") {
       if ("school_select" in fieldValues)
         temp.school_select = fieldValues.school_select
           ? ""
           : "Please select Schhol.";
     }
-    if (values.bill_type == "Tutor-park") {
+    if (values.bill_type === "Tutor-park") {
       if ("user_select" in fieldValues)
         temp.user_select = fieldValues.user_select ? "" : "Please select User.";
       if ("mode_tution" in fieldValues)
@@ -120,7 +120,7 @@ const TopFliter = () => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -135,11 +135,11 @@ const TopFliter = () => {
 
     if (validate()) {
       let data = new FormData();
-      if (values.bill_type == "School") {
+      if (values.bill_type === "School") {
         data.append("invoice_for_id", values.school_select);
         data.append("invoice_for", "school");
       }
-      if (values.bill_type == "Tutor-park") {
+      if (values.bill_type === "Tutor-park") {
         data.append("invoice_for", "user");
         data.append("invoice_for_id", values.user_select);
         data.append("mode_of_tuition", values.mode_tution);
@@ -187,7 +187,7 @@ const TopFliter = () => {
             </CRow>
             <CRow>
               <CCol xl={6} sm={6} className="">
-                {values.bill_type == "School" ? (
+                {values.bill_type === "School" ? (
                   <>
                     <Controls.Select
                       name="school_select"
@@ -205,7 +205,7 @@ const TopFliter = () => {
               </CCol>
             </CRow>
 
-            {values.bill_type == "Tutor-park" ? (
+            {values.bill_type === "Tutor-park" ? (
               <>
                 <CRow>
                   <CCol xl={6} sm={6} className="">
@@ -342,7 +342,7 @@ const TopFliter = () => {
             <h5 className="d-inline text-book-header">Earnings</h5>
             {checkAccessPermission("earnings_payments_add") ? (
               <>
-              {getUserRole() == "admin" ? (
+              {getUserRole() === "admin" ? (
                 <CButton
                   className="d-inline textbook-add-button-css ml-3"
                   onClick={() => setAddVisible(!addVisible)}
@@ -352,7 +352,7 @@ const TopFliter = () => {
               </>
             ) : null}
           </div>
-          {getUserRole() == "admin" ? (
+          {getUserRole() === "admin" ? (
             <>
               <div className="row mt-2 mb-3">
                 <div className="col-1 col-sm-1 col-md-2 col-lg-2 col-xl-2"></div>

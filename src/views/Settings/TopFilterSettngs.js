@@ -5,22 +5,30 @@ import {
 } from "@coreui/react";
 import SettingContainer from "./SettingContainer";
 import { getMyAllPointsList, getRazorPaySettings } from "./SettingAction"
+import useFullPageLoader from "../../hooks/useFullPageLoader";
 import { useDispatch } from "react-redux";
 
 const TopFilterSettings = () => {
-
+    const [isLoading, setLoading] = useState(false);
+    const [loader, showLoader, hideLoader] = useFullPageLoader();
 
     const dispatch = useDispatch();
+    useEffect(() => {
+
+    }, []);
     useEffect(async () => {
+        showLoader();
         await dispatch(getMyAllPointsList());
         await dispatch(getRazorPaySettings())
+        setLoading(false);
+        hideLoader();
     }, []);
-
     const [transferPointID, setTransferPointID] = useState("PointSystem");
+
     const showOffline = (e) => {
         setTransferPointID(e.target.id);
     };
-   
+
 
     return (
         <>

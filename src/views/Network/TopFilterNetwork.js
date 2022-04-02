@@ -41,8 +41,8 @@ const TopFilterNetwork = () => {
   var filteredArray = array.filter(function (array_el) {
     return (
       anotherOne.filter(function (anotherOne_el) {
-        return anotherOne_el == array_el.email;
-      }).length == 0
+        return anotherOne_el === array_el.email;
+      }).length === 0
     );
   });
 

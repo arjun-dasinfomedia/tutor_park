@@ -71,7 +71,7 @@ const Todo = () => {
 
   const markComplete = (id, is_completed) => {
     {
-      is_completed == true
+      is_completed === true
         ? Swal.fire({
           title: "Are you sure?",
           text: "You want to unmark this todo list?",
@@ -125,7 +125,7 @@ const Todo = () => {
       return (
         <CCard className="mt-3 p-3 todocard ">
           <div>
-            {item.is_completed == true ? (
+            {item.is_completed === true ? (
               <div className="d-flex align-items-center">
                 <div sm={1} md={1} lg={1} xl={1} xs={1}>
                   <input

@@ -60,7 +60,7 @@ const EditNoteBook = (Data) => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
 
     if (value !== "" && value !== "<p><br></p>") {
       setEditorState(true);
@@ -182,7 +182,7 @@ const EditNoteBook = (Data) => {
           value={value}
           onChange={(value) => setValue(value)}
         />
-        {(value == "" || value == "<p><br></p>") && !editorState ? (
+        {(value === "" || value === "<p><br></p>") && !editorState ? (
           <>
             <span className="text-danger ml-3">
               Please enter some description.

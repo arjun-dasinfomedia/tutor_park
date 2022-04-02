@@ -83,8 +83,8 @@ const TopFilter = () => {
       setErrors({
         ...temp,
       });
-      if (fieldValues == values)
-        return Object.values(temp).every((x) => x == "");
+      if (fieldValues === values)
+        return Object.values(temp).every((x) => x === "");
     };
   } else {
     initialFValues = {
@@ -102,21 +102,21 @@ const TopFilter = () => {
     validate = (fieldValues = values) => {
       let temp = { ...errors };
 
-      if (values.syllabus_id == "other") {
+      if (values.syllabus_id === "other") {
         if ("syllabus_other" in fieldValues)
           temp.syllabus_other = fieldValues.syllabus_other
             ? ""
             : "Please enter Other Syllabus.";
       }
 
-      if (values.class_id == "other") {
+      if (values.class_id === "other") {
         if ("class_other" in fieldValues)
           temp.class_other = fieldValues.class_other
             ? ""
             : "Please enter Other Class.";
       }
 
-      if (values.subject_id == "other") {
+      if (values.subject_id === "other") {
         if ("subject_other" in fieldValues)
           temp.subject_other = fieldValues.subject_other
             ? ""
@@ -147,8 +147,8 @@ const TopFilter = () => {
       setErrors({
         ...temp,
       });
-      if (fieldValues == values)
-        return Object.values(temp).every((x) => x == "");
+      if (fieldValues === values)
+        return Object.values(temp).every((x) => x === "");
     };
   }
 
@@ -165,15 +165,15 @@ const TopFilter = () => {
       data.append("subject_id", values.subject_id);
       data.append("class_id", values.class_id);
 
-      if (values.syllabus_id == 'other') {
+      if (values.syllabus_id === 'other') {
         data.append("syllabus_other", values.syllabus_other);
       }
 
-      if (values.subject_id == 'other') {
+      if (values.subject_id === 'other') {
         data.append("subject_other", values.subject_other);
       }
 
-      if (values.class_id == 'other') {
+      if (values.class_id === 'other') {
         data.append("class_other", values.class_other);
       }
 
@@ -187,10 +187,10 @@ const TopFilter = () => {
   };
 
   const onDropDownValueChange = (event) => {
-    if (event.target.name == "syllabus_id") {
+    if (event.target.name === "syllabus_id") {
       setSyllabusId(event.target.value);
       dispatch(classListData({ syllabus_id: event.target.value }));
-    } else if (event.target.name == "class_id") {
+    } else if (event.target.name === "class_id") {
       setClasssId(event.target.value);
       dispatch(subjectListData({ class_id: event.target.value }));
     } else {
@@ -426,7 +426,7 @@ const TopFilter = () => {
                       error={errors.syllabus_id}
                       other="other"
                     />
-                    {values.syllabus_id == "other" ? (
+                    {values.syllabus_id === "other" ? (
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus *"
@@ -448,7 +448,7 @@ const TopFilter = () => {
                       error={errors.class_id}
                       other="other"
                     />
-                    {values.class_id == "other" ? (
+                    {values.class_id === "other" ? (
                       <Controls.Input
                         name="class_other"
                         label="Other Class *"
@@ -472,7 +472,7 @@ const TopFilter = () => {
                       error={errors.subject_id}
                       other="other"
                     />
-                    {values.subject_id == "other" ? (
+                    {values.subject_id === "other" ? (
                       <Controls.Input
                         name="subject_other"
                         label="Other Subject *"

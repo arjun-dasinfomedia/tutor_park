@@ -31,7 +31,7 @@ const NotAttemptedStudent = (data) => {
         
     }, []);
 
-    if (assignmentState.NotAttemptedStudent == null)
+    if (assignmentState.NotAttemptedStudent === null)
     {
         values = [];
     }

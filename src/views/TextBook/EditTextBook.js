@@ -71,7 +71,7 @@ const EditTextBook = (Data) => {
     }
     if ("resource_type" in fieldValues) {
       if (Data.Data.resource_type !== fieldValues.resource_type)
-        if (fieldValues.resource_type == "external_link") {
+        if (fieldValues.resource_type === "external_link") {
           if ("external_link" in fieldValues)
             temp.external_link = fieldValues.external_link
               ? ""
@@ -103,12 +103,12 @@ const EditTextBook = (Data) => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFValues, true, validate);
-
+  
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -124,21 +124,20 @@ const EditTextBook = (Data) => {
         formData.append("image", values.image);
       }
       formData.append("resource_type", values.resource_type);
-      if (Data.Data.resource_type !== values.resource_type) {
 
+      if (values.resource_type === "external_link") {
+        formData.append("external_link", values.external_link)
 
-        {
-          values.external_link !== null
-            ? formData.append("external_link", values.external_link)
-            : "";
-        }
-
-        {
-          values.attachment !== null
-            ? formData.append("attachment", values.attachment)
-            : "";
-        }
       }
+      if (values.resource_type === "attachment") {
+        formData.append("attachment", values.attachment)
+
+      }
+
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+      }
+
       formData.append("description", values.description);
       dispatch(updateTextBooks(formData));
     }
@@ -158,7 +157,7 @@ const EditTextBook = (Data) => {
               error={errors.syllabus_id}
               other="other"
             />
-            {values.syllabus_id == "other" ? (
+            {values.syllabus_id === "other" ? (
               <Controls.Input
                 name="syllabus_other"
                 label="Other Syllabus *"
@@ -180,7 +179,7 @@ const EditTextBook = (Data) => {
               error={errors.class_id}
               other="other"
             />
-            {values.class_id == "other" ? (
+            {values.class_id === "other" ? (
               <Controls.Input
                 name="class_other"
                 label="Other Class *"
@@ -204,7 +203,7 @@ const EditTextBook = (Data) => {
               error={errors.subject_id}
               other="other"
             />
-            {values.subject_id == "other" ? (
+            {values.subject_id === "other" ? (
               <Controls.Input
                 name="subject_other"
                 label="Other Subject *"
@@ -257,7 +256,7 @@ const EditTextBook = (Data) => {
             />
           </CCol>
 
-          {values.resource_type == "external_link" ? (
+          {values.resource_type === "external_link" ? (
             <CCol sm={6} md={6} lg={6} xl={6}>
               <Controls.Input
                 label="External Link *"

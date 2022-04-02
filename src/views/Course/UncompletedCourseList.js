@@ -195,22 +195,22 @@ const UncompletedCourseList = (Data) => {
 
   const loadAllMyCourseListData = courseDataArray
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject_name === null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.instructor == null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.instructor === null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -384,7 +384,7 @@ const UncompletedCourseList = (Data) => {
                       </CButton>
                     </CTooltip>
 
-                    {item.course_type == "Recorded" ? (
+                    {item.course_type === "Recorded" ? (
                       <CTooltip content="Course Video" placement="bottom">
                         <CButton
                           className="btn rounded-circle m-1 roundshap-button"
@@ -644,7 +644,7 @@ const UncompletedCourseList = (Data) => {
                   <CardText style={{ fontSize: 20 }}>Tutor Number </CardText>
                 </div>
                 <div className="text-start col-6">
-                  {mobileNumber != null ? (
+                  {mobileNumber !== null ? (
                     <a
                       style={{ fontSize: 20, textDecoration: "none" }}
                       href={"tel:+91" + mobileNumber}
@@ -723,7 +723,7 @@ const UncompletedCourseList = (Data) => {
             </CModalHeader>
             <CModalBody>
               <CRow>
-                {demoVideoURL != "" ? (
+                {demoVideoURL !== "" ? (
                   <video playing controls className="h-auto">
                     <source
                       src={demoVideoURL}

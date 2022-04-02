@@ -216,7 +216,7 @@ const QuestionBankList = () => {
           <div className="row">
             <div className="col-12">
               {questiondata &&
-                questiondata.type.title == "Question & Answer" ? (
+                questiondata.type.title === "Question & Answer" ? (
                 <div className="mt-2">
                   <div className="friendcard p-3 assignment-card-accordion">
                     <div className="row">
@@ -237,7 +237,7 @@ const QuestionBankList = () => {
                 ""
               )}
               {questiondata &&
-                questiondata.type.title == "Fill in the Blanks" ? (
+                questiondata.type.title === "Fill in the Blanks" ? (
                 <div className="mt-2">
                   <div className="friendcard p-3 assignment-card-accordion">
                     <div className="row">
@@ -258,7 +258,7 @@ const QuestionBankList = () => {
               ) : (
                 ""
               )}
-              {questiondata && questiondata.type.title == "Comprehension" ? (
+              {questiondata && questiondata.type.title === "Comprehension" ? (
                 <div className="mt-2">
                   <div className="friendcard p-3 assignment-card-accordion">
                     <div className="row">
@@ -286,7 +286,7 @@ const QuestionBankList = () => {
               ) : (
                 ""
               )}
-              {questiondata && questiondata.type.title == "Multi Choice" ? (
+              {questiondata && questiondata.type.title === "Multi Choice" ? (
                 <div className="mt-2">
                   <div className="friendcard p-3 assignment-card-accordion">
                     <div className="row">
@@ -318,7 +318,7 @@ const QuestionBankList = () => {
                 ""
               )}
               {questiondata &&
-                questiondata.type.title == "Match the Following" ? (
+                questiondata.type.title === "Match the Following" ? (
                 <div className="mt-2">
                   <div className="friendcard p-3 assignment-card-accordion">
                     <div className="row">

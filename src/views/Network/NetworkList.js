@@ -65,14 +65,14 @@ const Network = (props) => {
 
 	const loadfriendlistDynamic = friend.friendListData
 		.filter((item) => {
-			if (props.SearchData == "") {
+			if (props.SearchData === "") {
 				return item;
 			} else if (
-				item.name == null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
+				item.name === null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
 			) {
 				return item;
 			} else if (
-				item.city == null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
+				item.city === null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
 			) {
 				return item;
 			}

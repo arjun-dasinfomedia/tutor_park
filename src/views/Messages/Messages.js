@@ -80,7 +80,7 @@ const Messages = () => {
       const arrayOfObject = message.personalMessageListData;
       const checkUsername = (obj) => obj.email === email;
       {
-        arrayOfObject.some(checkUsername) == false
+        arrayOfObject.some(checkUsername) === false
           ? (dispatch(
             sendDirectChatRequest({
               to: email,
@@ -193,7 +193,7 @@ const Messages = () => {
       .filter((item) => {
         if (searchchatname == "") {
           return item;
-        } else if (item.name != null) {
+        } else if (item.name !== null) {
           if (item.name.toLowerCase().includes(searchchatname.toLowerCase())) {
             return item;
           }
@@ -284,9 +284,9 @@ const Messages = () => {
     message.groupMessageListData &&
     message.groupMessageListData
       .filter((item) => {
-        if (searchchatname == "") {
+        if (searchchatname === "") {
           return item;
-        } else if (item.name != null) {
+        } else if (item.name !== null) {
           if (item.name.toLowerCase().includes(searchchatname.toLowerCase())) {
             return item;
           }
@@ -296,7 +296,7 @@ const Messages = () => {
         return (
           <>
             <div className="message-user-profile group-chat" key={key}>
-              {chatID == item.conversation_id ? (
+              {chatID === item.conversation_id ? (
                 <div
                   className="d-flex p-2"
                   onClick={() => showchatID(item)}
@@ -447,7 +447,7 @@ const Messages = () => {
                           label="Direct Message"
                           value="1"
                           className={
-                            value == 1
+                            value === 1
                               ? "message-chat-active"
                               : "message-chat-in-active"
                           }
@@ -457,7 +457,7 @@ const Messages = () => {
                           label="Group Message"
                           value="2"
                           className={
-                            value == 2
+                            value === 2
                               ? "message-chat-active"
                               : "message-chat-in-active"
                           }
@@ -528,7 +528,7 @@ const Messages = () => {
 
       {/* Direct send friend list for Message */}
 
-      {value == 1 ? (
+      {value === 1 ? (
         <CModal
           size="lg"
           visible={directchatvisible}

@@ -17,7 +17,7 @@ export const schoolDivisionByClass = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(SCHOOL_DIVISION_BY_CLASS, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_DIVISION_BY_CLASS,
           schoolDivisionList: responseJson.data.data,
@@ -38,7 +38,7 @@ export const schoolClassBySyllabus = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(SCHOOL_CLASS_BY_SYLLABUS, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_CLASS_BY_SYLLABUS,
           schoolClassList: responseJson.data.data,
@@ -59,7 +59,7 @@ export const schoolStudentList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(SCHOOL_STUDET_LIST, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_STUDET_LIST,
           schoolStudentData: responseJson.data.data,
@@ -81,7 +81,7 @@ export const updateOtherUser = (data) => async (dispatch) => {
   try {
 
     const response = await RestClientServices.postWithData(UPDATE_OTHER_USER, data)
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString())
       dispatch({
@@ -109,7 +109,7 @@ export const getSchoolDropDown = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(SCHOOL_DROPDOWN).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_DROPDOWN,
           schoolListDropDown: responseJson.data.data,
@@ -130,7 +130,7 @@ export const getUserDropDown = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(USERLIST_DROPDOWN).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: USERLIST_DROPDOWN,
           userListDropDown: responseJson.data.data,
@@ -174,7 +174,7 @@ export const deleteUser = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(DELETE_USER, data)
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString())
       dispatch({

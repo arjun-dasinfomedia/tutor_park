@@ -14,7 +14,7 @@ export const getPointList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(POINTS_HISTORY,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: POINTS_HISTORY,
 					pointsList: responseJson.data.data,
@@ -36,7 +36,7 @@ export const userDropdown = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(USER_DROPDOWN,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: USER_DROPDOWN,
 					userDropdownlist: responseJson.data.data,

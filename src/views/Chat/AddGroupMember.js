@@ -14,8 +14,8 @@ const AddGroupMember = (props) => {
   var filteredArray = array.filter(function (array_el) {
     return (
       anotherOne.filter(function (anotherOne_el) {
-        return anotherOne_el.email == array_el.email;
-      }).length == 0
+        return anotherOne_el.email === array_el.email;
+      }).length === 0
     );
   });
 

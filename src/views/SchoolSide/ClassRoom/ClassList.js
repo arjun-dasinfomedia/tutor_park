@@ -130,7 +130,7 @@ const ClassList = (Prop) => {
 
   const onAddingItem = (Day, TeacherID, event) => {
 
-    if (event.target.checked == false) {
+    if (event.target.checked === false) {
 
       const DayArray = {}
 
@@ -194,7 +194,7 @@ const ClassList = (Prop) => {
     // console.log(emptyUpdateLeader)
     initialvaluesForUpdateLeader = {
       UpdateLeader:
-        updateManageData.subjectLeaders.length == 0
+        updateManageData.subjectLeaders.length === 0
           ?
           [emptyUpdateLeader]
           // console.log("name")
@@ -573,29 +573,29 @@ const ClassList = (Prop) => {
   const offset = currentPage * PER_PAGE;
   const loadAllSchoolClassListData = schoolClass.schoolClassData.filter((item) => {
 
-    if (Prop.searchData == "") {
+    if (Prop.searchData === "") {
       return item;
     } else if (
-      item.standard == null ? "" :
+      item.standard === null ? "" :
         item.standard.toLowerCase().includes(Prop.searchData.toLowerCase())
     ) {
       return item;
     } else if (
-      item.name == null ? "" : item.name.toLowerCase().includes(Prop.searchData.toLowerCase())
+      item.name === null ? "" : item.name.toLowerCase().includes(Prop.searchData.toLowerCase())
     ) {
       return item;
     }
     else if (
-      item.class.syllabus == null ? "" : item.class.syllabus.toLowerCase().includes(Prop.searchData.toLowerCase())
+      item.class.syllabus === null ? "" : item.class.syllabus.toLowerCase().includes(Prop.searchData.toLowerCase())
     ) {
       return item;
     }
     else if (
-      item.class.class_name == null ? "" : item.class.class_name.toLowerCase().includes(Prop.searchData.toLowerCase())
+      item.class.class_name === null ? "" : item.class.class_name.toLowerCase().includes(Prop.searchData.toLowerCase())
     ) {
       return item;
     } else if (
-      item.class.description == null ? "" :
+      item.class.description === null ? "" :
         item.class.description.toLowerCase().includes(Prop.searchData.toLowerCase())
     ) {
       return item;
@@ -645,11 +645,11 @@ const ClassList = (Prop) => {
                   </div>
                 </div>
               </div>
-              {item.is_disabled == false ?
+              {item.is_disabled === false ?
                 <>
                   <CCol className="  tuitioncardlast">
                     <CRow>
-                      {getUserRole() == "school-student" ? "" :
+                      {getUserRole() === "school-student" ? "" :
                         <>
 
                           <CCol>
@@ -700,7 +700,7 @@ const ClassList = (Prop) => {
                     </CRow>
 
                     <CRow>
-                      {getUserRole() == "school-admin" ? (
+                      {getUserRole() === "school-admin" ? (
                         <CCol>
                           <CCardText>
                             <CButton
@@ -787,7 +787,7 @@ const ClassList = (Prop) => {
                         </>
                       }
                       <CCol>
-                        {getUserRole() == "school-admin" ? (
+                        {getUserRole() === "school-admin" ? (
                           <CCol>
                             <CCardText>
                               <CButton
@@ -892,7 +892,7 @@ const ClassList = (Prop) => {
       // render: data => {data.subjectLeadership.map((item)=> {
       //   item.name +" "})},
 
-      render: data => data.is_subject_leader == false ?
+      render: data => data.is_subject_leader === false ?
         "N/A" :
         data.subjectLeadership.map((item) => {
           return (
@@ -955,7 +955,7 @@ const ClassList = (Prop) => {
 
       <CModal size="lg" visible={addteacher} onDismiss={() => setAddTeacher(false)}>
         <CModalHeader onDismiss={() => setAddTeacher(false)} className="tutorviewmodalheader">
-          {teacherData.total_subject_teacher == 0 ? (
+          {teacherData.total_subject_teacher === 0 ? (
             <CModalTitle>Add Teacher </CModalTitle>
           ) : (
             <CModalTitle>Add To Class Teacher</CModalTitle>
@@ -977,7 +977,7 @@ const ClassList = (Prop) => {
 
           </div>
 
-          {teacherData.total_subject_teacher == 0 ? (
+          {teacherData.total_subject_teacher === 0 ? (
 
             <div className="mt-1 pl-3 pr-3">
               <Formik
@@ -1325,7 +1325,7 @@ const ClassList = (Prop) => {
 
                         {teacherData.subject_teacher.map((item, index) => (
                           <>
-                            {item.is_class_teacher == true ? (
+                            {item.is_class_teacher === true ? (
 
                               <div className="row">
                                 <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -1390,7 +1390,7 @@ const ClassList = (Prop) => {
 
                         {teacherData.subject_teacher.map((item, index) => (
                           <>
-                            {item.is_ass_class_teacher == true ? (
+                            {item.is_ass_class_teacher === true ? (
                               <div className="row">
                                 <div className="mt-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                   <div>
@@ -1710,7 +1710,7 @@ const ClassList = (Prop) => {
             <h5 className="d-inline card-title font-weight-bold text-xs-center ml-3">
               List Of Student
             </h5>
-            {getUserRole() == "school-student" ?
+            {getUserRole() === "school-student" ?
               <MaterialTable
                 title=""
                 columns={StudentViewcolumns}
@@ -1789,7 +1789,7 @@ const ClassList = (Prop) => {
       <CModal size="lg" visible={timeTable} onDismiss={() => setTimeTable(false)}>
         {timeTableData.schedule !== undefined ? (
           <>
-            {timeTableData.schedule.length == 0 ? (
+            {timeTableData.schedule.length === 0 ? (
               <>
                 <CModalHeader onDismiss={() => setTimeTable(false)} className="tutorviewmodalheader">
                   <CModalTitle>Create Time Table</CModalTitle>
@@ -2229,12 +2229,12 @@ const ClassList = (Prop) => {
 
                     var Final_teacher_id = [];
                     var Final_teacher_id = updated_teacher_id.filter(function (item, id) {
-                      return updated_teacher_id.indexOf(item) == id;
+                      return updated_teacher_id.indexOf(item) === id;
                     });
 
                     var Final_subject_id = [];
                     var Final_subject_id = updated_subject_id.filter(function (item, id) {
-                      return updated_subject_id.indexOf(item) == id;
+                      return updated_subject_id.indexOf(item) === id;
                     });
 
                     // new day data added in array 
@@ -2264,19 +2264,19 @@ const ClassList = (Prop) => {
                     // filter Day array 
 
                     var filtered_day = updated_day.filter(function (day) {
-                      return day.length != 0;
+                      return day.length !== 0;
                     });
 
                     // filter start time array 
 
                     var filtered_start_time = updated_start_time.filter(function (startTime) {
-                      return startTime.length != 0;
+                      return startTime.length !== 0;
                     });
 
                     // filter end time array 
 
                     var filtered_end_time = updated_end_time.filter(function (endTime) {
-                      return endTime.length != 0;
+                      return endTime.length !== 0;
                     });
 
                     values.days = filtered_day

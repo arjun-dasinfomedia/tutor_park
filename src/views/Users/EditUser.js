@@ -53,7 +53,7 @@ let initialValues = ""
 let validationSchema = ""
 
 const UserEdit = (data) => {
-    
+
     const dispatch = useDispatch();
     const [editUserDataModal, setEditUserDataModal] = useState(false);
     const [selectedState, setSelectedState] = useState("");
@@ -80,7 +80,7 @@ const UserEdit = (data) => {
         dispatch(subjectListData());
         dispatch(classListData({ subject_id: data.data.user_details.subject_id }));
         stateList.forEach((state) => {
-            if (state.name == data.data.user_details.state) {
+            if (state.name === data.data.user_details.state) {
                 setCityList(City.getCitiesOfState("IN", state.isoCode));
                 setSelectedCity(data.data.user_details.city)
                 setSelectedState(data.data.user_details.state)
@@ -89,16 +89,16 @@ const UserEdit = (data) => {
     }, []);
 
     // initial value for School-side user
-    if (data.data.role_name == "school-admin" || data.data.role_name == "school-tutor" || data.data.role_name == "school-student") {
+    if (data.data.role_name === "school-admin" || data.data.role_name === "school-tutor" || data.data.role_name === "school-student") {
         initialValues = {
             user_id: data.data.id,
             first_name: data.data.first_name,
             last_name: data.data.last_name,
             phone: data.data.user_details.phone,
-            aadhar_id: data.data.user_details.aadhar_id == "" ? "" : data.data.user_details.aadhar_id,
+            aadhar_id: data.data.user_details.aadhar_id === "" ? "" : data.data.user_details.aadhar_id,
 
             birth_date:
-                data.data.user_details.birth_date == null
+                data.data.user_details.birth_date === null
                     ? new Date()
                     : data.data.user_details.birth_date,
             gender: data.data.user_details.gender,
@@ -115,9 +115,9 @@ const UserEdit = (data) => {
             SchoolMobile_no: data.data.school.mobile,
             SchoolPhone_no: data.data.school.phone,
             SchoolEmail_id: data.data.school.email,
-            syllabus_id: data.data.user_details.syllabus_id == null ? syllabusId : data.data.user_details.syllabus_id,
-            class_id: data.data.user_details.class_id == classId ? syllabusId : data.data.user_details.class_id,
-            subject_id: data.data.user_details.subject_id == classId ? subjectId : data.data.user_details.subject_id,
+            syllabus_id: data.data.user_details.syllabus_id === null ? syllabusId : data.data.user_details.syllabus_id,
+            class_id: data.data.user_details.class_id === classId ? classId : data.data.user_details.class_id,
+            subject_id: data.data.user_details.subject_id === classId ? subjectId : data.data.user_details.subject_id,
         }
     }
 
@@ -129,10 +129,10 @@ const UserEdit = (data) => {
             Child: data.data.childs,
             last_name: data.data.last_name,
             phone: data.data.user_details.phone,
-            aadhar_id: data.data.user_details.aadhar_id == "" ? "" : data.data.user_details.aadhar_id,
+            aadhar_id: data.data.user_details.aadhar_id === "" ? "" : data.data.user_details.aadhar_id,
 
             birth_date:
-                data.data.user_details.birth_date == null
+                data.data.user_details.birth_date === null
                     ? new Date()
                     : data.data.user_details.birth_date,
             gender: data.data.user_details.gender,
@@ -156,7 +156,7 @@ const UserEdit = (data) => {
     }
 
 
-    if (data.data.role_name == "school-admin" || data.data.role_name == "school-tutor" || data.data.role_name == "school-admin") {
+    if (data.data.role_name === "school-admin" || data.data.role_name === "school-tutor" || data.data.role_name === "school-admin") {
         // Validation For school-side User
         validationSchema = yup.object({
             first_name: yup
@@ -221,6 +221,7 @@ const UserEdit = (data) => {
             Mode: yup.string().required("Enter A Tutor Mode"),
             Cost: yup.string().required("Enter A Tutor Cost"),
 
+
         });
 
     }
@@ -240,11 +241,11 @@ const UserEdit = (data) => {
 
     // Input Change For Syllabus class and division
     const onChangeSelectInputs = (e) => {
-        if (e.target.name == "syllabus_id") {
+        if (e.target.name === "syllabus_id") {
             initialValues.syllabus_id = e.target.value;
             setSyllabusID(e.target.value);
             // dispatch(schoolClassBySyllabus({ syllabus_id: e.target.value }));
-        } else if (e.target.name == "class_id") {
+        } else if (e.target.name === "class_id") {
             initialValues.class_id = e.target.value;
             setClassID(e.target.value);
             // dispatch(schoolDivisionByClass({ class_id: e.target.value }));
@@ -268,7 +269,7 @@ const UserEdit = (data) => {
                     values.class_id = classId;
                     values.subject_id = subjectId
 
-                    if (data.data.role_name == "school-tutor" || data.data.role_name == "school-student" ||data.data.role_name == "school-admin") {
+                    if (data.data.role_name === "school-tutor" || data.data.role_name === "school-student" || data.data.role_name === "school-admin") {
                         // Update User School-side
                         dispatch(updateOtherUser(values));
                     }
@@ -344,7 +345,7 @@ const UserEdit = (data) => {
                                 />
                             </CCol>
 
-                            {data.data.role_name == "parent" ?
+                            {data.data.role_name === "parent" ?
                                 <>
                                     <CCol xl={6} sm={6} className="mb-3">
 
@@ -354,11 +355,11 @@ const UserEdit = (data) => {
                                                 component={Select}
                                                 name="child_name"
                                                 label="Child 8"
-                                                // value={Child}
+                                            // value={Child}
                                             >
                                                 <MenuItem value="">None</MenuItem>
                                                 {userState.userListDropDown.map((item) => (
-                                                    <MenuItem key={item.id} value={item.first_name + " "+ item.last_name}>
+                                                    <MenuItem key={item.id} value={item.first_name + " " + item.last_name}>
                                                         {item.first_name + " " + item.last_name}
                                                     </MenuItem>
                                                 ))}
@@ -370,7 +371,7 @@ const UserEdit = (data) => {
                                 ""
                             }
 
-                            {data.data.role_name == "tutor" ?
+                            {data.data.role_name === "tutor" ?
 
                                 <>
                                     <CCol xl={6} sm={6} className="mb-3">
@@ -485,7 +486,7 @@ const UserEdit = (data) => {
                             </CCol>
                         </CRow>
 
-                        {data.data.role_name == "school-student" || data.data.role_name == "school-admin" || data.data.role_name == "school-tutor" ?
+                        {data.data.role_name === "school-student" || data.data.role_name === "school-admin" || data.data.role_name === "school-tutor" ?
                             ""
                             :
 
@@ -506,9 +507,25 @@ const UserEdit = (data) => {
                                                         {item.name}
                                                     </MenuItem>
                                                 ))}
+                                                <MenuItem key="other" value="other">
+                                                    other
+                                                </MenuItem>
                                             </Field>
                                         </FormControl>
                                     </CCol>
+                                    {syllabusId === "other" ?
+                                        <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
+                                            <Field
+                                                fullWidth
+                                                name="other_syllabus"
+                                                component={TextField}
+                                                variant="outlined"
+                                                label="Other Syllabus *"
+                                            />
+                                        </CCol>
+                                        :
+                                        ""
+                                    }
 
                                     <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
                                         <FormControl variant="outlined">
@@ -525,33 +542,65 @@ const UserEdit = (data) => {
                                                         {item.name}
                                                     </MenuItem>
                                                 ))}
+                                                <MenuItem key="other" value="other">
+                                                    other
+                                                </MenuItem>
                                             </Field>
                                         </FormControl>
                                     </CCol>
+                                    {classId === "other" ?
+                                        <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
+                                            <Field
+                                                fullWidth
+                                                name="other_class"
+                                                component={TextField}
+                                                variant="outlined"
+                                                label="Other Syllabus *"
+                                            />
+                                        </CCol>
+                                        :
+                                        ""
+                                    }
                                 </CRow>
-
-                                <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
-                                    <FormControl variant="outlined">
-                                        <InputLabel>Subject</InputLabel>
-                                        <Field
-                                            component={Select}
-                                            name="subject_id"
-                                            label="Subject *"
-                                            onChange={(e) => onChangeSelectInputs(e)}
-                                            value={subjectId}
-                                        >
-                                            {DropDown.subjectList.map((item) => (
-                                                <MenuItem key={item.id} value={item.id}>
-                                                    {item.name}
+                                <CRow>
+                                    <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
+                                        <FormControl variant="outlined">
+                                            <InputLabel>Subject</InputLabel>
+                                            <Field
+                                                component={Select}
+                                                name="subject_id"
+                                                label="Subject *"
+                                                onChange={(e) => onChangeSelectInputs(e)}
+                                                value={subjectId}
+                                            >
+                                                {DropDown.subjectList.map((item) => (
+                                                    <MenuItem key={item.id} value={item.id}>
+                                                        {item.name}
+                                                    </MenuItem>
+                                                ))}
+                                                <MenuItem key="other" value="other">
+                                                    other
                                                 </MenuItem>
-                                            ))}
-                                        </Field>
-                                    </FormControl>
-                                </CCol>
-
+                                            </Field>
+                                        </FormControl>
+                                    </CCol>
+                                    {subjectId === "other" ?
+                                        <CCol sm={6} md={6} lg={6} xl={6} className="mb-3">
+                                            <Field
+                                                fullWidth
+                                                name="other_subject"
+                                                component={TextField}
+                                                variant="outlined"
+                                                label="Other Syllabus *"
+                                            />
+                                        </CCol>
+                                        :
+                                        ""
+                                    }
+                                </CRow>
                             </>}
 
-                        {data.data.role_name == "school-admin" || data.data.role_name == "school-tutor" || data.data.role_name == "school-student" ?
+                        {data.data.role_name === "school-admin" || data.data.role_name === "school-tutor" || data.data.role_name === "school-student" ?
 
                             <>
 

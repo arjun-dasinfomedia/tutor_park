@@ -17,7 +17,7 @@ export const retrieveTextBooks = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(GET_ALL_TEXTBOOKS);
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: GET_ALL_TEXTBOOKS,
         data: response.data.data,
@@ -39,7 +39,7 @@ export const retrieveTextBooksUsingFilter = (data) => async (dispatch) => {
       data
     );
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: GET_FILTERED_TEXTBOOKS,
         data: response.data.data,
@@ -61,7 +61,7 @@ export const storeTextBooks = (data) => async (dispatch) => {
       data
     );
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -86,7 +86,7 @@ export const updateTextBooks = (data) => async (dispatch) => {
       data
     );
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -97,7 +97,7 @@ export const updateTextBooks = (data) => async (dispatch) => {
       if (response.data.error === false) {
         dispatch({
           type: UPDATE_TEXTBOOK,
-          TextbookEditStatus: "",
+          TextbookEditStatus: "sucess",
         });
       }
     } else {
@@ -117,7 +117,7 @@ export const viewTextBooks = (data) => async (dispatch) => {
       data
     );
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: VIEW_TEXTBOOKS,
         selectedTextbook: response.data.data,
@@ -136,7 +136,7 @@ export const subjectListData = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(GET_ALL_SUBJECT_LIST);
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: GET_ALL_SUBJECT_LIST,
         subjectList: response.data.data,
@@ -158,7 +158,7 @@ export const deleteTextBook = (data) => async (dispatch) => {
       data
     );
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({

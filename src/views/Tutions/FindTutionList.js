@@ -253,22 +253,22 @@ const FindTutionList = (Data) => {
 
   const loadAllMyTutionStudentListData = store.findListStudent
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject == null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject === null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.syllabus == null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.syllabus === null ? "" : item.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -505,7 +505,7 @@ const FindTutionList = (Data) => {
         </CModalHeader>
         <CModalBody>
           <CRow>
-            {demoVideoURL != "" ? (
+            {demoVideoURL !== "" ? (
               <video playing controls className="h-auto">
                 <source
                   src={demoVideoURL}

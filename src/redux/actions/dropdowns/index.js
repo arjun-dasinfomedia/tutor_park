@@ -137,7 +137,7 @@ export const getSchoolUsersSubjectList = () => async (dispatch) => {
     const response = await RestClientServices.getAll(
       SCHOOL_USERS_SUBJECT_LIST
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_USERS_SUBJECT_LIST,
           schoolUsesSubjectListForDD: responseJson.data.data,

@@ -83,7 +83,7 @@ const CompleteSession = (props) => {
   const assignedState = sessions.attendancelist ? sessions.attendancelist : {};
   /*Status Loop  and  array push Student id*/
   assignedState.map((student, idx) =>
-    student.status == "present" ? student_idss.push(student.id) : ""
+    student.status === "present" ? student_idss.push(student.id) : ""
   );
 
   /*Checkbox Click Value Get */
@@ -128,16 +128,16 @@ const CompleteSession = (props) => {
   /* completesession List */
   const loadSessionsDynamic = sessions.completesessiondata
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.tuition_title == null ? "" : item.tuition_title
+        item.tuition_title === null ? "" : item.tuition_title
           .toLowerCase()
           .includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.tutor_name == null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.tutor_name === null ? "" : item.tutor_name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       }

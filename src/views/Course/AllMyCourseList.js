@@ -80,7 +80,8 @@ const AllMyCourseList = (Data) => {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [demoVideoURL, setDemoVideoURL] = useState("");
   const [number, setNumber] = useState("");
-  if(store.courseUpdateStatus == "sucess")
+
+  if(store.courseUpdateStatus === "sucess")
   {
     setEditVisible(false)
     store.courseUpdateStatus = ""
@@ -216,7 +217,7 @@ const AllMyCourseList = (Data) => {
     setCurrentPage(selectedPage);
     window.scrollTo(0, 0);
 
-    if (loadAllMyCourseListData.length == 0) {
+    if (loadAllMyCourseListData.length === 0) {
       setCurrentPage(0)
     }
   }
@@ -227,22 +228,22 @@ const AllMyCourseList = (Data) => {
 
   const loadAllMyCourseListData = store.myAllCourseList
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject_name === null ? "" : item.subject_name.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.instructor == null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.instructor === null ? "" : item.instructor.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -889,7 +890,7 @@ const AllMyCourseList = (Data) => {
                   <CardText style={{ fontSize: 20 }}>Tutor Number </CardText>
                 </div>
                 <div className="col-6  text-start">
-                  {number != null ? (
+                  {number !== null ? (
                     <a
                       style={{ fontSize: 20, textDecoration: "none" }}
                       href={"tel:+91" + number}
@@ -968,7 +969,7 @@ const AllMyCourseList = (Data) => {
             </CModalHeader>
             <CModalBody>
               <CRow>
-                {demoVideoURL != "" ? (
+                {demoVideoURL !== "" ? (
                   <video playing controls className="h-auto">
                     <source
                       src={demoVideoURL}

@@ -45,7 +45,7 @@ const PointHistory = () => {
 		let temp = { ...errors };
 
 		if ("points" in fieldValues)
-			if (fieldValues.points == "")
+			if (fieldValues.points === "")
 				temp.points = "Buy a Points  is required.";
 			else if (fieldValues.points.length > 8)
 				temp.points = "Buy Points should not be more than 8 digits";
@@ -58,7 +58,7 @@ const PointHistory = () => {
 			...temp,
 		});
 
-		if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+		if (fieldValues == values) return Object.values(temp).every((x) => x === "");
 	};
 
 	const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -82,7 +82,7 @@ const PointHistory = () => {
 		{
 			title: "Email",
 			field: "transfer_to.email",
-			render: rowData => rowData.transfer_to == null ? "N/A" : rowData.transfer_to.email
+			render: rowData => rowData.transfer_to === null ? "N/A" : rowData.transfer_to.email
 		},
 		{
 			title: "Source of Points",

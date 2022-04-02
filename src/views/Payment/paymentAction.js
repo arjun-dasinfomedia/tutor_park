@@ -24,7 +24,7 @@ export const invoiceList = (data) => async (dispatch) => {
       INVOICE_FILTER,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: INVOICE_FILTER,
           invoiceData: responseJson.data.data,

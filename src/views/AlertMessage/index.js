@@ -11,7 +11,7 @@ const CustomAlertControl = () => {
       {alert.message && (
         <>
           {/* <ToastContainer autoClose={type === "error" ? "-1" : "6000"} /> */}
-          <ToastContainer autoClose="8000" />
+          <ToastContainer autoClose="10000" />
         </>
       )}
     </>

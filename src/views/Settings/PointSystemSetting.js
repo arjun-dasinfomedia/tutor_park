@@ -8,15 +8,19 @@ import { Form, useForm } from "../../components/formControls/useForm";
 import useFullPageLoader from "../../hooks/useFullPageLoader";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    storeSettingPoint
+    storeSettingPoint,
+    getMyAllPointsList,
+    getRazorPaySettings
 } from "./SettingAction";
 
 const PointSystemSetting = () => {
 
     const dispatch = useDispatch();
+
     const [isLoading, setLoading] = useState(false);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const settingState = useSelector((state) => state.Settings);
+    console.log(settingState)
 
     const initialFValues = {
 
@@ -53,7 +57,7 @@ const PointSystemSetting = () => {
 
         if ("studentsignup" in fieldValues)
 
-            if (fieldValues.studentsignup == "")
+            if (fieldValues.studentsignup === "")
                 temp.studentsignup = "Student Sign Up Point is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.studentsignup))
@@ -63,7 +67,7 @@ const PointSystemSetting = () => {
 
         if ("friendrequest" in fieldValues)
 
-            if (fieldValues.friendrequest == "")
+            if (fieldValues.friendrequest === "")
                 temp.friendrequest = "Friend Request Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.friendrequest))
@@ -73,7 +77,7 @@ const PointSystemSetting = () => {
 
         if ("referstudent" in fieldValues)
 
-            if (fieldValues.referstudent == "")
+            if (fieldValues.referstudent === "")
                 temp.referstudent = "Refer Student Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.referstudent))
@@ -83,7 +87,7 @@ const PointSystemSetting = () => {
 
         if ("refertutor" in fieldValues)
 
-            if (fieldValues.refertutor == "")
+            if (fieldValues.refertutor === "")
                 temp.refertutor = "Refer Tutor Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.refertutor))
@@ -93,7 +97,7 @@ const PointSystemSetting = () => {
 
         if ("ratesession" in fieldValues)
 
-            if (fieldValues.ratesession == "")
+            if (fieldValues.ratesession === "")
                 temp.ratesession = "Rate A Session Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.ratesession))
@@ -103,7 +107,7 @@ const PointSystemSetting = () => {
 
         if ("completeassignment" in fieldValues)
 
-            if (fieldValues.completeassignment == "")
+            if (fieldValues.completeassignment === "")
                 temp.completeassignment = "Complete Assignment Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.completeassignment))
@@ -113,7 +117,7 @@ const PointSystemSetting = () => {
 
         if ("massreferral" in fieldValues)
 
-            if (fieldValues.massreferral == "")
+            if (fieldValues.massreferral === "")
                 temp.massreferral = "mass Referral Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.massreferral))
@@ -123,7 +127,7 @@ const PointSystemSetting = () => {
 
         if ("postquestion" in fieldValues)
 
-            if (fieldValues.postquestion == "")
+            if (fieldValues.postquestion === "")
                 temp.postquestion = "Post A Question Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.postquestion))
@@ -133,7 +137,7 @@ const PointSystemSetting = () => {
 
         if ("postjob" in fieldValues)
 
-            if (fieldValues.postjob == "")
+            if (fieldValues.postjob === "")
                 temp.postjob = "Post A Job Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.postjob))
@@ -143,7 +147,7 @@ const PointSystemSetting = () => {
 
         if ("hiredtutor" in fieldValues)
 
-            if (fieldValues.hiredtutor == "")
+            if (fieldValues.hiredtutor === "")
                 temp.hiredtutor = "Hired Tutor Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.hiredtutor))
@@ -153,7 +157,7 @@ const PointSystemSetting = () => {
 
         if ("studentcreatetimetable" in fieldValues)
 
-            if (fieldValues.studentcreatetimetable == "")
+            if (fieldValues.studentcreatetimetable === "")
                 temp.studentcreatetimetable = "Student Create TimeTable Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.studentcreatetimetable))
@@ -162,7 +166,7 @@ const PointSystemSetting = () => {
             else temp.studentcreatetimetable = "";
         if ("studentpostdialydiary" in fieldValues)
 
-            if (fieldValues.studentpostdialydiary == "")
+            if (fieldValues.studentpostdialydiary === "")
                 temp.studentpostdialydiary = "Student Post Dialy Diary Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.studentpostdialydiary))
@@ -172,7 +176,7 @@ const PointSystemSetting = () => {
 
         if ("postcourse" in fieldValues)
 
-            if (fieldValues.postcourse == "")
+            if (fieldValues.postcourse === "")
                 temp.postcourse = "Post Course Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.postcourse))
@@ -182,7 +186,7 @@ const PointSystemSetting = () => {
 
         if ("findjob" in fieldValues)
 
-            if (fieldValues.findjob == "")
+            if (fieldValues.findjob === "")
                 temp.findjob = "Find A Job Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.findjob))
@@ -192,7 +196,7 @@ const PointSystemSetting = () => {
 
         if ("democlass" in fieldValues)
 
-            if (fieldValues.democlass == "")
+            if (fieldValues.democlass === "")
                 temp.democlass = "Demo Class Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.democlass))
@@ -202,7 +206,7 @@ const PointSystemSetting = () => {
 
         if ("answered" in fieldValues)
 
-            if (fieldValues.answered == "")
+            if (fieldValues.answered === "")
                 temp.answered = "Question Answer Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.answered))
@@ -212,7 +216,7 @@ const PointSystemSetting = () => {
 
         if ("axisclass" in fieldValues)
 
-            if (fieldValues.axisclass == "")
+            if (fieldValues.axisclass === "")
                 temp.axisclass = "Axis per Class Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.axisclass))
@@ -222,7 +226,7 @@ const PointSystemSetting = () => {
 
         if ("tutorsignup" in fieldValues)
 
-            if (fieldValues.tutorsignup == "")
+            if (fieldValues.tutorsignup === "")
                 temp.tutorsignup = "Tutor SignUp Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.tutorsignup))
@@ -232,7 +236,7 @@ const PointSystemSetting = () => {
 
         if ("tutorcreatetimetable" in fieldValues)
 
-            if (fieldValues.tutorcreatetimetable == "")
+            if (fieldValues.tutorcreatetimetable === "")
                 temp.tutorcreatetimetable = "Tutor Create TimeTable Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.tutorcreatetimetable))
@@ -242,7 +246,7 @@ const PointSystemSetting = () => {
 
         if ("tutorpostdialydiary" in fieldValues)
 
-            if (fieldValues.tutorpostdialydiary == "")
+            if (fieldValues.tutorpostdialydiary === "")
                 temp.tutorpostdialydiary = "Tutor Post Dialy Diary Points is required.";
 
             else if (!/^[0-9\b]+$/.test(fieldValues.tutorpostdialydiary))
@@ -253,7 +257,8 @@ const PointSystemSetting = () => {
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     }
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -262,12 +267,12 @@ const PointSystemSetting = () => {
     // Validation Code End
 
     // Handle Form Submit
-
-
     const handleSubmit = (e) => {
 
         e.preventDefault();
+        
         if (validate()) {
+            setLoading(true);
             var student_point_obj = {
                 "signup": values.studentsignup,
                 "friend_request": values.friendrequest,
@@ -300,282 +305,286 @@ const PointSystemSetting = () => {
 
             tutor_point = tutor_point_obj;
 
-            setLoading(true);
+            
             let data = new FormData();
 
             data.append("tutor_point[]", tutor_point);
             data.append("student_point[]", student_point);
-
+            
             showLoader();
-            dispatch(storeSettingPoint({ tutor_point: tutor_point, student_point: student_point }))
-            resetForm()
+            dispatch(storeSettingPoint({ tutor_point: tutor_point, student_point: student_point })) 
+            
             setLoading(false);
             hideLoader();
         }
     }
+    const PointSystemDynamic = (
+                <>
+                    <Form onSubmit={handleSubmit}>
+                        <CRow>
+                            <CCol xl={12} sm={12}>
+                                <p className="h5 font-weight-bold p-3">Student Points</p>
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="studentsignup"
+                                    label="SignUp *"
+                                    value={values.studentsignup}
+                                    // labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.studentsignup}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="friendrequest"
+                                    label="Friend Request *"
+                                    value={values.friendrequest}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.friendrequest}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="referstudent"
+                                    label="Refer Student *"
+                                    value={values.referstudent}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.referstudent}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="refertutor"
+                                    label="Refer Tutor *"
+                                    value={values.refertutor}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.refertutor}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="ratesession"
+                                    label="Rate a Session *"
+                                    value={values.ratesession}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.ratesession}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="completeassignment"
+                                    label="Complete Assignment *"
+                                    value={values.completeassignment}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.completeassignment}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="massreferral"
+                                    label="Mass Referral *"
+                                    value={values.massreferral}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.massreferral}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="postquestion"
+                                    label="Post Question *"
+                                    value={values.postquestion}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.postquestion}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="postjob"
+                                    label="Post A Job *"
+                                    value={values.postjob}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.postjob}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="hiredtutor"
+                                    label="Hired a Tutor *"
+                                    value={values.hiredtutor}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.hiredtutor}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="studentcreatetimetable"
+                                    label="Create TimeTable *"
+                                    value={values.studentcreatetimetable}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.studentcreatetimetable}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="studentpostdialydiary"
+                                    label="Post Daily Diary *"
+                                    value={values.studentpostdialydiary}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.studentpostdialydiary}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol xl={12} sm={12}>
+                                <p className="h5 font-weight-bold p-3">Tutor Points</p>
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="tutorsignup"
+                                    label="Signup *"
+                                    value={values.tutorsignup}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.tutorsignup}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="postcourse"
+                                    label="Post A Course *"
+                                    value={values.postcourse}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.postcourse}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="findjob"
+                                    label="Find A Job- Send Request To Student *"
+                                    value={values.findjob}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.findjob}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="democlass"
+                                    label="Demo Class *"
+                                    value={values.democlass}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.democlass}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="answered"
+                                    label="Answred 'Ask A Question' *"
+                                    value={values.answered}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.answered}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="axisclass"
+                                    label="Axis Per Class *"
+                                    value={values.axisclass}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.axisclass}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} >
+                                <Controls.Input
+                                    name="tutorcreatetimetable"
+                                    label="Create TimeTable *"
+                                    value={values.tutorcreatetimetable}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.tutorcreatetimetable}
+                                />
+                            </CCol>
+                            <CCol sm={6} md={6} lg={6} xl={6}>
+                                <Controls.Input
+                                    name="tutorpostdialydiary"
+                                    label="Post Dialy Diary *"
+                                    value={values.tutorpostdialydiary}
+                                    labelShow={true}
+                                    onChange={handleInputChange}
+                                    error={errors.tutorpostdialydiary}
+                                />
+                            </CCol>
+                        </CRow>
+
+                        <CRow>
+                            <CCol sm={6} md={6} lg={6} xl={6} className="m-2">
+                                <div className="p-2 d-inline">
+                                    <Controls.Button type="submit" text="Update" />
+                                </div>
+
+                            </CCol>
+                        </CRow>
+
+                    </Form>
+                </>)
+    
+
 
     return (
         <>
-            {settingState.studentPoint == undefined ? <div className="loader"></div> :
+            {settingState.studentPoint === "" ? <div className="loader"></div> :
                 isLoading ? (
                     <>{loader}</>
                 ) :
                     <div>
-
-                        <Form onSubmit={handleSubmit}>
-                            <CRow>
-                                <CCol xl={12} sm={12}>
-                                    <p className="h5 font-weight-bold p-3">Student Points</p>
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="studentsignup"
-                                        label="SignUp *"
-                                        value={values.studentsignup}
-                                        // labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.studentsignup}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="friendrequest"
-                                        label="Friend Request *"
-                                        value={values.friendrequest}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.friendrequest}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="referstudent"
-                                        label="Refer Student *"
-                                        value={values.referstudent}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.referstudent}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="refertutor"
-                                        label="Refer Tutor *"
-                                        value={values.refertutor}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.refertutor}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="ratesession"
-                                        label="Rate a Session *"
-                                        value={values.ratesession}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.ratesession}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="completeassignment"
-                                        label="Complete Assignment *"
-                                        value={values.completeassignment}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.completeassignment}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="massreferral"
-                                        label="Mass Referral *"
-                                        value={values.massreferral}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.massreferral}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="postquestion"
-                                        label="Post Question *"
-                                        value={values.postquestion}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.postquestion}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="postjob"
-                                        label="Post A Job *"
-                                        value={values.postjob}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.postjob}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="hiredtutor"
-                                        label="Hired a Tutor *"
-                                        value={values.hiredtutor}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.hiredtutor}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="studentcreatetimetable"
-                                        label="Create TimeTable *"
-                                        value={values.studentcreatetimetable}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.studentcreatetimetable}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="studentpostdialydiary"
-                                        label="Post Daily Diary *"
-                                        value={values.studentpostdialydiary}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.studentpostdialydiary}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol xl={12} sm={12}>
-                                    <p className="h5 font-weight-bold p-3">Tutor Points</p>
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="tutorsignup"
-                                        label="Signup *"
-                                        value={values.tutorsignup}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.tutorsignup}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="postcourse"
-                                        label="Post A Course *"
-                                        value={values.postcourse}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.postcourse}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="findjob"
-                                        label="Find A Job- Send Request To Student *"
-                                        value={values.findjob}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.findjob}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="democlass"
-                                        label="Demo Class *"
-                                        value={values.democlass}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.democlass}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="answered"
-                                        label="Answred 'Ask A Question' *"
-                                        value={values.answered}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.answered}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="axisclass"
-                                        label="Axis Per Class *"
-                                        value={values.axisclass}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.axisclass}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} >
-                                    <Controls.Input
-                                        name="tutorcreatetimetable"
-                                        label="Create TimeTable *"
-                                        value={values.tutorcreatetimetable}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.tutorcreatetimetable}
-                                    />
-                                </CCol>
-                                <CCol sm={6} md={6} lg={6} xl={6}>
-                                    <Controls.Input
-                                        name="tutorpostdialydiary"
-                                        label="Post Dialy Diary *"
-                                        value={values.tutorpostdialydiary}
-                                        labelShow={true}
-                                        onChange={handleInputChange}
-                                        error={errors.tutorpostdialydiary}
-                                    />
-                                </CCol>
-                            </CRow>
-
-                            <CRow>
-                                <CCol sm={6} md={6} lg={6} xl={6} className="m-2">
-                                    <div className="p-2 d-inline">
-                                        <Controls.Button type="submit" text="Update" />
-                                    </div>
-
-                                </CCol>
-                            </CRow>
-
-                        </Form>
-
+                        {PointSystemDynamic}
                     </div>
             }
         </>

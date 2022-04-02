@@ -42,18 +42,18 @@ const FeedBacks = (Data) => {
   const offset = currentPage * PER_PAGE;
 
   const feedbackDynamic = FeedBackData.List.filter((item) => {
-    if (Data.searchData == "") {
+    if (Data.searchData = "") {
       return item;
     } else if (
-      item.given_by == null ?"" : item.given_by.toLowerCase().includes(Data.searchData.toLowerCase())
+      item.given_by === null ?"" : item.given_by.toLowerCase().includes(Data.searchData.toLowerCase())
     ) {
       return item;
     } else if (
-      item.feedback_for == null ? "": item.feedback_for.toLowerCase().includes(Data.searchData.toLowerCase())
+      item.feedback_for === null ? "": item.feedback_for.toLowerCase().includes(Data.searchData.toLowerCase())
     ) {
       return item;
     } else if (
-      item.detailed_feedback == null ? "": item.detailed_feedback 
+      item.detailed_feedback === null ? "": item.detailed_feedback 
         .toLowerCase()
         .includes(Data.searchData.toLowerCase())
     ) {
@@ -78,7 +78,7 @@ const FeedBacks = (Data) => {
                     {item.given_by}
                   </div>
                   <div className="d-xl-inline-flex d-lg-inline-flex d-md-inline-flex ml-2">
-                    {item.total_ratings == 0 ? (
+                    {item.total_ratings === 0 ? (
                       <div>
                         <FontAwesomeIcon className="" icon={faStar} />
                         <FontAwesomeIcon className="" icon={faStar} />
@@ -89,7 +89,7 @@ const FeedBacks = (Data) => {
                     ) : (
                       ""
                     )}
-                    {item.total_ratings == 1 ? (
+                    {item.total_ratings === 1 ? (
                       <div>
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
                         <FontAwesomeIcon className="" icon={faStar} />
@@ -100,7 +100,7 @@ const FeedBacks = (Data) => {
                     ) : (
                       ""
                     )}
-                    {item.total_ratings == 2 ? (
+                    {item.total_ratings === 2 ? (
                       <div>
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
@@ -111,7 +111,7 @@ const FeedBacks = (Data) => {
                     ) : (
                       ""
                     )}
-                    {item.total_ratings == 3 ? (
+                    {item.total_ratings === 3 ? (
                       <div>
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
@@ -122,7 +122,7 @@ const FeedBacks = (Data) => {
                     ) : (
                       ""
                     )}
-                    {item.total_ratings == 4 ? (
+                    {item.total_ratings === 4 ? (
                       <div>
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
@@ -133,7 +133,7 @@ const FeedBacks = (Data) => {
                     ) : (
                       ""
                     )}
-                    {item.total_ratings == 5 ? (
+                    {item.total_ratings === 5 ? (
                       <div>
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
                         <FontAwesomeIcon className="starcolor" icon={faStar} />
@@ -216,7 +216,7 @@ const FeedBacks = (Data) => {
           {/* pagination code end */}
         </div>
       ) : (
-        <NoDataContainer module="Feedbcak" />
+        <NoDataContainer module="FeedBack" />
       )}
     </>
   );

@@ -168,7 +168,7 @@ const MyDiary = () => {
 			...temp,
 		});
 
-		if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+		if (fieldValues === values) return Object.values(temp).every((x) => x === "");
 
 	};
 
@@ -234,7 +234,7 @@ const MyDiary = () => {
 					name="user_ids[]"
 					value={rowData.id}
 					defaultChecked={
-						rowData.is_subject_leader == false ? false : true}
+						rowData.is_subject_leader === false ? false : true}
 				/>
 			),
 		},
@@ -252,7 +252,7 @@ const MyDiary = () => {
 		},
 		{
 			title: "Subject",
-			render: data => data.is_subject_leader == false ?
+			render: data => data.is_subject_leader === false ?
 				"N/A" :
 				data.subjectLeadership.map((item) => {
 					return (
@@ -345,7 +345,7 @@ const MyDiary = () => {
 			Swal.fire("Error", "Please Select Atleast One Friend from List", "Error");
 		}
 	}
-	if (SchoolDiary.diaryEditStatus == "sucess") {
+	if (SchoolDiary.diaryEditStatus === "sucess") {
 		setEditDiaryVisible(false)
 		setViewDiary(false)
 		SchoolDiary.diaryEditStatus = ""
@@ -372,7 +372,7 @@ const MyDiary = () => {
 													checkAccessPermission("school_diary_add") ? (<>
 														<div className="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 normal-font">
 															<CButton
-																className={enterDiaryData.id == item.id && enterDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton  bg-warning"}
+																className={enterDiaryData.id === item.id && enterDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton  bg-warning"}
 																onClick={() => enterDiaryModal(item)}
 															>Enter
 															</CButton></div></>) : null
@@ -382,7 +382,7 @@ const MyDiary = () => {
 													checkAccessPermission("school_diary_add") ? (<>
 														<div className="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
 															<CButton
-																className={viewDiaryData.id == item.id && viewDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton bg-warning"}
+																className={viewDiaryData.id === item.id && viewDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton bg-warning"}
 																onClick={() => ViewDiaryModal(item)}
 
 															>View
@@ -392,7 +392,7 @@ const MyDiary = () => {
 
 												<div className="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
 													<CButton
-														className={StudentViewId.id == item.id && subjectDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton bg-warning"}
+														className={StudentViewId.id === item.id && subjectDiary == true ? "mydiarycardbutton bg-sucess" : "mydiarycardbutton bg-warning"}
 														onClick={() => studentView(item)}
 													>Subject Lead
 													</CButton>

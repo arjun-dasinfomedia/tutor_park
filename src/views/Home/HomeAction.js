@@ -15,7 +15,7 @@ export const getAllTimeline = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(ALL_TIMELINE).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: ALL_TIMELINE,
             allTimeline: responseJson.data.data,

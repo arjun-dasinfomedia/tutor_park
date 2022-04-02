@@ -13,7 +13,7 @@ export const getSubjectList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(GET_ALL_SUBJECT_LIST_ADMIN,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: GET_ALL_SUBJECT_LIST_ADMIN,
 					subjectList: responseJson.data.data,
@@ -61,7 +61,7 @@ export const deleteSubject = (data) => async (dispatch) => {
 		// return false;
 		const response = await RestClientServices.postWithData(DELETE_SUBJECT, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({
@@ -83,7 +83,7 @@ export const updateSubject = (data) => async (dispatch) => {
 	try {
 
 		const response = await RestClientServices.postWithData(UPDATE_SUBJECT, data)
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({
@@ -94,7 +94,7 @@ export const updateSubject = (data) => async (dispatch) => {
 			if (response.data.error === false) {
 				dispatch({
 					type: UPDATE_SUBJECT,
-					subjectEditStatus: '',
+					subjectEditStatus: 'sucess',
 				})
 			}
 		} else {

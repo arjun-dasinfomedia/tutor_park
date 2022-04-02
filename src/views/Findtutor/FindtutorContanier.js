@@ -111,7 +111,7 @@ const Findtutor = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFValues, true, validate);
@@ -153,20 +153,20 @@ const Findtutor = () => {
 
   // code start for filter
   const handleOnInputChange = (e) => {
-    if (e.target.name == "city") setCity(e.target.value);
-    else if (e.target.name == "experience") setExperience(e.target.value);
+    if (e.target.name === "city") setCity(e.target.value);
+    else if (e.target.name === "experience") setExperience(e.target.value);
   };
 
   const onDropDownValueChange = (event) => {
-    if (event.target.name == "syllabus_id") {
+    if (event.target.name === "syllabus_id") {
       setSyllabusId(event.target.value);
       dispatch(classListData({ syllabus_id: event.target.value }));
-    } else if (event.target.name == "class_id") {
+    } else if (event.target.name === "class_id") {
       setClasssId(event.target.value);
       dispatch(subjectListData({ class_id: event.target.value }));
-    } else if (event.target.name == "mode") {
+    } else if (event.target.name === "mode") {
       setMode(event.target.value);
-    } else if (event.target.name == "gender") {
+    } else if (event.target.name === "gender") {
       setGender(event.target.value);
     } else {
       setSubjectId(event.target.value);
@@ -195,56 +195,56 @@ const Findtutor = () => {
 
   const tutorDynamic = Tutor.data
     .filter((item) => {
-      if (tutorsearch == "") {
+      if (tutorsearch === "") {
         return item;
-      } else if (item.name == null ? "" : item.name.toLowerCase().includes(tutorsearch.toLowerCase())) {
+      } else if (item.name === null ? "" : item.name.toLowerCase().includes(tutorsearch.toLowerCase())) {
         return item;
       } else if (
-        item.institute == null ? "" : item.institute.toLowerCase().includes(tutorsearch.toLowerCase())
+        item.institute === null ? "" : item.institute.toLowerCase().includes(tutorsearch.toLowerCase())
       ) {
         return item;
       }
-      else if (item.city == null ? "" : item.city.toLowerCase().includes(tutorsearch.toLowerCase())) {
+      else if (item.city === null ? "" : item.city.toLowerCase().includes(tutorsearch.toLowerCase())) {
         return item;
-      } else if (item.address == null ? "" : item.address.toLowerCase().includes(tutorsearch.toLowerCase())) {
+      } else if (item.address === null ? "" : item.address.toLowerCase().includes(tutorsearch.toLowerCase())) {
         return item;
       } else if (
-        item.experience == null ? "" : item.experience
+        item.experience === null ? "" : item.experience
           .toString()
           .toLowerCase()
           .includes(tutorsearch.toLowerCase())
       ) {
         return item;
       } else if (
-        item.mode_of_classes == null ? "" : item.mode_of_classes.toLowerCase().includes(tutorsearch.toLowerCase())
+        item.mode_of_classes === null ? "" : item.mode_of_classes.toLowerCase().includes(tutorsearch.toLowerCase())
       ) {
         return item;
       } else if (
-        item.degree == null ? "" : item.degree.toLowerCase().includes(tutorsearch.toLowerCase())
+        item.degree === null ? "" : item.degree.toLowerCase().includes(tutorsearch.toLowerCase())
       ) {
         return item;
       } else if (
-        item.classes == null ? "" : item.classes
+        item.classes === null ? "" : item.classes
           .toString()
           .toLowerCase()
           .includes(tutorsearch.toLowerCase())
       ) {
         return item;
       } else if (
-        item.classes == null ? "" : item.classes
+        item.classes === null ? "" : item.classes
           .toString()
           .toLowerCase()
           .includes(tutorsearch.toLowerCase())
       ) {
         return item;
       } else if (
-        item.syllabuses == null ? "" : item.syllabuses
+        item.syllabuses === null ? "" : item.syllabuses
           .toString()
           .toLowerCase()
           .includes(tutorsearch.toLowerCase())
       ) {
         return item;
-      } else if (item.topic != null) {
+      } else if (item.topic !== null) {
         if (item.topic.toLowerCase().includes(tutorsearch.toLowerCase())) {
           return item;
         }
@@ -308,7 +308,7 @@ const Findtutor = () => {
                     {item.syllabuses.length > 0 &&
                       item.classes.length > 0 &&
                       item.subjects.length > 0 &&
-                      item.mode_of_classes != "" ? (
+                      item.mode_of_classes !== "" ? (
                       <>
                         <div className="col-12">
                           <div className="simple-normal-font justify-content-center d-flex d-md-block justify-content-lg-center justify-content-md-center justify-content-sm-center">
@@ -712,7 +712,7 @@ const Findtutor = () => {
                 </CCol>
                 <CCol className="text-start">
                   {/* <CardText style={{ fontSize: 20 }}>N/A</CardText> */}
-                  {mobileNumber != null ? (
+                  {mobileNumber !== null ? (
                     <a
                       style={{ fontSize: 20, textDecoration: "none" }}
                       href={"tel:+91" + mobileNumber}
@@ -827,7 +827,7 @@ const Findtutor = () => {
                           {Tutor.viewTutorData.user_details !== undefined &&
                             Tutor.viewTutorData.user_details.avg_ratings !== null
                             ? (
-                              Tutor.viewTutorData.user_details.avg_ratings == 0 ?
+                              Tutor.viewTutorData.user_details.avg_ratings === 0 ?
                                 <>
                                   <FontAwesomeIcon icon={faStar} />
                                   <FontAwesomeIcon icon={faStar} />
@@ -835,7 +835,7 @@ const Findtutor = () => {
                                   <FontAwesomeIcon icon={faStar} />
                                   <FontAwesomeIcon icon={faStar} />
                                 </> :
-                                Tutor.viewTutorData.user_details.avg_ratings == 1 ?
+                                Tutor.viewTutorData.user_details.avg_ratings === 1 ?
                                   <>
                                     <FontAwesomeIcon className="statecolor" icon={faStar} />
                                     <FontAwesomeIcon icon={faStar} />
@@ -843,7 +843,7 @@ const Findtutor = () => {
                                     <FontAwesomeIcon icon={faStar} />
                                     <FontAwesomeIcon icon={faStar} />
                                   </> :
-                                  Tutor.viewTutorData.user_details.avg_ratings == 2 ?
+                                  Tutor.viewTutorData.user_details.avg_ratings === 2 ?
                                     <>
                                       <FontAwesomeIcon className="statecolor" icon={faStar} />
                                       <FontAwesomeIcon className="statecolor" icon={faStar} />
@@ -851,7 +851,7 @@ const Findtutor = () => {
                                       <FontAwesomeIcon icon={faStar} />
                                       <FontAwesomeIcon icon={faStar} />
                                     </> :
-                                    Tutor.viewTutorData.user_details.avg_ratings == 3 ?
+                                    Tutor.viewTutorData.user_details.avg_ratings === 3 ?
                                       <>
                                         <FontAwesomeIcon className="statecolor" icon={faStar} />
                                         <FontAwesomeIcon className="statecolor" icon={faStar} />
@@ -859,7 +859,7 @@ const Findtutor = () => {
                                         <FontAwesomeIcon icon={faStar} />
                                         <FontAwesomeIcon icon={faStar} />
                                       </> :
-                                      Tutor.viewTutorData.user_details.avg_ratings == 4 ?
+                                      Tutor.viewTutorData.user_details.avg_ratings === 4 ?
                                         <>
                                           <FontAwesomeIcon className="statecolor" icon={faStar} />
                                           <FontAwesomeIcon className="statecolor" icon={faStar} />
@@ -867,7 +867,7 @@ const Findtutor = () => {
                                           <FontAwesomeIcon className="statecolor" icon={faStar} />
                                           <FontAwesomeIcon icon={faStar} />
                                         </> :
-                                        Tutor.viewTutorData.user_details.avg_ratings == 5 ?
+                                        Tutor.viewTutorData.user_details.avg_ratings === 5 ?
                                           <>
                                             <FontAwesomeIcon className="statecolor" icon={faStar} />
                                             <FontAwesomeIcon className="statecolor" icon={faStar} />

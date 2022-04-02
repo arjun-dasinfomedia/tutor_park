@@ -37,7 +37,7 @@ const EditMyCourse = (Data) => {
   const dispatch = useDispatch();
   const DropDown = useSelector((state) => state.dropdowns);
   const [libraryId, setLibraryId] = useState("")
-
+  // console.log(DropDown.classList)
 
   const initialFValues = {
     id: Data.Data.id,
@@ -68,9 +68,12 @@ const EditMyCourse = (Data) => {
     course_topics: Data.Data.course_topics,
     number_of_people_attending: Data.Data.number_of_people_attending,
     library_id: libraryId,
+    syllabus_other: Data.Data.syllabus_name,
+    subject_other: Data.Data.subject_name,
+    class_other: Data.Data.class_name,
   };
 
-  console.log(Data)
+  // console.log(Data)
   // validation code start
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -151,7 +154,7 @@ const EditMyCourse = (Data) => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -167,18 +170,30 @@ const EditMyCourse = (Data) => {
       let data = new FormData();
       data.append("id", values.id);
       data.append("title", values.title);
-      data.append("syllabus_id", values.syllabus_id);
-      if (values.syllabus_id == "other") {
-        data.append("syllabus_other", values.syllabus_other);
+      console.log(values.subject_other)
+      console.log(values.subject_id)
+
+      if (values.syllabus_id === "other") {
+        data.append("other_syllabus", values.syllabus_other);
       }
-      if (values.subject_id == "other") {
-        data.append("subject_other", values.subject_other);
+      else {
+        data.append("syllabus_id", values.syllabus_id);
       }
-      if (values.class_id == "other") {
-        data.append("class_other", values.class_other);
+
+      if (DropDown.classList.length === 0) {
+        data.append("other_subject", values.subject_other);
       }
-      data.append("class_id", values.class_id);
-      data.append("subject_id", values.subject_id);
+      else {
+        data.append("subject_id", values.subject_id);
+      }
+
+      if (DropDown.classList.length === 0) {
+        data.append("other_class", values.class_other);
+      }
+      else {
+        data.append("class_id", values.class_id);
+      }
+
       data.append("mode_of_teaching", values.mode_of_teaching);
       data.append("start_date", moment(values.start_date).format("YYYY-MM-DD"));
       data.append(
@@ -206,7 +221,7 @@ const EditMyCourse = (Data) => {
           : "";
       }
 
-      if (values.course_type == "Recorded") {
+      if (values.course_type === "Recorded") {
         data.append("course_video", values.course_video);
       }
       data.append("course_type", values.course_type);
@@ -259,7 +274,7 @@ const EditMyCourse = (Data) => {
               error={errors.syllabus_id}
               other="other"
             />
-            {values.syllabus_id == "other" ? (
+            {values.syllabus_id === "other" ? (
               <Controls.Input
                 name="syllabus_other"
                 label="Other Syllabus *"
@@ -275,13 +290,13 @@ const EditMyCourse = (Data) => {
             <Controls.Select
               name="class_id"
               label="Class *"
-              value={values.class_id}
+              value={DropDown.classList.length === 0 ? "other" : values.class_id}
               onChange={handleInputChange}
               options={DropDown.classList}
               error={errors.class_id}
               other="other"
             />
-            {values.class_id == "other" ? (
+            {DropDown.classList.length === 0 ? (
               <Controls.Input
                 name="class_other"
                 label="Other Class *"
@@ -299,13 +314,13 @@ const EditMyCourse = (Data) => {
             <Controls.Select
               name="subject_id"
               label="Subject *"
-              value={values.subject_id}
+              value={DropDown.classList.length === 0 ? "other" : values.subject_id}
               onChange={handleInputChange}
               options={DropDown.subjectList}
               error={errors.subject_id}
               other="other"
             />
-            {values.subject_id == "other" ? (
+            {DropDown.classList.length === 0 ? (
               <Controls.Input
                 name="subject_other"
                 label="Other Subject *"
@@ -483,7 +498,7 @@ const EditMyCourse = (Data) => {
             />
           </CCol>
 
-          {values.course_type == "Recorded" ? (
+          {values.course_type === "Recorded" ? (
             <CCol sm={6} md={6} lg={6} xl={6}>
               <Controls.InputLabelShown
                 name="course_video_name"

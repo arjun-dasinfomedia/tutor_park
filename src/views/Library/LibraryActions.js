@@ -19,7 +19,7 @@ export const getAllMyLibraryList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(GET_ALL_LIBRARY).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: GET_ALL_LIBRARY,
             allLibraryList: responseJson.data.data,
@@ -40,7 +40,7 @@ export const getShareLibraryList = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(SHARED_ME_LIBRARY).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: SHARED_ME_LIBRARY,
             shareLibraryList: responseJson.data.data,
@@ -63,7 +63,7 @@ export const getFilterLibraryList = (data) => async (dispatch) => {
       FILTER_MY_LIBRARY,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: FILTER_MY_LIBRARY,
           allLibraryList: responseJson.data.data,
@@ -135,7 +135,7 @@ export const deleteMyLibrary = (data) => async (dispatch) => {
       DELETE_MY_LIBRARY,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -159,7 +159,7 @@ export const postLibraryItemOnTimeline = (data) => async (dispatch) => {
       LIBRARY_POST_ON_TIMELINE,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -182,7 +182,7 @@ export const shareWithFriendLibrary = (data) => async (dispatch) => {
       SHARED_LIBRARY,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -205,7 +205,7 @@ export const updateMyLibrary = (data) => async (dispatch) => {
       UPDATE_MY_LIBRARY,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({

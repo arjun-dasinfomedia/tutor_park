@@ -127,7 +127,7 @@ const SchoolCollaborationList = () => {
                         </CModalHeader>
                         <CModalBody>
                             <div className="row p-3 d-flex justify-content-around">
-                                {viewUserData == null ? "" :
+                                {viewUserData = null ? "" :
                                     <>
                                         <div className="p-2 border h-50 tuitionimage col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                             <CCardImage
@@ -264,7 +264,7 @@ const SchoolCollaborationList = () => {
                                                     <div className="col-8">
                                                         {viewUserData.is_verified !== null
                                                             ?
-                                                            viewUserData.is_verified == true ?
+                                                            viewUserData.is_verified === true ?
                                                                 <CBadge color="primary">Verified</CBadge>
                                                                 :
                                                                 <CBadge color="danger">Not Verified</CBadge>

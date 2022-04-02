@@ -45,10 +45,10 @@ const TopFilterLibrary = () => {
 
   // Drop Down Value Change
   const onDropDownValueChange = (event) => {
-    if (event.target.name == "syllabus_id") {
+    if (event.target.name === "syllabus_id") {
       setSyllabusId(event.target.value);
       dispatch(classListData({ syllabus_id: event.target.value }));
-    } else if (event.target.name == "class_id") {
+    } else if (event.target.name === "class_id") {
       setClasssId(event.target.value);
       dispatch(subjectListData({ class_id: event.target.value }));
     } else {
@@ -95,15 +95,15 @@ const TopFilterLibrary = () => {
     if ("subject_id" in fieldValues)
       temp.subject_id = fieldValues.subject_id ? "" : "Please select subject.";
 
-    if (values.syllabus_id == 'other') {
+    if (values.syllabus_id === 'other') {
       if ("syllabus_other" in fieldValues)
         temp.syllabus_other = fieldValues.syllabus_other ? "" : "Please enter other syllabus.";
     }
-    if (values.class_id == 'other') {
+    if (values.class_id === 'other') {
       if ("class_other" in fieldValues)
         temp.class_other = fieldValues.class_other ? "" : "Please enter other Class.";
     }
-    if (values.subject_id == 'other') {
+    if (values.subject_id === 'other') {
       if ("subject_other" in fieldValues)
         temp.subject_other = fieldValues.subject_other ? "" : "Please enter other Subject.";
     }
@@ -126,7 +126,7 @@ const TopFilterLibrary = () => {
     }
 
     if ("description" in fieldValues)
-      if (fieldValues.description == "")
+      if (fieldValues.description === "")
         temp.description = "Description  is required.";
       else if (fieldValues.description.length <= 10)
         temp.description = "Please Enter Description Minimum 10 Characters.";
@@ -138,7 +138,7 @@ const TopFilterLibrary = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -155,26 +155,32 @@ const TopFilterLibrary = () => {
 
       let data = new FormData();
 
-      if (values.syllabus_id == "other") {
+      if (values.syllabus_id === "other") {
         data.append("other_syllabus", values.syllabus_other)
       }
-
-      if (values.class_id == "other") {
-        data.append("other_class", values.class_other)
+      else {
+        data.append("syllabus_id", values.syllabus_id);
       }
 
-      if (values.subject_id == "other") {
+      if (values.class_id === "other") {
+        data.append("other_class", values.class_other)
+      }
+      else {
+        data.append("class_id", values.class_id);
+      }
+
+      if (values.subject_id === "other") {
         data.append("other_subject", values.subject_other)
+      }
+      else{
+        data.append("subject_id", values.subject_id);
       }
 
       data.append("name", values.title);
-      data.append("syllabus_id", values.syllabus_id);
-      data.append("class_id", values.class_id);
-      data.append("subject_id", values.subject_id);
       data.append("image", values.image);
       data.append("attachment", values.attachment);
       data.append("description", values.description);
-      
+
       // setLoading(true);
       // showLoader();
       await dispatch(storeMyLibrary(data));
@@ -310,7 +316,7 @@ const TopFilterLibrary = () => {
                     onClick={showOffline}
                     id="library"
                   >
-                    Library
+                    My Library
                   </CButton>
                   <CButton
                     className={
@@ -374,7 +380,7 @@ const TopFilterLibrary = () => {
                       error={errors.syllabus_id}
                       other="other"
                     />
-                    {values.syllabus_id == "other" ? (
+                    {values.syllabus_id === "other" ? (
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus"
@@ -398,7 +404,7 @@ const TopFilterLibrary = () => {
                       error={errors.class_id}
                       other="other"
                     />
-                    {values.class_id == "other" ? (
+                    {values.class_id === "other" ? (
                       <Controls.Input
                         name="class_other"
                         label="Other Class"
@@ -422,7 +428,7 @@ const TopFilterLibrary = () => {
                       error={errors.subject_id}
                       other="other"
                     />
-                    {values.subject_id == "other" ? (
+                    {values.subject_id === "other" ? (
                       <Controls.Input
                         name="subject_other"
                         label="Other Subject"

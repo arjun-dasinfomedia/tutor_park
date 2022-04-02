@@ -36,12 +36,12 @@ const TransferPoints = () => {
 
 		let temp = { ...errors };
 		if ("transferpoint_id" in fieldValues)
-			if (fieldValues.transferpoint_id == "")
+			if (fieldValues.transferpoint_id === "")
 				temp.transferpoint_id = "Please Select transfer point id.";
 
 		if ("NumberofPoints" in fieldValues)
 
-			if (fieldValues.NumberofPoints == "")
+			if (fieldValues.NumberofPoints === "")
 				temp.NumberofPoints = "Number of Points is required.";
 
 			else if (!/^[0-9\b]+$/.test(fieldValues.NumberofPoints))
@@ -55,7 +55,7 @@ const TransferPoints = () => {
 		setErrors({
 			...temp,
 		});
-		if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+		if (fieldValues === values) return Object.values(temp).every((x) => x === "");
 	};
 
 	const { values, setValues, errors, setErrors, handleInputChange, resetForm } =

@@ -99,7 +99,7 @@ const AppHeader = () => {
 
   var menuAdminItems = [];
 
-  if (getUserRole() == "admin") {
+  if (getUserRole() === "admin") {
     menuAdminItems = [
       {
         id: 1,
@@ -172,7 +172,7 @@ const AppHeader = () => {
         iconwhite: ChatIconWhite,
       },
     ];
-  } else if (getUserRole() == "tutor") {
+  } else if (getUserRole() === "tutor") {
     menuItems = [
       {
         id: 1,
@@ -287,7 +287,7 @@ const AppHeader = () => {
         iconwhite: GameIconWhite,
       },
     ];
-  } else if (getUserRole() == "student") {
+  } else if (getUserRole() === "student") {
     menuItems = [
       {
         id: 1,
@@ -402,7 +402,7 @@ const AppHeader = () => {
         iconwhite: GameIconWhite,
       },
     ];
-  } else if (getUserRole() == "parent") {
+  } else if (getUserRole() === "parent") {
     menuItems = [
       {
         id: 1,
@@ -517,7 +517,7 @@ const AppHeader = () => {
         iconwhite: GameIconWhite,
       },
     ];
-  } else if (getUserRole() == "school-admin") {
+  } else if (getUserRole() === "school-admin") {
     menuItems = [
       // {
       //   id: 1,
@@ -632,7 +632,7 @@ const AppHeader = () => {
       //   iconwhite: GameIconWhite
       // },
     ];
-  } else if (getUserRole() == "school-tutor") {
+  } else if (getUserRole() === "school-tutor") {
     menuItems = [
       // {
       //   id: 1,
@@ -747,7 +747,7 @@ const AppHeader = () => {
       //   iconwhite: GameIconWhite
       // },
     ];
-  } else if (getUserRole() == "school-student") {
+  } else if (getUserRole() === "school-student") {
     menuItems = [
       // {
       //   id: 1,
@@ -868,7 +868,7 @@ const AppHeader = () => {
 
   var removeDropDownMenuAdminItem = [];
 
-  if (getUserRole() == "admin") {
+  if (getUserRole() === "admin") {
     removeDropDownMenuAdminItem = [
       {
         title: "Events",
@@ -886,7 +886,7 @@ const AppHeader = () => {
         link: "/chat",
       },
     ];
-  } else if (getUserRole() == "tutor") {
+  } else if (getUserRole() === "tutor") {
     removeDropDownMenuItem = [
       {
         title: "Quiz",
@@ -934,7 +934,7 @@ const AppHeader = () => {
         link: "/games",
       },
     ];
-  } else if (getUserRole() == "student") {
+  } else if (getUserRole() === "student") {
     removeDropDownMenuItem = [
       {
         title: "Quiz",
@@ -982,7 +982,7 @@ const AppHeader = () => {
         link: "/games",
       },
     ];
-  } else if (getUserRole() == "parent") {
+  } else if (getUserRole() === "parent") {
     removeDropDownMenuItem = [
       {
         title: "Quiz",

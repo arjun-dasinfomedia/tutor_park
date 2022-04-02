@@ -52,7 +52,7 @@ const NetworkTeachers = (props) => {
     await dispatch(friendList({ email: getUserData().email }));
     const dataArray = [];
     friend.friendListData.map(function (item) {
-      if (item.role == "tutor") dataArray.push(item);
+      if (item.role === "tutor") dataArray.push(item);
     });
     setTeacherDataArray(dataArray);
     setLoading(false);
@@ -133,14 +133,14 @@ const NetworkTeachers = (props) => {
 
   const loadfriendlistDynamic = teacherDataArray
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.name == null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.name === null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.city == null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.city === null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       }

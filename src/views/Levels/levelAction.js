@@ -14,7 +14,7 @@ export const getLevelList = () => async (dispatch) => {
     const response = await RestClientServices.getAll(
       GET_ALL_LEVEL_LIST_ADMIN
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_ALL_LEVEL_LIST_ADMIN,
           levelList: responseJson.data.data,
@@ -54,7 +54,7 @@ export const deleteLevel = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(DELETE_LEVEL, data);
 
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({
@@ -75,7 +75,7 @@ export const updateLevel = (data) => async (dispatch) => {
   // return false;
   try {
     const response = await RestClientServices.postWithData(UPDATE_LEVEL, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString());
       dispatch({

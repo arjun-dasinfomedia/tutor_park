@@ -34,9 +34,9 @@ const LibraryEdit = (Data) => {
     attachment: "",
     attachment_name: "",
     description: Data.Data.description,
-    syllabus_other: "",
-    subject_other: "",
-    class_other: "",
+    syllabus_other: Data.Data.syllabus_name,
+    subject_other: Data.Data.subject_name,
+    class_other: Data.Data.class_name,
   };
 
   // validation code start
@@ -44,15 +44,15 @@ const LibraryEdit = (Data) => {
 
     let temp = { ...errors };
 
-    if (values.syllabus_id == "other") {
+    if (values.syllabus_id === "other") {
       if ("syllabus_other" in fieldValues)
         temp.syllabus_other = fieldValues.syllabus_other ? "" : "Please enter other Syllabus.";
     }
-    if (values.class_id == "other") {
+    if (values.class_id === "other") {
       if ("class_other" in fieldValues)
         temp.class_other = fieldValues.class_other ? "" : "Please enter other Class.";
     }
-    if (values.subject_id == "other") {
+    if (values.subject_id === "other") {
       if ("subject_other" in fieldValues)
         temp.subject_other = fieldValues.subject_other ? "" : "Please enter other Subject.";
     }
@@ -117,7 +117,7 @@ const LibraryEdit = (Data) => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -131,24 +131,32 @@ const LibraryEdit = (Data) => {
       delete values.attachment_name;
 
       let data = new FormData();
-      
-      if (values.syllabus_id == "other") {
+      console.log(values.syllabus_id)
+      console.log(values.syllabus_id)
+      console.log(values.syllabus_id)
+      if (values.syllabus_id === "other") {
         data.append("other_syllabus", values.syllabus_other)
       }
-
-      if (values.class_id == "other") {
-        data.append("other_class", values.class_other)
+      else {
+        data.append("syllabus_id", values.syllabus_id);
       }
 
-      if (values.subject_id == "other") {
+      if (values.class_id === "other") {
+        data.append("other_class", values.class_other)
+      }
+      else {
+        data.append("class_id", values.class_id);
+      }
+
+      if (values.subject_id === "other") {
         data.append("other_subject", values.subject_other)
+      }
+      else {
+        data.append("subject_id", values.subject_id);
       }
 
       data.append("id", values.id);
       data.append("name", values.name);
-      data.append("syllabus_id", values.syllabus_id);
-      data.append("class_id", values.class_id);
-      data.append("subject_id", values.subject_id);
       data.append("image", values.image);
       data.append("attachment", values.attachment);
       data.append("description", values.description);
@@ -181,7 +189,7 @@ const LibraryEdit = (Data) => {
               error={errors.syllabus_id}
               other="other"
             />
-            {values.syllabus_id == "other" ? (
+            {values.syllabus_id === "other" ? (
               <Controls.Input
                 name="syllabus_other"
                 label="Other Syllabus"
@@ -199,13 +207,13 @@ const LibraryEdit = (Data) => {
             <Controls.Select
               name="class_id"
               label="Class"
-              value={values.class_id}
+              value={DropDown.classList.length === 0 ? "other" : values.class_id}
               onChange={handleInputChange}
               options={DropDown.classList}
               error={errors.class_id}
               other="other"
             />
-            {values.class_id == "other" ? (
+            {values.class_id == "other"? (
               <Controls.Input
                 name="class_other"
                 label="Other Class"
@@ -222,13 +230,13 @@ const LibraryEdit = (Data) => {
             <Controls.Select
               name="subject_id"
               label="Subject"
-              value={values.subject_id}
+              value={DropDown.classList.length === 0 ? "other" : values.subject_id}
               onChange={handleInputChange}
               options={DropDown.subjectList}
               error={errors.subject_id}
               other="other"
             />
-            {values.subject_id == "other" ? (
+            {values.subject_id === "other" ? (
               <Controls.Input
                 name="subject_other"
                 label="Other Subject"

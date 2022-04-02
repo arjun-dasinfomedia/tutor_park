@@ -262,22 +262,22 @@ const AllMyTutionList = (Data) => {
 
   const loadAllMyTutionStudentListData = store.allListStudent
     .filter((item) => {
-      if (Data.SearchData == "") {
+      if (Data.SearchData === "") {
         return item;
       } else if (
-        item.subject == null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.subject === null ? "" : item.subject.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.title == null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.title === null ? "" : item.title.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item == null ? "" : item.syllabus.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
+        item === null ? "" : item.syllabus.syllabus.toLowerCase().includes(Data.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -549,7 +549,7 @@ const AllMyTutionList = (Data) => {
         </CModalHeader>
         <CModalBody>
           <div className="row">
-            {demoVideoURL != "" ? (
+            {demoVideoURL !== "" ? (
 
               <video playing controls className="h-auto">
                 <source

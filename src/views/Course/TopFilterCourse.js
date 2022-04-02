@@ -225,7 +225,7 @@ const TopFilterCouse = () => {
 
 
     if ("course_type" in fieldValues) {
-      if (fieldValues.course_type == "Recorded") {
+      if (fieldValues.course_type === "Recorded") {
         if ("course_video_name" in fieldValues) {
           var imagePath = fieldValues.course_video_name;
           var logo = ['mp4', 'mov', 'wmv', 'mkv', 'avi']
@@ -254,25 +254,25 @@ const TopFilterCouse = () => {
         : "Please enter course topics.";
 
     if ("description" in fieldValues)
-      if (fieldValues.description == "")
+      if (fieldValues.description === "")
         temp.description = "Please Add Your Description.";
       else if (fieldValues.description.length > 500)
         temp.description = "Please enter only 500 Characters.";
       else temp.description = "";
 
-    if (values.syllabus_id == "other") {
+    if (values.syllabus_id === "other") {
       if ("syllabus_other" in fieldValues)
         temp.syllabus_other = fieldValues.syllabus_other
           ? ""
           : "Please enter other Syllabus.";
     }
-    if (values.class_id == "other") {
+    if (values.class_id === "other") {
       if ("class_other" in fieldValues)
         temp.class_other = fieldValues.class_other
           ? ""
           : "Please enter other Class.";
     }
-    if (values.subject_id == "other") {
+    if (values.subject_id === "other") {
       if ("subject_other" in fieldValues)
         temp.subject_other = fieldValues.subject_other
           ? ""
@@ -282,7 +282,7 @@ const TopFilterCouse = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -301,24 +301,34 @@ const TopFilterCouse = () => {
 
       let data = new FormData();
       data.append("title", values.title);
-      data.append("syllabus_id", values.syllabus_id);
-      data.append("class_id", values.class_id);
-      data.append("subject_id", values.subject_id);
       data.append("mode_of_teaching", values.mode_of_teaching);
       data.append("start_date", moment(values.start_date).format("YYYY-MM-DD"));
       data.append(
         "end_date",
         values.end_date && moment(values.end_date).format("YYYY-MM-DD")
       );
-      if (values.syllabus_id == "other") {
-        data.append("syllabus_name", values.syllabus_other)
+
+      if (values.syllabus_id === "other") {
+        data.append("other_syllabus", values.syllabus_other)
       }
-      if (values.subject_id == "other") {
-        data.append("subject_name", values.subject_other)
+      else {
+        data.append("syllabus_id", values.syllabus_id);
       }
-      if (values.class_id == "other") {
-        data.append("class_name", values.class_other)
+
+      if (values.subject_id === "other") {
+        data.append("other_subject", values.subject_other)
       }
+      else {
+        data.append("subject_id", values.subject_id);
+      }
+
+      if (values.class_id === "other") {
+        data.append("other_class", values.class_other)
+      }
+      else {
+        data.append("class_id", values.class_id);
+      }
+
       data.append("start_time", moment(values.start_time).format("hh:mm A"));
       data.append("end_time", moment(values.end_time).format("hh:mm A"));
 
@@ -328,7 +338,7 @@ const TopFilterCouse = () => {
       data.append("sample_images", values.sample_images);
       data.append("logo", values.logo);
       data.append("demo_video", values.demo_video);
-      if (values.course_type == "course_type") {
+      if (values.course_type === "course_type") {
 
         data.append("course_video", values.course_video);
       }
@@ -341,7 +351,7 @@ const TopFilterCouse = () => {
       );
       data.append("course_topics", values.course_topics);
       {
-        values.library_id == "" ? "" : data.append("library_id", values.library_id);
+        values.library_id === "" ? "" : data.append("library_id", values.library_id);
       }
       data.append("course_type", values.course_type);
       data.append("description", values.description);
@@ -521,7 +531,7 @@ const TopFilterCouse = () => {
                       error={errors.syllabus_id}
                       other="other"
                     />
-                    {values.syllabus_id == "other" ? (
+                    {values.syllabus_id === "other" ? (
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus *"
@@ -543,7 +553,7 @@ const TopFilterCouse = () => {
                       error={errors.class_id}
                       other="other"
                     />
-                    {values.class_id == "other" ? (
+                    {values.class_id === "other" ? (
                       <Controls.Input
                         name="class_other"
                         label="Other Class *"
@@ -567,7 +577,7 @@ const TopFilterCouse = () => {
                       error={errors.subject_id}
                       other="other"
                     />
-                    {values.subject_id == "other" ? (
+                    {values.subject_id === "other" ? (
                       <Controls.Input
                         name="subject_other"
                         label="Other Subject *"
@@ -754,7 +764,7 @@ const TopFilterCouse = () => {
                     />
                   </CCol>
 
-                  {values.course_type == "Recorded" ? (
+                  {values.course_type === "Recorded" ? (
                     <CCol sm={6} md={6} lg={6} xl={6}>
                       <Controls.InputLabelShown
                         name="course_video_name"

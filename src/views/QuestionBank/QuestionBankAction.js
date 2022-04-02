@@ -12,7 +12,7 @@ export const questionList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(QUESTION_LIST, data).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: QUESTION_LIST,
             questionData: responseJson.data.data,
@@ -35,7 +35,7 @@ export const questionDelete = (data) => async (dispatch) => {
       QUESTION_DELETE,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -59,7 +59,7 @@ export const questionAdd = (data) => async (dispatch) => {
       QUESTION_ADD,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({

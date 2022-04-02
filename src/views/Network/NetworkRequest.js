@@ -127,14 +127,14 @@ const NetworkRequest = (props) => {
 
   const loadrequestlistDynamic = friend.requestListData
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.name == null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.name === null ? "" : item.name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.city == null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.city === null ? "" : item.city.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       }
@@ -156,7 +156,7 @@ const NetworkRequest = (props) => {
                 </div>
                 <div className="myfriend-text-center col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-sm-center text-sm-center text-md-start text-lg-start text-xl-start ">
                   <div className="col">
-                    {item.type == "sent" ? (
+                    {item.type === "sent" ? (
                       <CCardImage
                         className="request-icon-css mr-2"
                         src={sentIcone}
@@ -184,7 +184,7 @@ const NetworkRequest = (props) => {
                     &nbsp; {item.phone !== null ? item.phone : "N/A"}
                   </div>
                 </div>
-                {item.type == "received" &&
+                {item.type === "received" &&
                   checkAccessPermission("network_edit") ? (
                   <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 rounderdbutton  d-flex align-items-center justify-content-center">
                     <CTooltip content="Accept" placement="bottom">

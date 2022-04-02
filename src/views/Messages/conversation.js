@@ -158,7 +158,7 @@ const conversation = (Data) => {
     setImageUpload([]);
   };
   const scrollToBottom = () => {
-    if (messageEl.current != null) {
+    if (messageEl.current !== null) {
       messageEl.current.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -471,7 +471,7 @@ const conversation = (Data) => {
     Data.HistroyData.messages &&
     Data.HistroyData.messages
       .filter((Chat) => {
-        if (searchchatname == "") {
+        if (searchchatname === "") {
           return Chat;
         } else if (
           Chat.body.toLowerCase().includes(searchchatname.toLowerCase())
@@ -483,7 +483,7 @@ const conversation = (Data) => {
         return (
           <>
             <CCardBody className="card-message-body" key={key}>
-              {getUserData().email == Chat.author_email ? (
+              {getUserData().email === Chat.author_email ? (
                 <div style={{ textAlign: "-webkit-right" }}>
                   {Chat.attachments !== null ? (
                     <div
@@ -711,7 +711,7 @@ const conversation = (Data) => {
 
   return (
     <div>
-      {deleteData == false ? (
+      {deleteData === false ? (
         <div>
           <div>
             <CCard

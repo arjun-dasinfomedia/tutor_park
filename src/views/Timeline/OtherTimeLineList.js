@@ -195,19 +195,19 @@ const TimeLineList = (prop) => {
     // Search Filter
     const loadOtherTimeLineListData = timeLineState.otherTimeLineList
         .filter((item) => {
-            if (prop.searchData == "") {
+            if (prop.searchData === "") {
                 return item;
             }
             else if (
-                item.creator == null ? "": item.creator.toLowerCase().includes(prop.searchData.toLowerCase())
+                item.creator === null ? "": item.creator.toLowerCase().includes(prop.searchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.class == null ? "" : item.class.toLowerCase().includes(prop.searchData.toLowerCase())
+                item.class === null ? "" : item.class.toLowerCase().includes(prop.searchData.toLowerCase())
             ) {
                 return item;
             } else if (
-                item.description == null ? "": item.description.toLowerCase().includes(prop.searchData.toLowerCase())
+                item.description === null ? "": item.description.toLowerCase().includes(prop.searchData.toLowerCase())
             ) {
                 return item;
             }
@@ -234,14 +234,14 @@ const TimeLineList = (prop) => {
                                             <div className="">
                                                 <div className="card-title d-inline font-weight-bold">{item.creator}</div> &nbsp;
                                                 <div className="medium-text d-inline ">
-                                                    {getUserRole() == "student" ?
+                                                    {getUserRole() === "student" ?
                                                         <>
                                                             ({item.class})
                                                         </>
                                                         :
                                                         ""
                                                     }
-                                                    {getUserRole() == "school-student" ?
+                                                    {getUserRole() === "school-student" ?
                                                         <>
                                                             {item.linked_item !== null ?
                                                                 <>
@@ -263,7 +263,7 @@ const TimeLineList = (prop) => {
                                             </span>
                                         </div>
                                         <div className="ml-2 ">
-                                            {item.total_abuse == 0 ?
+                                            {item.total_abuse === 0 ?
                                                 ""
                                                 :
                                                 <div
@@ -317,7 +317,7 @@ const TimeLineList = (prop) => {
                                         {item.description}
                                     </div>
                                     <span>
-                                        {item.video != null ?
+                                        {item.video !== null ?
                                             <>
                                                 <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                                                     <video controls className="timelinevideo">
@@ -330,7 +330,7 @@ const TimeLineList = (prop) => {
                                         }
                                     </span>
                                     <span>
-                                        {item.link_type == "SchoolDiary" ?
+                                        {item.link_type === "SchoolDiary" ?
                                             <>
                                                 <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                                                     1)ClassWork :- {item.linked_item.details.class_work}
@@ -369,7 +369,7 @@ const TimeLineList = (prop) => {
                                         }
                                     </span>
                                     <span>
-                                        {item.image != null ?
+                                        {item.image !== null ?
                                             <>
                                                 <div sm={12} md={12} lg={12} xl={12} className="mt-3">
                                                     <img src={item.image} className="img-fluid" />
@@ -382,7 +382,7 @@ const TimeLineList = (prop) => {
                                     <div className="mt-2 mb-2 ">
                                         <CButton className="timeline-icon-button questionicon pt-0">
                                             <div
-                                                className={(item.total_like == 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
+                                                className={(item.total_like === 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
                                                 onClick={() => addTimeLineLike(item.id)}
                                                 id="likeTimeLine">
                                                 <ThumbUpIcon />
@@ -392,7 +392,7 @@ const TimeLineList = (prop) => {
                                         </CButton>
                                         <CButton className="timeline-icon-button questionicon mb-4 pt-0">
                                             <div
-                                                className={(item.favouriteBy.length != 0 ? "text-danger m-1 material-icons" : "m-1 material-icons")}
+                                                className={(item.favouriteBy.length !== 0 ? "text-danger m-1 material-icons" : "m-1 material-icons")}
                                                 onClick={() => addTimeLineFavourite(item.id)}
                                                 id="likeTimeLine">
                                                 <FavoriteIcon />
@@ -401,7 +401,7 @@ const TimeLineList = (prop) => {
                                         </CButton>
                                         <CButton className="timeline-icon-button questionicon pt-0">
                                             <div
-                                                className={(item.total_dislike == 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
+                                                className={(item.total_dislike === 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
                                                 onClick={() => addTimeLineDisLike(item.id)}
                                                 id="likeTimeLine">
                                                 <ThumbDownIcon />
@@ -411,7 +411,7 @@ const TimeLineList = (prop) => {
                                         </CButton>
                                         <CButton className="timeline-icon-button questionicon pt-0">
                                             <div
-                                                className={(item.total_comments == 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
+                                                className={(item.total_comments === 0 ? "timelineicon m-1 material-icons" : "timelineicon-active  m-1 material-icons")}
                                                 onClick={() => listCommentTimeLine(item)}
                                                 id="likeTimeLine">
                                                 <ChatBubbleIcon />

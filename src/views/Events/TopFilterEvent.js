@@ -152,7 +152,7 @@ const TopFilterEvent = () => {
         setErrors({
             ...temp,
         });
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -191,7 +191,7 @@ const TopFilterEvent = () => {
             data.append("title", values.title);
             data.append("topic", values.topic);
             data.append("mode", values.mode);
-            if (values.mode == "Online") {
+            if (values.mode === "Online") {
 
                 handeleSetBBBURL(values.title);
             }
@@ -204,7 +204,7 @@ const TopFilterEvent = () => {
             data.append("to_date", moment(values.to_date).format("YYYY-MM-DD"));
             data.append("from_time", moment(values.from_time).format("hh:mm A"));
             data.append("to_time", moment(values.to_time).format("hh:mm A"));
-            { values.library_id == "" ? "" : data.append("library_id", values.library_id) }
+            { values.library_id === "" ? "" : data.append("library_id", values.library_id) }
             if (values.target_audience === "Others") {
                 data.append("target_audience", values.other_target_audience);
             } else {
@@ -291,7 +291,7 @@ const TopFilterEvent = () => {
                                 />
                             </CCol>
                             {
-                                values.target_audience == "Others" ?
+                                values.target_audience === "Others" ?
                                     <CCol sm={6} md={6} lg={6} xl={6}>
                                         <Controls.Input
                                             name="other_target_audience"

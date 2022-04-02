@@ -20,7 +20,7 @@ export const getOtherTimeLineList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(GET_OTHER_ALL_TIMELINE).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: GET_OTHER_ALL_TIMELINE,
 					otherTimeLineList: responseJson.data.data,
@@ -42,7 +42,7 @@ export const getMyTimeLineList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(GET_MY_ALL_TIMELINE).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: GET_MY_ALL_TIMELINE,
 					myTimeLineList: responseJson.data.data,
@@ -87,7 +87,7 @@ export const deleteTimeLine = (data) => async (dispatch) => {
 		
 		const response = await RestClientServices.postWithData(DELETE_TIMELINE, data)
 
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({
@@ -110,7 +110,7 @@ export const updateTimeLine = (data) => async (dispatch) => {
 	try {
 
 		const response = await RestClientServices.postWithData(UPDATE_TIMELINE, data)
-		if (response.data.error == false) {
+		if (response.data.error === false) {
 			dispatch(alertActions.success(response.data.message.toString()));
 			toast.success(response.data.message.toString())
 			dispatch({

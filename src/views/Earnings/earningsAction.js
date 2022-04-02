@@ -16,7 +16,7 @@ export const addInvoice = (data) => async (dispatch) => {
       ADD_INVOICE,
       data
     ).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString());
         dispatch({
@@ -37,7 +37,7 @@ export const getSchoolDropDown = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(SCHOOL_DROPDOWN).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: SCHOOL_DROPDOWN,
             schoolListDropDown: responseJson.data.data,
@@ -58,7 +58,7 @@ export const getUserDropDown = () => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(USERLIST_DROPDOWN).then(
       (responseJson) => {
-        if (responseJson.data.error == false) {
+        if (responseJson.data.error === false) {
           dispatch({
             type: USERLIST_DROPDOWN,
             userListDropDown: responseJson.data.data,
@@ -78,7 +78,7 @@ export const getUserDropDown = () => async (dispatch) => {
 export const earningsList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(TUTOR_EARNINGS, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: TUTOR_EARNINGS,
         earningsData: response.data.data,
@@ -96,7 +96,7 @@ export const earningsList = (data) => async (dispatch) => {
 export const invoiceList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(INVOICE_LIST, data);
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch({
         type: INVOICE_LIST,
         invoiceData: response.data.data,

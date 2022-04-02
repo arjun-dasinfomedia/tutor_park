@@ -50,7 +50,7 @@ const StudentViewAssignment = (prop) => {
 
   useEffect(async () => {
     showLoader();
-    if (prop.location.aboutProps != undefined) {
+    if (prop.location.aboutProps !== undefined) {
 
       await dispatch(
         viewAttemptAssignmentStudent({ id: prop.location.aboutProps })
@@ -69,13 +69,13 @@ const StudentViewAssignment = (prop) => {
 
     var data = []
 
-    if (previousMCQQuestionKey != questionKey) {
+    if (previousMCQQuestionKey !== questionKey) {
       data = [];
       data[questionKey] = e.target.value
       previousMCQQuestionKey = questionKey;
       mcqAnsId.map(function (item, key) {
 
-        if (questionKey == key) {
+        if (questionKey === key) {
           mcqAnsId.pop()
         }
       });
@@ -90,7 +90,7 @@ const StudentViewAssignment = (prop) => {
       previousMCQQuestionKey = questionKey;
       mcqAnsId.map(function (item, key) {
 
-        if (questionKey == key) {
+        if (questionKey === key) {
           mcqAnsId.pop()
         }
       });
@@ -124,7 +124,6 @@ const StudentViewAssignment = (prop) => {
                   <div className="text-center col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-center">
                     <Link to="/assignment">
                       <CButton
-                        className="groupbutton m-1"
                         shape="rounded-pill"
                         onClick={showOffline}
                         className="groupbutton-active m-1"
@@ -138,7 +137,6 @@ const StudentViewAssignment = (prop) => {
                         className="groupbutton m-1"
                         shape="rounded-pill"
                         onClick={showOffline}
-                        className="groupbutton m-1"
                         id="publish"
                       >
                         Attempted
@@ -150,7 +148,7 @@ const StudentViewAssignment = (prop) => {
             </div>
           </CCard>
 
-          {prop.location.aboutProps == undefined ? (
+          {prop.location.aboutProps === undefined ? (
             <NoDataContainer module="Assignment" />
           ) : (
             <div className="row p-2 ">
@@ -356,7 +354,7 @@ const StudentViewAssignment = (prop) => {
                             sectionkey
                           ) {
                             {
-                              return item.type.tag == "q_a" ? (
+                              return item.type.tag === "q_a" ? (
                                 <>
                                   <div className="mt-2 mb-2 " key={sectionkey}>
                                     <Accordion
@@ -464,7 +462,7 @@ const StudentViewAssignment = (prop) => {
                                   </div>
                                 </>
                               ) : // MCQ Part
-                                item.type.tag == "mcq" ? (
+                                item.type.tag === "mcq" ? (
                                   <>
                                     <div className="mt-2 mb-2" key={sectionkey}>
                                       <Accordion
@@ -613,7 +611,7 @@ const StudentViewAssignment = (prop) => {
                                 ) :
 
                                   // Fill In The Blank Part
-                                  item.type.tag == "blanks" ? (
+                                  item.type.tag === "blanks" ? (
                                     <>
                                       <div className="mt-2 mb-2" key={sectionkey}>
                                         <Accordion
@@ -723,7 +721,7 @@ const StudentViewAssignment = (prop) => {
                                   ) :
 
                                     // Comprehension Part
-                                    item.type.tag == "comprehension" ? (
+                                    item.type.tag === "comprehension" ? (
                                       <>
                                         <div className="mt-2 " key={sectionkey}>
                                           <Accordion
@@ -867,7 +865,7 @@ const StudentViewAssignment = (prop) => {
                                     ) :
 
                                       // match Of Following Part
-                                      item.type.tag == "match_following" ? (
+                                      item.type.tag === "match_following" ? (
                                         <div className="mt-2 mb-2 ">
                                           <Accordion
                                             className="assignment-card-accordion assignment-card"

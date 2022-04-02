@@ -59,7 +59,7 @@ const ListPostAndSearchJob = (prop) => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -98,26 +98,26 @@ const ListPostAndSearchJob = (prop) => {
 
   const loadAllMyCourseListData = allPostJobList.data
     .filter((item) => {
-      if (prop.searchData == "") {
+      if (prop.searchData === "") {
         return item;
       } else if (
-        item.posted_by == null ? "" : item.posted_by.toLowerCase().includes(prop.searchData.toLowerCase())
+        item.posted_by === null ? "" : item.posted_by.toLowerCase().includes(prop.searchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.requirements == null ? "" : item.requirements.toLowerCase().includes(prop.searchData.toLowerCase())
+        item.requirements === null ? "" : item.requirements.toLowerCase().includes(prop.searchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.type == null ? "" : item.type.toLowerCase().includes(prop.searchData.toLowerCase())
+        item.type === null ? "" : item.type.toLowerCase().includes(prop.searchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.class == null ? "" : item.class.toLowerCase().includes(prop.searchData.toLowerCase())
+        item.class === null ? "" : item.class.toLowerCase().includes(prop.searchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.syllabus == null ? "" : item.syllabus.toLowerCase().includes(prop.searchData.toLowerCase())
+        item.syllabus === null ? "" : item.syllabus.toLowerCase().includes(prop.searchData.toLowerCase())
       ) {
         return item;
       }

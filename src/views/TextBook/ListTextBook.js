@@ -65,6 +65,12 @@ const ListTextBook = (props) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
+  if(store.TextbookEditStatus == "sucess")
+  {
+    setEditVisible(false)
+    store.TextbookEditStatus = ""
+  }
+
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }

@@ -6,7 +6,7 @@ import { CNavItem } from '@coreui/react'
 
 var _nav = []
 
-if (getUserRole() == "school-admin") {
+if (getUserRole() === "school-admin") {
     _nav = [
         {
             component: CNavItem,
@@ -44,7 +44,7 @@ if (getUserRole() == "school-admin") {
             to: '/logout',
         },
     ]
-} else if(getUserRole() == "school-tutor") {
+} else if(getUserRole() === "school-tutor") {
     _nav = [
         {
             component: CNavItem,
@@ -67,7 +67,7 @@ if (getUserRole() == "school-admin") {
             to: '/logout',
         },
     ]
-} else if(getUserRole() == "school-student") {
+} else if(getUserRole() === "school-student") {
     _nav = [
         {
             component: CNavItem,
@@ -92,7 +92,7 @@ if (getUserRole() == "school-admin") {
     ]
 }
 else if 
-(getUserRole() == "admin") {
+(getUserRole() === "admin") {
     _nav = [
         {
             component: CNavItem,
@@ -166,7 +166,7 @@ else if
         },
     ]
 }
-else if (getUserRole() == "tutor") {
+else if (getUserRole() === "tutor") {
     _nav = [
         {
             component: CNavItem,
@@ -230,7 +230,7 @@ else if (getUserRole() == "tutor") {
         },
     ]
 }
-else if (getUserRole() == "student") {
+else if (getUserRole() === "student") {
     _nav = [
         {
             component: CNavItem,
@@ -294,7 +294,7 @@ else if (getUserRole() == "student") {
         },
     ]
 }
-else if (getUserRole() == "parent") {
+else if (getUserRole() === "parent") {
     _nav = [
         {
             component: CNavItem,

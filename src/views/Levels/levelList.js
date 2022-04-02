@@ -48,7 +48,7 @@ const Level = () => {
       title: "Status",
       field: "active",
       render: (rowData) =>
-        rowData.active == "no" ? (
+        rowData.active === "no" ? (
           <CBadge color="danger">Deactive</CBadge>
         ) : (
           <CBadge color="primary">Active</CBadge>
@@ -93,7 +93,7 @@ const Level = () => {
     setErrors({
       ...temp,
     });
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -323,7 +323,7 @@ const Level = () => {
                     <div className="row">
                       <div className="col-4 font-weight-bold">Description</div>
                       <div className="col-8">
-                        {viewLevelData && viewLevelData.description != null
+                        {viewLevelData && viewLevelData.description !== null
                           ? viewLevelData.description
                           : "Not Added"}
                       </div>
@@ -331,7 +331,7 @@ const Level = () => {
                     <div className="row">
                       <div className="col-4 font-weight-bold">Status</div>
                       <div className="col-8">
-                        {viewLevelData && viewLevelData.active != "no" ? (
+                        {viewLevelData && viewLevelData.active !== "no" ? (
                           <CBadge color="primary">Active</CBadge>
                         ) : (
                           <CBadge color="danger">Deactive</CBadge>

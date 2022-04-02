@@ -67,7 +67,7 @@ const CompleteSession = (props) => {
     http(meetingCreateUrl).then((result) => {
       // console.log(result)
 
-      if (getUserRole() == "tutor") {
+      if (getUserRole() === "tutor") {
         let moderatorUrl = api.administration.join(
           getUserData().first_name + " " + getUserData().last_name,
           item.meeting_id,
@@ -126,20 +126,20 @@ const CompleteSession = (props) => {
 
   const loadSessionsDynamic = sessions.data
     .filter((item) => {
-      if (props.SearchData == "") {
+      if (props.SearchData === "") {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name
+        item.subject_name === null ? "" : item.subject_name
           .toLowerCase()
           .includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.teacher_name == null ? "" : item.teacher_name.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.teacher_name === null ? "" : item.teacher_name.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       } else if (
-        item.division == null ? "" : item.division.toLowerCase().includes(props.SearchData.toLowerCase())
+        item.division === null ? "" : item.division.toLowerCase().includes(props.SearchData.toLowerCase())
       ) {
         return item;
       }

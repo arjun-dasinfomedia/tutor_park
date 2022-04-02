@@ -158,34 +158,34 @@ const SharedLibrary = (props) => {
 
   const loadAllMyLibraryListData = store.shareLibraryList
     .filter((item) => {
-      if (props.searchKeyword == "") {
+      if (props.searchKeyword === "") {
         return item;
       } else if (
-        item.library.subject_name == null ? "" : item.library.subject_name
+        item.library.subject_name === null ? "" : item.library.subject_name
           .toLowerCase()
           .includes(props.searchKeyword.toLowerCase())
       ) {
         return item;
       } else if (
-        item.library.class_name == null ? "" : item.library.class_name
+        item.library.class_name === null ? "" : item.library.class_name
           .toLowerCase()
           .includes(props.searchKeyword.toLowerCase())
       ) {
         return item;
       } else if (
-        item.library.syllabus_name == null ? "" : item.library.syllabus_name
+        item.library.syllabus_name === null ? "" : item.library.syllabus_name
           .toLowerCase()
           .includes(props.searchKeyword.toLowerCase())
       ) {
         return item;
       } else if (
-        item.library.name == null ? "" : item.library.name
+        item.library.name === null ? "" : item.library.name
           .toLowerCase()
           .includes(props.searchKeyword.toLowerCase())
       ) {
         return item;
       } else if (
-        item.library.description == null ? " " : item.library.description
+        item.library.description === null ? " " : item.library.description
           .toLowerCase()
           .includes(props.searchKeyword.toLowerCase())
       ) {

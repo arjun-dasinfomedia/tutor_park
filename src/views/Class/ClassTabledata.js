@@ -40,7 +40,7 @@ const ClassTabledata = () => {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const dispatch = useDispatch();
 
-  if (classesState.classUpdate == "sucess") {
+  if (classesState.classUpdate === "sucess") {
     setEditClass(false)
     classesState.classUpdate = ""
   }
@@ -84,7 +84,7 @@ const ClassTabledata = () => {
       title: "Status",
       field: "status",
       render: (rowData) =>
-        rowData.status == "deactive" ? (
+        rowData.status === "deactive" ? (
           <CBadge color="danger">Deactive</CBadge>
         ) : (
           <CBadge color="primary">Active</CBadge>
@@ -100,7 +100,7 @@ const ClassTabledata = () => {
     level_id: "",
     description: "",
     status: "active",
-    Other_syllabus_dropdown: "",
+    other_syllabus: "",
   };
 
   /* Form validation */
@@ -109,9 +109,9 @@ const ClassTabledata = () => {
 
     if ("syllabus_dropdown" in fieldValues)
       temp.syllabus_dropdown = fieldValues.syllabus_dropdown ? "" : "Please select syllabus.";
-
-    if ("Other_syllabus_dropdown" in fieldValues)
-      temp.Other_syllabus_dropdown = fieldValues.Other_syllabus_dropdown ? "" : "Please Enter Other Syllabus.";
+    if (values.other_syllabus == "other")
+      if ("other_syllabus" in fieldValues)
+        temp.other_syllabus = fieldValues.other_syllabus ? "" : "Please Enter Other Syllabus.";
     if ("name" in fieldValues)
       temp.name = fieldValues.name ? "" : "Please Enter Class Name.";
     if ("level_id" in fieldValues)
@@ -123,7 +123,7 @@ const ClassTabledata = () => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -138,11 +138,12 @@ const ClassTabledata = () => {
     e.preventDefault();
     if (validate()) {
       let formData = new FormData();
+      alert("hello")
       formData.append('id', values.id);
       if (values.syllabus_dropdown == "other") {
 
-        formData.append("syllabus_id", values.syllabus_dropdown);
-        formData.append("syllabus_name", values.Other_syllabus_dropdown)
+
+        formData.append("other_syllabus", values.other_syllabus)
       }
       else {
         formData.append("syllabus_id", values.syllabus_dropdown);
@@ -152,7 +153,7 @@ const ClassTabledata = () => {
       formData.append("name", values.name);
       formData.append("status", values.status);
       formData.append("description", values.description);
-      
+
       dispatch(classStore(formData));
       resetForm();
       setAddClass(false);
@@ -287,15 +288,15 @@ const ClassTabledata = () => {
 
                       />
                     </CCol>
-                    {values.syllabus_dropdown !== "other" ? errors.Other_syllabus_dropdown = "" :
+                    {values.syllabus_dropdown !== "other" ? errors.other_syllabus = "" :
                       <CCol xl={6} sm={6} className="mb-3">
-                        
+
                         <Controls.Input
-                          name="Other_syllabus_dropdown"
+                          name="other_syllabus"
                           onChange={handleInputChange}
-                          error={errors.Other_syllabus_dropdown}
+                          error={errors.other_syllabus}
                           label="Other Syllabus *"
-                          value={values.Other_syllabus_dropdown}
+                          value={values.other_syllabus}
                         />
                       </CCol>}
                     <CCol xl={6} sm={6} className="mb-3">

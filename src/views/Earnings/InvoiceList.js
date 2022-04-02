@@ -27,9 +27,9 @@ const InvoiceList = () => {
       title: "Name",
       field: "name",
       render: (rowData) =>
-        rowData.invoicable == null
+        rowData.invoicable === null
           ? "N/A"
-          : rowData.invoice_for == "school"
+          : rowData.invoice_for === "school"
             ? rowData.invoicable.school_name
             : rowData.invoicable.name,
     },
@@ -53,7 +53,7 @@ const InvoiceList = () => {
       title: "Invoice Purpose",
       field: "purpose",
       render: (rowData) =>
-        rowData.purpose == null ? "N/A" : rowData.purpose,
+        rowData.purpose === null ? "N/A" : rowData.purpose,
     },
     {
       title: "Transactions Id",
@@ -67,13 +67,13 @@ const InvoiceList = () => {
       title: "Mode OF Tuition",
       field: "mode_of_tuition",
       render: (rowData) =>
-        rowData.mode_of_tuition == null ? "N/A" : rowData.mode_of_tuition,
+        rowData.mode_of_tuition === null ? "N/A" : rowData.mode_of_tuition,
     },
     {
       title: "Course Tuition Name",
       field: "course_tuition_name",
       render: (rowData) =>
-        rowData.course_tuition_name == null
+        rowData.course_tuition_name === null
           ? "N/A"
           : rowData.course_tuition_name,
     },
@@ -81,7 +81,7 @@ const InvoiceList = () => {
       title: "Session Take",
       field: "session_taken",
       render: (rowData) =>
-        rowData.session_taken == null ? "N/A" : rowData.session_taken,
+        rowData.session_taken === null ? "N/A" : rowData.session_taken,
     },
   ];
 

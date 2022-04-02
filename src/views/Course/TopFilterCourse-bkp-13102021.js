@@ -278,7 +278,7 @@ const TopFilterCouse = () => {
                   </helperText>}
 
                   {
-                    formik.syllabus_id == 'other' ?
+                    formik.syllabus_id === 'other' ?
                       <Controls.Input
                         name="syllabus_other"
                         label="Other Syllabus"
@@ -310,7 +310,7 @@ const TopFilterCouse = () => {
                   </helperText>}
 
                   {
-                    formik.class_id == 'other' ?
+                    formik.class_id === 'other' ?
                       <Controls.Input
                         name="class_other"
                         label="Other Class"

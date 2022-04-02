@@ -230,28 +230,28 @@ const CourseList = (props) => {
 
   const loadAllMyCourseListData = store.courseDataList && store.courseDataList
     .filter((item) => {
-      if (props.Data == "") {
+      if (props.Data === "") {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name.toLowerCase().includes(props.Data.toLowerCase())
+        item.subject_name === null ? "" : item.subject_name.toLowerCase().includes(props.Data.toLowerCase())
       ) {
         return item;
-      } else if (item.title == null ? "" : item.title.toLowerCase().includes(props.Data.toLowerCase())) {
+      } else if (item.title === null ? "" : item.title.toLowerCase().includes(props.Data.toLowerCase())) {
         return item;
       } else if (
-        item.description == null ? "" : item.description.toLowerCase().includes(props.Data.toLowerCase())
-      ) {
-        return item;
-      } else if (
-        item.syllabus_name == null ? "" : item.syllabus_name.toLowerCase().includes(props.Data.toLowerCase())
+        item.description === null ? "" : item.description.toLowerCase().includes(props.Data.toLowerCase())
       ) {
         return item;
       } else if (
-        item.class_name == null ? "" : item.class_name.toLowerCase().includes(props.Data.toLowerCase())
+        item.syllabus_name === null ? "" : item.syllabus_name.toLowerCase().includes(props.Data.toLowerCase())
       ) {
         return item;
       } else if (
-        item.subject_name == null ? "" : item.subject_name.toLowerCase().includes(props.Data.toLowerCase())
+        item.class_name === null ? "" : item.class_name.toLowerCase().includes(props.Data.toLowerCase())
+      ) {
+        return item;
+      } else if (
+        item.subject_name === null ? "" : item.subject_name.toLowerCase().includes(props.Data.toLowerCase())
       ) {
         return item;
         ErrorMessage = "1"
@@ -683,7 +683,7 @@ const CourseList = (props) => {
             </CModalHeader>
             <CModalBody>
               <CRow>
-                {demoVideoURL != "" ? (
+                {demoVideoURL !== "" ? (
                   <video playing controls className="h-auto">
                     <source
                       src={demoVideoURL}

@@ -36,7 +36,7 @@ export const getRazorPaySettings = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(RESTRIVE_REZORPAY_SETTINGS,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 
 				dispatch({
 					type: RESTRIVE_REZORPAY_SETTINGS,
@@ -59,7 +59,7 @@ export const getMyAllPointsList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(ALL_SETTING_POINT,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: ALL_SETTING_POINT,
 					tutorPoint: responseJson.data.data.tutor_point,

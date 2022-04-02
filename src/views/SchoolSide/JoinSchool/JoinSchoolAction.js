@@ -62,7 +62,7 @@ export const getSchoolList = () => async (dispatch) => {
 	try {
 		const response = await RestClientServices.getAll(VERIFIED_SCHOOL,).then((responseJson) => {
 
-			if (responseJson.data.error == false) {
+			if (responseJson.data.error === false) {
 				dispatch({
 					type: VERIFIED_SCHOOL,
 					schoolList: responseJson.data.data,

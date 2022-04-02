@@ -171,7 +171,7 @@ const MyProfile = () => {
     setLoading(false);
     hideLoader();
     stateList.forEach((state) => {
-      if (state.name == selectedState) {
+      if (state.name === selectedState) {
         setCityList(City.getCitiesOfState("IN", state.isoCode));
       }
     });
@@ -213,12 +213,12 @@ const MyProfile = () => {
     class_id: classID,
     subject_id: subjectID,
     topic:
-      getUserData().user_details.topic == null
+      getUserData().user_details.topic === null
         ? ""
         : getUserData().user_details.topic,
     mode_of_teaching: getUserData().user_details.mode_of_teaching,
     online_cost_per_hour:
-      getUserData().user_details.online_cost_per_hour == null
+      getUserData().user_details.online_cost_per_hour === null
         ? 0
         : getUserData().user_details.online_cost_per_hour,
     fb_url: getUserData().user_details.fb_url,
@@ -226,11 +226,11 @@ const MyProfile = () => {
     tw_url: getUserData().user_details.tw_url,
     insta_url: getUserData().user_details.insta_url,
     languages:
-      getUserData().user_details.languages == null
+      getUserData().user_details.languages === null
         ? []
         : getUserData().user_details.languages,
     birth_date:
-      getUserData().user_details.birth_date == null
+      getUserData().user_details.birth_date === null
         ? new Date()
         : getUserData().user_details.birth_date,
     gender: getUserData().user_details.gender,
@@ -239,15 +239,15 @@ const MyProfile = () => {
     city: selectedCity,
     pincode: getUserData().user_details.pincode,
     education:
-      getUserData().user_details.education.length == 0
+      getUserData().user_details.education.length === 0
         ? [emptyEducation]
         : getUserData().user_details.education,
     experience:
-      getUserData().user_details.experience.length == 0
+      getUserData().user_details.experience.length === 0
         ? [emptyExperience]
         : getUserData().user_details.experience,
     availability:
-      getUserData().availability.length == 0
+      getUserData().availability.length === 0
         ? [emptyAvailability]
         : getUserData().availability,
   };
@@ -324,7 +324,7 @@ const MyProfile = () => {
     gender: getUserData().user_details.gender,
     nationality: "Indian",
     birth_date:
-      getUserData().user_details.birth_date == null
+      getUserData().user_details.birth_date === null
         ? new Date()
         : getUserData().user_details.birth_date,
     syllabus_id: syllabusID,
@@ -365,11 +365,11 @@ const MyProfile = () => {
   });
 
   const onChangeSelectInputs = (e) => {
-    if (e.target.name == "syllabus_id") {
+    if (e.target.name === "syllabus_id") {
       initialValues.syllabus_id = e.target.value;
       setSyllabusID(e.target.value);
       dispatch(classListData({ syllabus_id: e.target.value }));
-    } else if (e.target.name == "class_id") {
+    } else if (e.target.name === "class_id") {
       initialValues.class_id = e.target.value;
       setClassID(e.target.value);
       dispatch(subjectListData({ class_id: e.target.value }));
@@ -531,7 +531,7 @@ const MyProfile = () => {
                               )}
                               {getUserRole() === "school-tutor" ||
                                 getUserRole() === "school-student" ||
-                                getUserRole() == "school-admin" ? (
+                                getUserRole() === "school-admin" ? (
                                 <CButton
                                   className="d-inline textbook-add-button-css"
                                   onClick={() =>
@@ -574,13 +574,13 @@ const MyProfile = () => {
                           store.userdetailsData.last_name
                           : "--Not Available--"}
                         <h5 className="d-inline">
-                          {getUserRole() == "admin" ? "(Tutor-park Admin)" : ""}
+                          {getUserRole() === "admin" ? "(Tutor-park Admin)" : ""}
                         </h5>
                       </span>
                       {getUserRole() === "tutor" ? (
                         <>
                           <div style={{}}>
-                            {store.userdetailsData.user_details.avg_ratings == 0 ?
+                            {store.userdetailsData.user_details.avg_ratings === 0 ?
                               <>
                                 <FontAwesomeIcon icon={faStar} />
                                 <FontAwesomeIcon icon={faStar} />
@@ -620,7 +620,7 @@ const MyProfile = () => {
                                         <FontAwesomeIcon className="statecolor" icon={faStar} />
                                         <FontAwesomeIcon icon={faStar} />
                                       </> :
-                                      store.userdetailsData.user_details.avg_ratings == 5 ?
+                                      store.userdetailsData.user_details.avg_ratings === 5 ?
                                         <>
                                           <FontAwesomeIcon className="statecolor" icon={faStar} />
                                           <FontAwesomeIcon className="statecolor" icon={faStar} />
@@ -665,7 +665,7 @@ const MyProfile = () => {
                     {store.userdetailsData.user_details.tp_points_balance}
                   </span>
                 </div>
-                {getUserRole() == "admin" ? (
+                {getUserRole() === "admin" ? (
                   ""
                 ) : (
                   <div className="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
@@ -673,7 +673,7 @@ const MyProfile = () => {
                     {getUserRole() === "school-admin" ||
                       getUserRole() === "school-tutor" ||
                       getUserRole() === "school-student" ? (
-                      store.userdetailsData.is_verified == 1 ? (
+                      store.userdetailsData.is_verified === 1 ? (
                         <CProgress height={15} className="mb-3">
                           <CProgressBar
                             className="Progress-bar bg-sucess"
@@ -697,7 +697,7 @@ const MyProfile = () => {
                         </CProgress>
                       )
                     ) : store.userdetailsData.user_details
-                      .tutor_verified_status == 0 ? (
+                      .tutor_verified_status === 0 ? (
                       <CProgress height={15} className="mb-3">
                         <CProgressBar
                           className="progress-bar bg-danger"
@@ -892,7 +892,7 @@ const MyProfile = () => {
                             </div>
 
                             <div className="row">
-                              {store.userdetailsData.user_details.hide_area ==
+                              {store.userdetailsData.user_details.hide_area ===
                                 false ? (
                                 <div className="col align-item-end">
                                   <div className="mb-3 col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -1170,9 +1170,9 @@ const MyProfile = () => {
               )}
               {getUserRole() === "school-tutor" ||
                 getUserRole() === "school-student" ||
-                getUserRole() == "school-admin" ||
-                getUserRole() == "tutor" ||
-                getUserRole() == "student" ? (
+                getUserRole() === "school-admin" ||
+                getUserRole() === "tutor" ||
+                getUserRole() === "student" ? (
                 <div>
                   <div className="row mt-3">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -1182,7 +1182,7 @@ const MyProfile = () => {
                             <CCardHeader className="cardtitle fw-bold">
                               School Details
                             </CCardHeader>
-                            {store.userdetailsData.school == null ? (
+                            {store.userdetailsData.school === null ? (
                               <NoDataContainer module="School" />
                             ) : (
                               <div className="row">
@@ -1445,7 +1445,7 @@ const MyProfile = () => {
                 if (
                   getUserRole() === "school-tutor" ||
                   getUserRole() === "school-student" ||
-                  getUserRole() == "school-admin"
+                  getUserRole() === "school-admin"
                 ) {
                   values.role = getUserRole();
                   values.user_id = getUserData().id;
@@ -1777,7 +1777,7 @@ const MyProfile = () => {
                     </CCol>
 
                     <CCol sm={6} md={6} lg={6} xl={6} className="mt-3">
-                      {selectedState == "" ? (
+                      {selectedState === "" ? (
                         ""
                       ) : (
                         <FormControl variant="outlined">
@@ -2100,7 +2100,7 @@ const MyProfile = () => {
                 if (
                   getUserRole() === "school-tutor" ||
                   getUserRole() === "school-student" ||
-                  getUserRole() == "school-admin"
+                  getUserRole() === "school-admin"
                 ) {
                   values.role = getUserRole();
                   values.user_id = getUserData().id;

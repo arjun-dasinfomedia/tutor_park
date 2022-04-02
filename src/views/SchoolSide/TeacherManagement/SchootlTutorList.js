@@ -73,7 +73,7 @@ const SchoolTutorList = () => {
     const [editUserData, setEditUserData] = useState(null);
     const [editUserDataModal, setEditUserDataModal] = useState(false);
 
-    if(SchoolTutor.userEditStatusSchool == "Sucess")
+    if(SchoolTutor.userEditStatusSchool === "Sucess")
     {
         setEditUserDataModal(false);
         SchoolTutor.userEditStatusSchool = ""
@@ -133,7 +133,7 @@ const SchoolTutorList = () => {
             else temp.email = "";
 
         if ("phone" in fieldValues)
-            if (fieldValues.phone == "")
+            if (fieldValues.phone === "")
                 temp.phone = "Mobile number is required.";
             else if (fieldValues.phone.length > 10 || fieldValues.phone.length < 10)
                 temp.phone = "Please enter only 10 numbers.";
@@ -142,7 +142,7 @@ const SchoolTutorList = () => {
             else temp.phone = "";
 
         if ("aadhar_id" in fieldValues)
-            if (fieldValues.aadhar_id == "")
+            if (fieldValues.aadhar_id === "")
                 temp.aadhar_id = "";
             else if (fieldValues.aadhar_id.length > 12 || fieldValues.aadhar_id.length < 12)
                 temp.aadhar_id = "Please enter only 12 numbers.";
@@ -154,7 +154,7 @@ const SchoolTutorList = () => {
             temp.address = fieldValues.address ? "" : "Address field is required."
 
         if ("password" in fieldValues)
-            if (fieldValues.password == "") {
+            if (fieldValues.password === "") {
                 temp.password = "Please enter password.";
             }
             else if (fieldValues.password.length < 8) {
@@ -168,7 +168,7 @@ const SchoolTutorList = () => {
             }
 
         if ("password_confirmation" in fieldValues)
-            if (fieldValues.password_confirmation == "") {
+            if (fieldValues.password_confirmation === "") {
                 temp.password_confirmation = "Please enter confirm password.";
             }
             else if (fieldValues.password_confirmation !== password) {
@@ -184,7 +184,7 @@ const SchoolTutorList = () => {
             }
 
         if ("pincode" in fieldValues)
-            if (fieldValues.pincode == "")
+            if (fieldValues.pincode === "")
                 temp.pincode = "Pincode is required.";
             else if (fieldValues.pincode.length > 8)
                 temp.pincode = "Pincode should not be more than 8 digits";
@@ -197,7 +197,7 @@ const SchoolTutorList = () => {
             ...temp,
         });
 
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -208,10 +208,10 @@ const SchoolTutorList = () => {
     // start form handle Event
     const handleSubmit = (e) => {
 
-        if (selectedState == "") {
+        if (selectedState === "") {
             errorMessageState = "1";
         }
-        if (selectedCity == "") {
+        if (selectedCity === "") {
             errorMessageCity = "1";
         }
 
@@ -539,7 +539,7 @@ const SchoolTutorList = () => {
                                             )}
                                             onChange={(event, value) => handleStateChange(value)}
                                         />
-                                        {errorMessageState == "" ?
+                                        {errorMessageState === "" ?
                                             ""
                                             :
                                             <>
@@ -548,7 +548,7 @@ const SchoolTutorList = () => {
                                         }
                                     </CCol>
                                     <CCol xl={6} sm={6} className="">
-                                        {selectedState == "" ? "" :
+                                        {selectedState === "" ? "" :
                                             <>
                                                 <Autocomplete
                                                     options={cityList}
@@ -564,7 +564,7 @@ const SchoolTutorList = () => {
                                                     )}
                                                     onChange={(event, value) => handleCitySelect(value)}
                                                 />
-                                                {errorMessageCity == "" ?
+                                                {errorMessageCity === "" ?
                                                     ""
                                                     :
                                                     <p className="adminusererromessage">Please Select a city.</p>
@@ -623,7 +623,7 @@ const SchoolTutorList = () => {
                                                 TP-ID {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.tp_id == null ? "N/A" : viewUserData && viewUserData.user_details.tp_id}
+                                                {viewUserData && viewUserData.user_details.tp_id === null ? "N/A" : viewUserData && viewUserData.user_details.tp_id}
                                             </div>
                                         </div>
 
@@ -632,7 +632,7 @@ const SchoolTutorList = () => {
                                                 Name {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.first_name == null ? "N/A" : viewUserData && viewUserData.first_name + " " + viewUserData.last_name}
+                                                {viewUserData && viewUserData.first_name === null ? "N/A" : viewUserData && viewUserData.first_name + " " + viewUserData.last_name}
                                             </div>
                                         </div>
 
@@ -641,7 +641,7 @@ const SchoolTutorList = () => {
                                                 Email {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.email == null ? "N/A" : viewUserData && viewUserData.email}
+                                                {viewUserData && viewUserData.email === null ? "N/A" : viewUserData && viewUserData.email}
                                             </div>
                                         </div>
 
@@ -650,7 +650,7 @@ const SchoolTutorList = () => {
                                                 Gender {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.gender == null ? "N/A" : viewUserData && viewUserData.user_details.gender}
+                                                {viewUserData && viewUserData.user_details.gender === null ? "N/A" : viewUserData && viewUserData.user_details.gender}
                                             </div>
                                         </div>
 
@@ -659,7 +659,7 @@ const SchoolTutorList = () => {
                                                 Contact No {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.phone == null ? "N/A" : viewUserData && viewUserData.user_details.phone}
+                                                {viewUserData && viewUserData.user_details.phone === null ? "N/A" : viewUserData && viewUserData.user_details.phone}
                                             </div>
                                         </div>
 
@@ -668,7 +668,7 @@ const SchoolTutorList = () => {
                                                 City {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.city == null ? "N/A" : viewUserData && viewUserData.user_details.city}
+                                                {viewUserData && viewUserData.user_details.city === null ? "N/A" : viewUserData && viewUserData.user_details.city}
                                             </div>
                                         </div>
 
@@ -677,7 +677,7 @@ const SchoolTutorList = () => {
                                                 Role {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.role_name == null ? "N/A" : viewUserData && viewUserData.role_name}
+                                                {viewUserData && viewUserData.role_name === null ? "N/A" : viewUserData && viewUserData.role_name}
                                             </div>
                                         </div>
 
@@ -686,7 +686,7 @@ const SchoolTutorList = () => {
                                                 Address {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.address == null ? "N/A" : viewUserData && viewUserData.user_details.address}
+                                                {viewUserData && viewUserData.user_details.address === null ? "N/A" : viewUserData && viewUserData.user_details.address}
                                             </div>
                                         </div>
 
@@ -695,7 +695,7 @@ const SchoolTutorList = () => {
                                                 Area {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.area == null ? "N/A" : viewUserData && viewUserData.user_details.area}
+                                                {viewUserData && viewUserData.user_details.area === null ? "N/A" : viewUserData && viewUserData.user_details.area}
                                             </div>
                                         </div>
 
@@ -704,7 +704,7 @@ const SchoolTutorList = () => {
                                                 Birth-Date {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.birth_date == null ? "N/A" : viewUserData && viewUserData.user_details.birth_date}
+                                                {viewUserData && viewUserData.user_details.birth_date === null ? "N/A" : viewUserData && viewUserData.user_details.birth_date}
                                             </div>
                                         </div>
 
@@ -713,7 +713,7 @@ const SchoolTutorList = () => {
                                                 Country {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.country == null ? "N/A" : viewUserData && viewUserData.user_details.country}
+                                                {viewUserData && viewUserData.user_details.country === null ? "N/A" : viewUserData && viewUserData.user_details.country}
                                             </div>
                                         </div>
 
@@ -722,7 +722,7 @@ const SchoolTutorList = () => {
                                                 Pincode {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.pincode == null ? "N/A" : viewUserData && viewUserData.user_details.pincode}
+                                                {viewUserData && viewUserData.user_details.pincode === null ? "N/A" : viewUserData && viewUserData.user_details.pincode}
                                             </div>
                                         </div>
 
@@ -731,7 +731,7 @@ const SchoolTutorList = () => {
                                                 State {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.state == null ? "N/A" : viewUserData && viewUserData.user_details.state}
+                                                {viewUserData && viewUserData.user_details.state === null ? "N/A" : viewUserData && viewUserData.user_details.state}
                                             </div>
                                         </div>
 
@@ -740,7 +740,7 @@ const SchoolTutorList = () => {
                                                 Status {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.is_verified == 0 ?
+                                                {viewUserData && viewUserData.is_verified === 0 ?
                                                     <CBadge color="danger">Not Verified</CBadge>
                                                     :
                                                     <CBadge color="primary">Verified</CBadge>
@@ -751,7 +751,7 @@ const SchoolTutorList = () => {
                                 </div>
                             </div>
 
-                            {viewUserData && viewUserData.role_name == "school-tutor" ?
+                            {viewUserData && viewUserData.role_name === "school-tutor" ?
 
                                 <div className="row mt-3">
                                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

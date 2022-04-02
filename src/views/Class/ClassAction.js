@@ -55,7 +55,7 @@ export const deleteClasses = (data) => async (dispatch) => {
     const response = await RestClientServices.postWithData(
       DELETE_CLASSES, data
     );
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString())
       dispatch({
@@ -95,7 +95,7 @@ export const viewClasses = (data) => async (dispatch) => {
 export const updateClass = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(UPDATE_CLASS, data)
-    if (response.data.error == false) {
+    if (response.data.error === false) {
       dispatch(alertActions.success(response.data.message.toString()));
       toast.success(response.data.message.toString())
       dispatch({

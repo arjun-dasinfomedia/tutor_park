@@ -56,19 +56,19 @@ const TopFilterHeader = () => {
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
 
-    if (values.syllabus_id == "other") {
+    if (values.syllabus_id === "other") {
       if ("syllabus_other" in fieldValues)
         temp.syllabus_other = fieldValues.syllabus_other
           ? ""
           : "Please Enter Other Syllabus.";
     }
-    if (values.class_id == "other") {
+    if (values.class_id === "other") {
       if ("class_other" in fieldValues)
         temp.class_other = fieldValues.class_other
           ? ""
           : "Please Enter Other Class.";
     }
-    if (values.subject_id == "other") {
+    if (values.subject_id === "other") {
       if ("subject_other" in fieldValues)
         temp.subject_other = fieldValues.subject_other
           ? ""
@@ -103,7 +103,7 @@ const TopFilterHeader = () => {
       temp.end_time = fieldValues.end_time ? "" : "Please enter end time.";
 
     if ("requirements" in fieldValues)
-      if (fieldValues.requirements == "") {
+      if (fieldValues.requirements === "") {
         temp.requirements = "Please add your requirements.";
       } else if (fieldValues.requirements.length > 500) {
         temp.requirements = "You can not enter characters more then 500";
@@ -115,7 +115,7 @@ const TopFilterHeader = () => {
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -127,15 +127,15 @@ const TopFilterHeader = () => {
     if (validate()) {
       let data = new FormData();
       data.append("syllabus_id", values.syllabus_id);
-      if (values.syllabus_id == "other") {
+      if (values.syllabus_id === "other") {
         data.append("other_syllabus", values.syllabus_other)
       }
 
-      if (values.class_id == "other") {
+      if (values.class_id === "other") {
         data.append("other_class", values.class_other)
       }
 
-      if (values.subject_id == "other") {
+      if (values.subject_id === "other") {
         data.append("other_subject", values.subject_other)
       }
 
@@ -229,7 +229,7 @@ const TopFilterHeader = () => {
                     other="other"
                   />
                 </CCol>
-                {values.syllabus_id == "other" ?
+                {values.syllabus_id === "other" ?
                   <CCol sm={6} md={6} lg={6} xl={6}>
                     <Controls.Input
                       name="syllabus_other"
@@ -253,7 +253,7 @@ const TopFilterHeader = () => {
                     other="other"
                   />
                 </CCol>
-                {values.class_id == "other" ?
+                {values.class_id === "other" ?
                   <CCol sm={6} md={6} lg={6} xl={6}>
                     <Controls.Input
                       name="class_other"
@@ -280,7 +280,7 @@ const TopFilterHeader = () => {
                     other="other"
                   />
                 </CCol>
-                {values.subject_id == "other" ?
+                {values.subject_id === "other" ?
                   <CCol sm={6} md={6} lg={6} xl={6}>
                     <Controls.Input
                       name="subject_other"

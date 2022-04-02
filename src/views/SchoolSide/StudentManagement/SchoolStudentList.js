@@ -124,7 +124,7 @@ const SchoolStudentList = () => {
             else temp.email = "";
 
         if ("phone" in fieldValues)
-            if (fieldValues.phone == "")
+            if (fieldValues.phone === "")
                 temp.phone = "Mobile number is required.";
             else if (fieldValues.phone.length > 10 || fieldValues.phone.length < 10)
                 temp.phone = "Please enter only 10 numbers.";
@@ -133,7 +133,7 @@ const SchoolStudentList = () => {
             else temp.phone = "";
 
         if ("aadhar_id" in fieldValues)
-            if (fieldValues.aadhar_id == "")
+            if (fieldValues.aadhar_id === "")
                 temp.aadhar_id = "";
             else if (fieldValues.aadhar_id.length > 12 || fieldValues.aadhar_id.length < 12)
                 temp.aadhar_id = "Please enter only 12 numbers.";
@@ -145,7 +145,7 @@ const SchoolStudentList = () => {
             temp.address = fieldValues.address ? "" : "Address field is required."
 
         if ("password" in fieldValues)
-            if (fieldValues.password == "") {
+            if (fieldValues.password === "") {
                 temp.password = "Please enter password.";
             }
             else if (fieldValues.password.length < 8) {
@@ -159,7 +159,7 @@ const SchoolStudentList = () => {
             }
 
         if ("password_confirmation" in fieldValues)
-            if (fieldValues.password_confirmation == "") {
+            if (fieldValues.password_confirmation === "") {
                 temp.password_confirmation = "Please enter confirm password.";
             }
             else if (fieldValues.password_confirmation !== password) {
@@ -174,7 +174,7 @@ const SchoolStudentList = () => {
             }
 
         if ("pincode" in fieldValues)
-            if (fieldValues.pincode == "")
+            if (fieldValues.pincode === "")
                 temp.pincode = "Pincode is required.";
             else if (fieldValues.pincode.length > 8)
                 temp.pincode = "Pincode should not be more than 8 digits";
@@ -187,7 +187,7 @@ const SchoolStudentList = () => {
             ...temp,
         });
 
-        if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+        if (fieldValues === values) return Object.values(temp).every((x) => x === "");
     };
 
     const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -197,10 +197,10 @@ const SchoolStudentList = () => {
     // add Student form Submit
     const handleSubmit = (e) => {
 
-        if (selectedState == "") {
+        if (selectedState === "") {
             errorMessageState = "1";
         }
-        if (selectedCity == "") {
+        if (selectedCity === "") {
             errorMessageCity = "1";
         }
 
@@ -244,13 +244,13 @@ const SchoolStudentList = () => {
     }, []);
 
     useLayoutEffect(() => {
-        if (values.syllabus_id == "") {
+        if (values.syllabus_id === "") {
         }
         else {
             dispatch(schoolClassBySyllabus({ syllabus_id: values.syllabus_id }))
         }
 
-        if (values.class_id == "") {
+        if (values.class_id === "") {
         }
         else {
             dispatch(schoolDivisionByClass({ class_id: values.class_id }))
@@ -566,7 +566,7 @@ const SchoolStudentList = () => {
                                             )}
                                             onChange={(event, value) => handleStateChange(value)}
                                         />
-                                        {errorMessageState == "" ?
+                                        {errorMessageState === "" ?
                                             ""
                                             :
                                             <>
@@ -575,7 +575,7 @@ const SchoolStudentList = () => {
                                         }
                                     </CCol>
                                     <CCol xl={6} sm={6} className="">
-                                        {selectedState == null ? "" :
+                                        {selectedState === null ? "" :
                                             <>
                                                 <Autocomplete
                                                     options={cityList}
@@ -591,7 +591,7 @@ const SchoolStudentList = () => {
                                                     )}
                                                     onChange={(event, value) => handleCitySelect(value)}
                                                 />
-                                                {errorMessageCity == "" ?
+                                                {errorMessageCity === "" ?
                                                     ""
                                                     :
                                                     <p className="adminusererromessage">Please Select a city.</p>
@@ -652,7 +652,7 @@ const SchoolStudentList = () => {
                                                 TP-ID {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.tp_id == null ? "N/A" : viewUserData && viewUserData.user_details.tp_id}
+                                                {viewUserData && viewUserData.user_details.tp_id === null ? "N/A" : viewUserData && viewUserData.user_details.tp_id}
                                             </div>
                                         </div>
 
@@ -661,7 +661,7 @@ const SchoolStudentList = () => {
                                                 Name {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.first_name == null ? "N/A" : viewUserData && viewUserData.first_name + " " + viewUserData.last_name}
+                                                {viewUserData && viewUserData.first_name === null ? "N/A" : viewUserData && viewUserData.first_name + " " + viewUserData.last_name}
                                             </div>
                                         </div>
 
@@ -670,7 +670,7 @@ const SchoolStudentList = () => {
                                                 Email {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.email == null ? "N/A" : viewUserData && viewUserData.email}
+                                                {viewUserData && viewUserData.email === null ? "N/A" : viewUserData && viewUserData.email}
                                             </div>
                                         </div>
 
@@ -679,7 +679,7 @@ const SchoolStudentList = () => {
                                                 Gender {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.gender == null ? "N/A" : viewUserData && viewUserData.user_details.gender}
+                                                {viewUserData && viewUserData.user_details.gender === null ? "N/A" : viewUserData && viewUserData.user_details.gender}
                                             </div>
                                         </div>
 
@@ -688,7 +688,7 @@ const SchoolStudentList = () => {
                                                 Contact No {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.phone == null ? "N/A" : viewUserData && viewUserData.user_details.phone}
+                                                {viewUserData && viewUserData.user_details.phone === null ? "N/A" : viewUserData && viewUserData.user_details.phone}
                                             </div>
                                         </div>
 
@@ -697,7 +697,7 @@ const SchoolStudentList = () => {
                                                 City {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.city == null ? "N/A" : viewUserData && viewUserData.user_details.city}
+                                                {viewUserData && viewUserData.user_details.city === null ? "N/A" : viewUserData && viewUserData.user_details.city}
                                             </div>
                                         </div>
 
@@ -706,7 +706,7 @@ const SchoolStudentList = () => {
                                                 Role {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.role_name == null ? "N/A" : viewUserData && viewUserData.role_name}
+                                                {viewUserData && viewUserData.role_name === null ? "N/A" : viewUserData && viewUserData.role_name}
                                             </div>
                                         </div>
 
@@ -715,7 +715,7 @@ const SchoolStudentList = () => {
                                                 Address {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.address == null ? "N/A" : viewUserData && viewUserData.user_details.address}
+                                                {viewUserData && viewUserData.user_details.address === null ? "N/A" : viewUserData && viewUserData.user_details.address}
                                             </div>
                                         </div>
 
@@ -724,7 +724,7 @@ const SchoolStudentList = () => {
                                                 Area {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.area == null ? "N/A" : viewUserData && viewUserData.user_details.area}
+                                                {viewUserData && viewUserData.user_details.area === null ? "N/A" : viewUserData && viewUserData.user_details.area}
                                             </div>
                                         </div>
 
@@ -733,7 +733,7 @@ const SchoolStudentList = () => {
                                                 Birth-Date {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.birth_date == null ? "N/A" : viewUserData && viewUserData.user_details.birth_date}
+                                                {viewUserData && viewUserData.user_details.birth_date === null ? "N/A" : viewUserData && viewUserData.user_details.birth_date}
                                             </div>
                                         </div>
 
@@ -742,7 +742,7 @@ const SchoolStudentList = () => {
                                                 Country {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.country == null ? "N/A" : viewUserData && viewUserData.user_details.country}
+                                                {viewUserData && viewUserData.user_details.country === null ? "N/A" : viewUserData && viewUserData.user_details.country}
                                             </div>
                                         </div>
 
@@ -751,7 +751,7 @@ const SchoolStudentList = () => {
                                                 Pincode {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.pincode == null ? "N/A" : viewUserData && viewUserData.user_details.pincode}
+                                                {viewUserData && viewUserData.user_details.pincode === null ? "N/A" : viewUserData && viewUserData.user_details.pincode}
                                             </div>
                                         </div>
 
@@ -760,7 +760,7 @@ const SchoolStudentList = () => {
                                                 State {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.user_details.state == null ? "N/A" : viewUserData && viewUserData.user_details.state}
+                                                {viewUserData && viewUserData.user_details.state === null ? "N/A" : viewUserData && viewUserData.user_details.state}
                                             </div>
                                         </div>
 
@@ -769,7 +769,7 @@ const SchoolStudentList = () => {
                                                 Status {" "}
                                             </div>
                                             <div className="col-8">
-                                                {viewUserData && viewUserData.is_verified == 0 ?
+                                                {viewUserData && viewUserData.is_verified === 0 ?
                                                     <CBadge color="danger">Not Verified</CBadge>
                                                     :
                                                     <CBadge color="primary">Verified</CBadge>
@@ -780,7 +780,7 @@ const SchoolStudentList = () => {
                                 </div>
                             </div>
 
-                            {viewUserData && viewUserData.role_name == "school-student" ?
+                            {viewUserData && viewUserData.role_name === "school-student" ?
 
                                 <div className="row mt-3">
                                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

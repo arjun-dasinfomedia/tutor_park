@@ -101,7 +101,7 @@ export const schoolClassList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.getAll(SCHOOL_DIVISION_LIST, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: SCHOOL_DIVISION_LIST,
           schoolClassData: responseJson.data.data,
@@ -121,7 +121,7 @@ export const schoolClassList = (data) => async (dispatch) => {
 export const schoolClassStore = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(CREATE_SCHOOL_CLASS, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -143,7 +143,7 @@ export const schoolClassStore = (data) => async (dispatch) => {
 export const getAllTutorList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(GET_ALL_CLASS_TUTOR, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_ALL_CLASS_TUTOR,
           allTutorList: responseJson.data.data,
@@ -164,7 +164,7 @@ export const subjectTeacherStore = (data) => async (dispatch) => {
 
   try {
     const response = await RestClientServices.postWithData(ADD_SUBJECT_TEACHER, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -189,7 +189,7 @@ export const schoolStudentTeacherList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(GET_ALL_STUDENT_TEACHER_LIST, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: GET_ALL_STUDENT_TEACHER_LIST,
           allStudentTeacherList: responseJson.data.data,
@@ -210,7 +210,7 @@ export const addStudentInClassSection = (data) => async (dispatch) => {
 
   try {
     const response = await RestClientServices.postWithData(ADD_STUDENT_IN_CLASS_SECTION, data).then((responseJson) => {
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -233,7 +233,7 @@ export const removeStudentInClassSection = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(REMOVE_STUDENT_IN_CLASS_SECTION, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -257,7 +257,7 @@ export const enableDisableStudent = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(ENABLE_DISABLE_USER, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -281,7 +281,7 @@ export const storeTimetable = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(STORE_SECTION_TIMETABLE, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch(alertActions.success(responseJson.data.message.toString()));
         toast.success(responseJson.data.message.toString())
         dispatch({
@@ -306,7 +306,7 @@ export const timeTableList = (data) => async (dispatch) => {
   try {
     const response = await RestClientServices.postWithData(TIME_TABLE_LIST, data).then((responseJson) => {
 
-      if (responseJson.data.error == false) {
+      if (responseJson.data.error === false) {
         dispatch({
           type: TIME_TABLE_LIST,
           timeList: responseJson.data.data,
